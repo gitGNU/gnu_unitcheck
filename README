@@ -1,0 +1,43 @@
+================================================================================
+                          SiteTester Project
+================================================================================
+
+This is the main directory for the SiteTester Project.
+
+                        PROJECT BLUEPRINT
+                        -----------------
+
+AUTHENTICATION:
+
+Initially, we don't believe authentication is required for this project, therefore
+all pages will be available at all times without needing to login to an account.
+
+ADD TESTS:
+
+Adding tests is as simple as calling a function from your test script.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================================================================================
+Report bugs to <freedomdeveloper@yahoo.com>
+================================================================================

@@ -1,0 +1,63 @@
+/* 
+    Document   : styles
+    Created on : Dec 21, 2010, 12:14:54 PM
+    Author     : Tom
+    Description:
+        This document is used to style the SiteTester project.
+*/
+
+root { 
+    display: block;
+}
+
+div#header {
+    position: relative;
+    float: left;
+    height: 125px;
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid brown;
+    
+}
+
+div#nav {
+    position: relative;
+    float: left;
+    width: 175px;
+    height: 550px;
+    border: 1px solid brown;
+    overflow: hidden;
+    
+}
+
+div#content {
+    position: fixed;
+    top: 135px;
+    left: 190px;
+    height: 550px;
+    width: 1200px;
+    min-height: 550px;
+    border: 1px solid brown;
+    overflow: hidden;
+}
+
+div#tests_col {
+    position: fixed;
+    right: 7px;
+    top: 135px;
+    width: 250px;
+    height: 550px;
+    border: 1px solid brown;
+    overflow: hidden;
+}
+
+div#footer {
+    position: relative;
+    float: left;
+    height: 100px;
+    width: 100%;
+    min-height: 75px;
+    text-align: center;
+    border: 1px solid brown;
+
+}
