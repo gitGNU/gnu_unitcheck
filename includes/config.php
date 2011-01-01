@@ -5,7 +5,7 @@
  *
  * @License "GNU General Public License", version="3.0"
  *
- * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+ * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
  *
  * This file is part of UnitCheck.
  *

@@ -1,7 +1,7 @@
 /**
  * This is the content page.
  *
- * Copyright 	(c) 2010 Tom Kaczocha
+ * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
  *
  * This file is part of UnitCheck.
  *
@@ -24,7 +24,8 @@
 ================================================================================
 
 2011-01-02 Tom Kaczocha <freedomdeveloper@yahoo.com>
-    * Cleaned up project    
+    * Cleaned up project  
+    * Updated Copyright notice for 2011  
 
 2010-12-24 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added UnitCheckDirectory class

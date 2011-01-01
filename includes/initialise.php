@@ -3,7 +3,7 @@
     /**
      * This file is used to initialise various objects on startup.
      *
-     * Copyright 	(c) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * @License     "GNU General Public License", version="3.0"
      *
