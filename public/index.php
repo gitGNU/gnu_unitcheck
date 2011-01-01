@@ -52,8 +52,9 @@ $_SESSION['title'] = "Welcome";
             <h2>to the</h2>
             <h1>UnitCheck</h1>
             <br /><br />
-            <p>Click the Configure button to start the application</p>
-            <br /><br /><br /><br />
+            <p>Ensure this application is located in the root directory<br />
+                of your project then click the Configure button to start the application</p>
+            <br /><br />
             <a href="configure.php"><input type="button" value="Configure" /></a>
             <br /><br /><br />
 

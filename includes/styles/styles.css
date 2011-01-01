@@ -58,9 +58,8 @@ div#header {
 }
 
 div#nav {
-    position: fixed;
-    top: 120px;
-    width: 175px;
+    position: relative;
+    float: left;
     min-width: 175px;
     height: 500px;
     border: 1px solid brown;
@@ -70,10 +69,9 @@ div#nav {
 }
 
 div#content {
-    position: fixed;
-    top: 120px;
-    left: 210px;
-    height: 500px;
+    position: relative;
+    float: left;
+    height: auto;
     width: 1140px;
     min-width: 500px;
     min-height: 500px;
@@ -83,9 +81,8 @@ div#content {
 }
 
 div#tests_col {
-    position: fixed;
-    left: 1380px;
-    top: 120px;
+    position: relative;
+    float: left;
     width: 250px;
     min-width: 250px;
     height: 500px;
@@ -96,9 +93,8 @@ div#tests_col {
 }
 
 div#footer {
-    position: fixed;
-    bottom: 5px;
-    height: 100px;
+    position: relative;
+    float: left;
     width: 100%;
     min-height: 70px;
     text-align: center;

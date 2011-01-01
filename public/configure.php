@@ -32,14 +32,18 @@ require_once('../includes/initialise.php');
 
 $_SESSION['title'] = 'Configure';
 
+require_once("../UnitCheck/run_tests.php");
+
 // print header
-Header::printHeader();
+UnitCheckHeader::printHeader();
 
 // print navigation
 require_once('navigation.php');
 
 // check for previous test directories
-$dirs = FileSystem::getDirectories("../clients");
+$dirs = $directory->getDirectoriesArray("../clients");
+
+
 
 if (!is_bool($dirs)) { // if not FALSE
     // display existing client sites
@@ -47,8 +51,12 @@ if (!is_bool($dirs)) { // if not FALSE
         //echo "Directory: ".$dir."<br />";
     }
 } else { // not directories exist
-    // configure for new test
+    // configure for new test client
+    
 }
+
+
+
 ?>
 
 <div id="content">
@@ -58,6 +66,7 @@ if (!is_bool($dirs)) { // if not FALSE
 
     <h5>Tester:</h5>
 
+    <?php $directory->getProjectTreeArray(); ?>
 
     <div id="conf_form">
         <form method="post" action="test_configure.php">
@@ -78,6 +87,6 @@ if (!is_bool($dirs)) { // if not FALSE
                    require_once('test_monitor.php');
 
 // print footer
-                   Footer::printFooter();
+                   UnitCheckFooter::printFooter();
 ?>
 

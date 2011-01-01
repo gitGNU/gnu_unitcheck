@@ -40,7 +40,7 @@ if (isset($_POST['site_name'])) {
 }
 
 // print header
-Header::printHeader();
+UnitCheckHeader::printHeader();
 
 // print navigation
 require_once('navigation.php');
@@ -67,5 +67,5 @@ require_once('navigation.php');
 require_once('test_monitor.php');
 
 // print footer
-Footer::printFooter();
+UnitCheckFooter::printFooter();
 ?>

@@ -23,6 +23,15 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-02 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Cleaned up project    
+
+2010-12-24 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added UnitCheckDirectory class
+    * Added "UnitCheck" prefix to all classes & files
+    * Removed public/views/ directory
+    * 
+
 2010-12-20 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Created basic site structure.
     * Edited INSTALL file.

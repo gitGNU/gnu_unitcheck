@@ -1,11 +1,9 @@
 <?php
 
     /**
-     * This file is used to initialise various objects on startup.
+     * Session class is a template for Session objects.
      *
-     * Copyright 	(c) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
-     * @License     "GNU General Public License", version="3.0"
+     * Copyright 	(c) 2010 Tom Kaczocha
      *
      * This file is part of UnitCheck.
      *
@@ -23,16 +21,35 @@
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
      *
+     * @package
+     * @author	Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @copyright	2010 Tom Kaczocha
+     * @version 	2.0
+     * @access	public
+     * @License     "GNU General Public License", version="3.0"
+     *
      */
-    require_once('config.php');
+    class UnitCheckSession {
 
-    require_once(LIB_PATH . DS . 'UnitCheckSession.php');
-    require_once(LIB_PATH . DS . 'UnitCheckTest.php');
-    require_once(LIB_PATH . DS . 'UnitCheckHeader.php');
-    require_once(LIB_PATH . DS . 'UnitCheckFooter.php');
-    require_once(LIB_PATH . DS . 'UnitCheckDirectory.php');
-    require_once(LIB_PATH . DS . 'UnitCheckDirReader.php');
-    require_once(LIB_PATH . DS . 'UnitCheckHelper.php');
+        private $_sid;
 
+        public function __construct() {
+            session_start();
+            $this->_sid = session_id();
+            //echo $this->_sid;
+        }
+
+        public function  __destruct() {
+
+        }
+
+        public function getSessionID() {
+            return $this->_sid;
+        }
+
+    }
+
+    $session = new UnitCheckSession();
+    
 
 ?>
