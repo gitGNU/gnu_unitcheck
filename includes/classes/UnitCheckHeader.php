@@ -41,7 +41,7 @@
          *
          */
         public function __construct() {
-            
+
         }
 
         /**
@@ -54,7 +54,7 @@
          *
          */
         public function __destruct() {
-            
+
         }
 
         /**
@@ -80,7 +80,7 @@
 
                     <title>' . $title . ' - UnitCheck</title>
               </head>
-              <body bgcolor="#DDFFDD">
+              <body bgcolor="#FFFFFF">
                     <div id="header">
                         <h1>UnitCheck</h1>
                     </div> <!-- END header -->';

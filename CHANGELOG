@@ -25,7 +25,8 @@
 
 2011-01-02 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Cleaned up project  
-    * Updated Copyright notice for 2011  
+    * Updated Copyright notice for 2011
+    * Changed color scheme in styles.css
 
 2010-12-24 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added UnitCheckDirectory class

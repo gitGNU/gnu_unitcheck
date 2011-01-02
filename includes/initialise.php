@@ -31,7 +31,6 @@
     require_once(LIB_PATH . DS . 'UnitCheckHeader.php');
     require_once(LIB_PATH . DS . 'UnitCheckFooter.php');
     require_once(LIB_PATH . DS . 'UnitCheckDirectory.php');
-    require_once(LIB_PATH . DS . 'UnitCheckDirReader.php');
     require_once(LIB_PATH . DS . 'UnitCheckHelper.php');
 
 

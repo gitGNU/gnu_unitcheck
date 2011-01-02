@@ -1,4 +1,4 @@
-/* 
+/*
  * This document is used to style the UnitCheck project.
  *
  * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
@@ -26,10 +26,10 @@
  * @access	public
  * @License     "GNU General Public License", version="3.0"
  *
-        
+
 */
 
-root { 
+root {
     display: block;
 }
 
@@ -47,6 +47,7 @@ root {
 
 div#header {
     position: relative;
+    background-color: #8EB2D9;
     float: left;
     height: 80px;
     width: 100%;
@@ -54,7 +55,7 @@ div#header {
     border: 1px solid brown;
 
     padding: 10px;
-    
+
 }
 
 div#nav {
@@ -65,7 +66,7 @@ div#nav {
     border: 1px solid brown;
 
     padding: 10px;
-    
+
 }
 
 div#content {
@@ -76,7 +77,7 @@ div#content {
     min-width: 500px;
     min-height: 500px;
     border: 1px solid brown;
-    
+
     padding: 10px;
 }
 
@@ -87,9 +88,9 @@ div#tests_col {
     min-width: 250px;
     height: 500px;
     border: 1px solid brown;
-    
+
     padding: 10px;
-    
+
 }
 
 div#footer {
@@ -99,7 +100,7 @@ div#footer {
     min-height: 70px;
     text-align: center;
     border: 1px solid brown;
-    
+	background-color: #8EB2D9;
     padding: 10px;
 
 }
