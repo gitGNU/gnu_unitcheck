@@ -41,7 +41,7 @@ UnitCheckHeader::printHeader();
 require_once('navigation.php');
 
 // check for previous test directories
-$dirs = $directory->getDirectoriesArray("../clients");
+$dirs = $directory->getDirectoriesArray("../projects");
 
 
 

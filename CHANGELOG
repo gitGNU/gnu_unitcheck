@@ -29,6 +29,7 @@
     * Changed color scheme in styles.css
     * Added Copyright notices to README files project-wide
     * Edited includes/classes/UnitCheckDirectory.php
+    * Edited directory called in configure.php
 
 2010-12-24 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added UnitCheckDirectory class
