@@ -30,6 +30,7 @@
     * Added Copyright notices to README files project-wide
     * Edited includes/classes/UnitCheckDirectory.php
     * Edited directory called in configure.php
+    * Edited Windows XAMPP path in includes/config.php
 
 2010-12-24 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added UnitCheckDirectory class
