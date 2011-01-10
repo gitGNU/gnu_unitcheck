@@ -39,6 +39,8 @@
     * Edited index.php - new user interface implemented
     * Added public/runTests.php file - used for scheduling tests
 
+    * Added WAMP SITE_ROOT define
+
 2011-01-09 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added includes/classes/UnitCheckTest class
     * Added includes/classes/UnitCheck class

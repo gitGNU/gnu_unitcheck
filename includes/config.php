@@ -28,6 +28,9 @@
 
 // SITE_ROOT contains the full path to the SITE_ROOT
 // SITE_ROOT in windows
+// WAMP
+//defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'wamp' . DS . 'www' . DS . 'unitcheck');
+// XAMPP
 //defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'xampp' . DS . 'htdocs' . DS . 'unitcheck');
 // SITE_ROOT in linux
     defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'opt' . DS . 'lampp' . DS . 'htdocs' . DS . 'unitcheck');
