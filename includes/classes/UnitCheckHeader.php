@@ -80,7 +80,7 @@
                     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
                     <title>' . $_SESSION['title'] . ' - UnitCheck</title>
-                    <link href="" rel="Top">
+                    <link href="" rel="Top" />
               </head>
               <body>
                     <div id="header">
@@ -90,10 +90,10 @@
                         <table id="titles" cellspacing="0" cellpadding="0" border="0">
                             <tr>
                                 <td id="title">
-                                    <p style="color:#FFFFFF";>UnitCheck &ndash; ' . $_SESSION['title'] . '</p>
+                                    <p style="color:#FFFFFF;">UnitCheck &ndash; ' . $_SESSION['title'] . '</p>
                                 </td>
                                 <td id="information">
-                                    <p style="color:#FFFFFF;">version 0.0.1</p>
+                                    <p style="color:#FFFFFF;">version 0.1.0</p>
                                 </td>
                             </tr>
                         </table>

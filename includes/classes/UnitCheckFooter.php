@@ -83,13 +83,22 @@
                                 </li>
                                 <li>
                                     <span class="separator">| </span>
+                                    <a href="../public/reports.php">Reports</a>
+                                </li>
+                                <li>
+                                    <span class="separator">| </span>
                                     Copyright &copy; 2010, 2011 Tom Kaczocha
                                 </li>
                                 <li>
                                     <span class="separator">| </span>
                                     <a href="mailto:freedomdeveloper@yahoo.com?subject=UnitCheck Project Bug" title="Bug Reporting">Report Bugs</a>
-                                </li>
-                            </ul>
+                                </li>';
+                            
+                            
+//                                <li id="valid">
+//                                    <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="' . IMAGE_PATH . DS . 'valid-xhtml10.png" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+//                                </li>
+                            echo '</ul>
                         </li>
                     </ul>
                     <div class="outro"></div>

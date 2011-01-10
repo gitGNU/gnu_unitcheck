@@ -53,10 +53,10 @@
                         <a id="history" class="uc_common_actions" href="reports.php">
                             <span>Reports</span>
                         </a>
-                        <form id="quickSearchForm">
+                        <form id="quickSearchForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                             <div>
-                                <input id="quickSearchMain" class="quickSearchHelpText" type="text" onblur="" onfocus="" name="quickSearch">
-                                <input id="find" type="submit" value="Quick Search">
+                                <input id="quickSearchMain" class="quickSearchHelpText" type="text" onblur="" onfocus="" name="quickSearch" />
+                                <input id="find" type="submit" value="Quick Search" />
                                 <ul id="quickSearchLinks" class="additional_links">
                                     <li>
                                         <a href="quicksearchhelp.php">Quick Search Help</a>

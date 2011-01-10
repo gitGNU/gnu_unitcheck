@@ -38,8 +38,13 @@
     * Edited reports.php
     * Edited index.php - new user interface implemented
     * Added public/runTests.php file - used for scheduling tests
-
     * Added WAMP SITE_ROOT define
+
+    * Added reports link to the footer
+    * Corrected tags in UnitCheckHeader.php
+    * Corrected tags in index.php
+    * Project verifies with validator
+    * Added includes/images/valid-xhtml10.png
 
 2011-01-09 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added includes/classes/UnitCheckTest class

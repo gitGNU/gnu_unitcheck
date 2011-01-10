@@ -279,12 +279,12 @@ div#tests_col {
 
 #footer ul {
     list-style-type: none;
+    vertical-align: middle;
 }
 
 #footer .links {
     border-spacing: 30px;
     margin-bottom: 2ex;
-    vertical-align: top;
 }
 
 ul.links {
@@ -311,6 +311,6 @@ ul.links {
     
 }
 
-.header_addl_info {
-    
+#valid {
+    text-align: right;
 }
