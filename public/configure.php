@@ -32,17 +32,14 @@ require_once('../includes/initialise.php');
 
 $_SESSION['title'] = 'Configure';
 
-require_once("../UnitCheck/run_tests.php");
-
 // print header
 UnitCheckHeader::printHeader();
 
-// print navigation
-require_once('navigation.php');
+//// print navigation
+//require_once('navigation.php');
 
 // check for previous test directories
 $dirs = $directory->getDirectoriesArray("../projects");
-
 
 
 if (!is_bool($dirs)) { // if not FALSE
@@ -59,7 +56,7 @@ if (!is_bool($dirs)) { // if not FALSE
 
 ?>
 
-<div id="content">
+<div id="page-index">
     <h3>Configure</h3>
 
     <h5>Site:</h5>
@@ -84,7 +81,7 @@ if (!is_bool($dirs)) { // if not FALSE
 </div> <!-- END content -->
 
 <?php
-                   require_once('test_monitor.php');
+                   //require_once('test_monitor.php');
 
 // print footer
                    UnitCheckFooter::printFooter();

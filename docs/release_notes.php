@@ -1,11 +1,9 @@
 <?php
 
     /**
-     * This file is used to initialise various objects on startup.
+     * This is the reports page
      *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
-     * @License     "GNU General Public License", version="3.0"
+     * Copyright 	(c) 2010 Tom Kaczocha
      *
      * This file is part of UnitCheck.
      *
@@ -23,15 +21,38 @@
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
      *
+     * @package
+     * @author	Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @copyright	2010 Tom Kaczocha
+     * @version 	1.0
+     * @access	public
+     * @License     "GNU General Public License", version="3.0"
+     *
      */
-    require_once('config.php');
+    require_once('../includes/initialise.php');
 
-    require_once(LIB_PATH . DS . 'UnitCheck.php');
-    require_once(LIB_PATH . DS . 'UnitCheckSession.php');
-    require_once(LIB_PATH . DS . 'UnitCheckTest.php');
-    require_once(LIB_PATH . DS . 'UnitCheckHeader.php');
-    require_once(LIB_PATH . DS . 'UnitCheckFooter.php');
-    require_once(LIB_PATH . DS . 'UnitCheckDirectory.php');
-    require_once(LIB_PATH . DS . 'UnitCheckHelper.php');
+    $_SESSION['title'] = 'Version 1.0 Release Notes';
+
+    UnitCheckHeader::printHeader();
 
 ?>
+
+<div id="page-index">
+        <h1>UnitCheck Version 1.0 Release Notes</h1>
+
+        <h3>Contents</h3>
+        <ul>
+            <li>Note 1</li>
+            <li>Note 2</li>
+            <li>Note 3</li>
+        </ul>
+
+
+</div>
+
+<?php
+
+    UnitCheckFooter::printFooter();
+
+?>
+

@@ -76,14 +76,42 @@
                     <meta http-equiv="Content-Language" content="es-ar" />
                     <meta name="description" content="Generador de links con destino modificable" />
                     <link href="../includes/styles/styles.css" rel="stylesheet" type="text/css" />
+                    <link href="../includes/styles/page.css" rel="stylesheet" type="text/css" />
                     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
-                    <title>' . $title . ' - UnitCheck</title>
+                    <title>' . $_SESSION['title'] . ' - UnitCheck</title>
+                    <link href="" rel="Top">
               </head>
-              <body bgcolor="#FFFFFF">
+              <body>
                     <div id="header">
-                        <h1>UnitCheck</h1>
-                    </div> <!-- END header -->';
+                        <div id="banner">
+                            
+                        </div> <!-- END banner -->
+                        <table id="titles" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <td id="title">
+                                    <p style="color:#FFFFFF";>UnitCheck &ndash; ' . $_SESSION['title'] . '</p>
+                                </td>
+                                <td id="information">
+                                    <p style="color:#FFFFFF;">version 0.0.1</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <ul class="links">
+                            <li>
+                                <a href="../public/index.php">Home</a>
+                            </li>
+                            <li>
+                                <span class="separator">| </span>
+                                <a href="../public/configure.php">Configure</a>
+                            </li>
+                            <li>
+                                <span class="separator">| </span>
+                                <a href="../public/reports.php">Reports</a>
+                            </li>
+                        </ul>
+                    </div> <!-- END header -->
+                    <div id="unitcheck-body">';
 
         }
 

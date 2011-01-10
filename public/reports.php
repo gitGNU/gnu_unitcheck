@@ -1,11 +1,9 @@
 <?php
 
     /**
-     * This file is used to initialise various objects on startup.
+     * This is the reports page
      *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
-     * @License     "GNU General Public License", version="3.0"
+     * Copyright 	(c) 2011 Tom Kaczocha
      *
      * This file is part of UnitCheck.
      *
@@ -24,14 +22,28 @@
      *
      *
      */
-    require_once('config.php');
 
-    require_once(LIB_PATH . DS . 'UnitCheck.php');
-    require_once(LIB_PATH . DS . 'UnitCheckSession.php');
-    require_once(LIB_PATH . DS . 'UnitCheckTest.php');
-    require_once(LIB_PATH . DS . 'UnitCheckHeader.php');
-    require_once(LIB_PATH . DS . 'UnitCheckFooter.php');
-    require_once(LIB_PATH . DS . 'UnitCheckDirectory.php');
-    require_once(LIB_PATH . DS . 'UnitCheckHelper.php');
+    require_once('../includes/initialise.php');
+
+    $_SESSION['title'] = 'Report';
+
+
+    UnitCheckHeader::printHeader();
+
+?>
+
+<div id="index-page">
+
+    <h3>Reports</h3>
+
+
+
+</div>
+
+<?php
+
+    UnitCheck::printResults();
+
+    UnitCheckFooter::printFooter();
 
 ?>

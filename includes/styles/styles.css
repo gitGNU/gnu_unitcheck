@@ -19,44 +19,206 @@
  * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
- * @package
- * @author	Tom Kaczocha <freedomdeveloper@yahoo.com>
- * @copyright	2010 Tom Kaczocha
- * @version 	1.0
- * @access	public
- * @License     "GNU General Public License", version="3.0"
  *
-
 */
 
 root {
     display: block;
 }
 
+body {
+    background: none repeat scroll 0 0 #C8C8C8;
+    font-family: Helvetica, Arial, Geneva;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #000000;
+}
+
+body {
+/*    background: url("../images/body-back.gif") repeat 0 0 #FFFFFF;*/
+    font-family: sans-serif;
+}
+
+#header {
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border: medium none;
+    margin-bottom: 1em;
+    padding-bottom: 2px;
+
+}
+
+#banner {}
+
+#titles {
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+}
+
+#titles p {
+    margin: 0;
+    padding: 0;
+
+}
+
+#titles #title {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+#titles #information {
+    font-size: 90%;
+    font-weight: normal;
+    text-align: right;
+    white-space: nowrap;
+}
+
+body, td, th, input {
+    font-family: Verdana, sans-serif;
+    font-size: small;
+    color: #000000;
+}
+
+#header .links, #footer {
+    background-color: #929BB1;
+    color: #DDDDDD;
+}
+
+#header a, #footer a {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #663366;
+}
+
+a {
+    color: #6070CF;
+}
+
+#header .links {
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom: 1px solid #747E93;
+    border-left: 1px solid #747E93;
+    border-right: 1px solid #747E93;
+    padding: 0.5em;
+}
+
+ul.links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.links li {
+    display: inline;
+    white-space: nowrap;
+}
+
+.separator {
+    color: #CCCCCC;
+}
+
+#unitcheck-body {
+    -moz-border-radius: 5px 5px 5px 5px;
+    background: none repeat scroll 0 0 #F0F0F0;
+    border: 1px solid #747E93;
+    color: black;
+    font-size: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#page-index {
+    padding: 0.2em 0.2em 0.15em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#page-index table {
+    border-collapse: collapse;
+}
+
 #welcome {
-    position: fixed;
-    top: 100px;
-    left: 600px;
-    margin: auto;
-    width: 500px;
-    height: 500px;
-    background-color: cornflowerblue;
-    color: #ffffff;
+    font-size: x-large;
+    font-weight: bold;
+    margin: 0 0 0.8em;
+    padding: 0;
     text-align: center;
 }
 
-div#header {
-    position: relative;
-    background-color: #8EB2D9;
-    float: left;
-    height: 80px;
-    width: 100%;
-    min-height: 75px;
-    border: 1px solid brown;
-
-    padding: 10px;
-
+#run_tests {
+    background: url("../images/bug.gif") no-repeat scroll 0 0 transparent;
 }
+
+#configure {
+    background: url("../images/account.gif") no-repeat scroll 0 0 transparent;
+}
+
+#history {
+    background: url("../images/search.gif") no-repeat scroll 0 0 transparent;
+}
+
+#quickSearchForm {
+    margin: 0;
+    padding: 0;
+    clear: both;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+#quickSearchForm
+#quickSearchMain {
+    width: 25em;
+}
+
+input.quickSearchHelpText {
+    color: #CCCCCC;
+}
+
+ul#quickSearchLinks {
+    margin-bottom: 1em;
+}
+
+ul.additional_links {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.additional_links li {
+    display: inline;
+}
+
+.intro, .outro {
+    text-align: center;
+    width: 50em;
+}
+
+.uc_common_actions,
+.uc_common_actions:visited,
+.uc_common_actions:hover {
+    text-decoration: none;
+}
+
+.uc_common_actions {
+    display: block;
+    float: left;
+    height: 190px;
+    margin: 0 3ex 3em 0;
+    text-align: center;
+    width: 195px;
+}
+
+.uc_common_actions span {
+    font-weight: bold;
+    position: relative;
+    top: 95%;
+}
+
+
 
 div#nav {
     position: relative;
@@ -93,20 +255,62 @@ div#tests_col {
 
 }
 
-div#footer {
-    position: relative;
-    float: left;
+#footer {
+    -moz-border-radius: 5px 5px 5px 5px;
+    border: 1px solid #747E93;
     width: 100%;
-    min-height: 70px;
-    text-align: center;
-    border: 1px solid brown;
-	background-color: #8EB2D9;
-    padding: 10px;
-
+    background: none repeat scroll 0 0 #EDF2F2;
+    border-bottom: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    clear: both;
+    margin-top: 5px;
+    border-style: solid;
 }
 
-#conf_form {
-    position: absolute;
-    top: 50px;
-    left: 550px;
+#header .links, #footer {
+    background-color: #929BB1;
+    color: #DDDDDD;
+}
+
+#footer #useful-links {
+    padding-left: 1ex;
+    padding-right: 1ex;
+}
+
+#footer ul {
+    list-style-type: none;
+}
+
+#footer .links {
+    border-spacing: 30px;
+    margin-bottom: 2ex;
+    vertical-align: top;
+}
+
+ul.links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#titles {
+    background-color: #404D6C;
+    color: #FFFFFF;
+    font-size: 110%;
+    margin: 0;
+    padding: 0.5em;
+    vertical-align: bottom;
+    width: 100%;
+}
+
+#page_table {
+    text-align: center;
+}
+
+#doc {
+    
+}
+
+.header_addl_info {
+    
 }

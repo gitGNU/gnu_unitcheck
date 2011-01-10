@@ -31,60 +31,99 @@
      */
     class UnitCheckTest {
 
-        /**
-         * Test ID
-         *
-         * @access private
-         * @var String
-         */
-        private $_test_id;
-        /**
-         * Date test created
-         *
-         * @access private
-         * @var String
-         */
-        private $_date_created;
-        /**
-         * Project the task belongs to
-         *
-         * @access private
-         * @var String
-         */
-        private $_project;
+        public static $testName = array();
+        public static $testResult = array();
+        public static $errMessage = array();
+        public static $testErrors = array();
+        private static $totalTests;
+        private static $totalSuccess;
+        private static $totalFailure;
 
-        /**
-         * UnitCheckTest Constructor
-         *
-         * @param
-         * @access public
-         *
-         * @return
-         *
-         */
         public function __construct() {
-            echo "Test Object constructed";
+            UnitCheckTest::$totalTests = 0;
+            UnitCheckTest::$totalSuccess = 0;
+            UnitCheckTest::$totalFailure = 0;
+
+            if (!empty(self::$errMessage)) {
+                self::$testErrors[] = "Test Error";
+            }
 
         }
 
-        /**
-         * UnitCheckTest Destructor
-         *
-         * @param
-         * @access public
-         *
-         * @return
-         *
-         */
         public function __destruct() {
-            
+
         }
 
-        public function fail() {
-            
+        public function failIf($testName, $condition, $error = "") {
+
+            self::$testName[] = $testName;
+
+            if ($condition == FALSE) {
+                self::$testResult[] = "FAILED";
+            }
+            else {
+                self::$testResult[] = "PASSED";
+            }
+
+            if ((self::$errMessage != "") && ($condition == FALSE)) {
+                self::$errMessage[] = $error;
+            }
+            else {
+                self::$errMessage[] = "";
+            }
+
         }
+
+        public function failUnless($testName, $condition, $error = "") {
+
+            self::$testName[] = $testName;
+
+            if ($condition == TRUE) {
+                self::$testResult[] = "PASSED";
+            }
+            else {
+                self::$testResult[] = "FAILED";
+            }
+
+            if ((self::$errMessage != "") && ($condition == FALSE)) {
+                self::$errMessage[] = $error;
+            }
+            else {
+                self::$errMessage[] = "";
+            }
+
+        }
+
+        public function assertTrue($value, $error = "") {
+            if ($value == TRUE) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        public function assertFalse($value, $error = "") {
+            if ($value == FALSE) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        public function assertEquals($value1, $value2, $error = "") {
+            if ($value1 == $value2) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
     }
-
-//$test = new Test();
 
 ?>

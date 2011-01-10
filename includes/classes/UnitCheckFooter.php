@@ -68,10 +68,31 @@
          */
         public static function printFooter() {
 
-            echo '<div id="footer">
-                    <hr />
-                    <p>Copyright &copy; 2010 Tom Kaczocha</p>
-                    <p>Please Report Bugs to <a href="mailto:freedomdeveloper@yahoo.com?subject=UnitCheck Project Bug" title="Bug Reporting">Project Developer</a></p>
+            echo '</div> <!-- END unitcheck-body -->
+                  <div id="footer">
+                    <div class="intro"></div>
+                    <ul id="useful-links">
+                        <li id="links-actions">
+                            <ul class="links">
+                                <li>
+                                    <a href="../public/index.php">Home</a>
+                                </li>
+                                <li>
+                                    <span class="separator">| </span>
+                                    <a href="../public/configure.php">Configure</a>
+                                </li>
+                                <li>
+                                    <span class="separator">| </span>
+                                    Copyright &copy; 2010, 2011 Tom Kaczocha
+                                </li>
+                                <li>
+                                    <span class="separator">| </span>
+                                    <a href="mailto:freedomdeveloper@yahoo.com?subject=UnitCheck Project Bug" title="Bug Reporting">Report Bugs</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="outro"></div>
                 </div> <!-- END footer -->
             </body>
         </html>';

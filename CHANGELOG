@@ -23,6 +23,28 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-10 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Reconfigured the entire GUI - CSS
+    * Added docs/ directory
+    * Added using.php file - UnitCheck User's Guide
+    * Added release_notes.php file - used for making release notes
+      for version 1.0
+    * Edited printFooter() text
+    * Edited printHeader() text
+    * Added new images
+    * Added tests/tests.php file for storing project tests
+    * Edited configure.php to be inline with the new styles
+    * Added UnitCheck class to initialise.php
+    * Edited reports.php
+    * Edited index.php - new user interface implemented
+    * Added public/runTests.php file - used for scheduling tests
+
+2011-01-09 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added includes/classes/UnitCheckTest class
+    * Added includes/classes/UnitCheck class
+    * Added public/reports.php file for displaying test results
+    * Added tests/ directory
+
 2011-01-02 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Cleaned up project  
     * Updated Copyright notice for 2011

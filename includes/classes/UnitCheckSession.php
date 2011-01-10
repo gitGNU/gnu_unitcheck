@@ -22,21 +22,21 @@
      *
      *
      * @package
-     * @author	    Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright   2010, 2011 Tom Kaczocha
-     * @version 	2.0
-     * @access	    public
-     * @License     "GNU General Public License", version="3.0"
+     * @author          Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @copyright       2010, 2011 Tom Kaczocha
+     * @version 	1.0
+     * @access          public
+     * @License         "GNU General Public License", version="3.0"
      *
      */
     class UnitCheckSession {
 
-        private $_sid;
+        private $_sessionID;
 
         public function __construct() {
             session_start();
-            $this->_sid = session_id();
-            //echo $this->_sid;
+            $this->_sessionID = session_id();
+            //echo $this->_sessionID;
         }
 
         public function  __destruct() {
@@ -44,7 +44,7 @@
         }
 
         public function getSessionID() {
-            return $this->_sid;
+            return $this->_sessionID;
         }
 
     }
