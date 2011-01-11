@@ -121,6 +121,11 @@ ul.links li {
     color: #CCCCCC;
 }
 
+#header form, #header form input {
+    display: inline;
+    font-size: 95%;
+}
+
 #unitcheck-body {
     -moz-border-radius: 5px 5px 5px 5px;
     background: none repeat scroll 0 0 #F0F0F0;
@@ -165,7 +170,7 @@ ul.links li {
     margin: 0;
     padding: 0;
     clear: both;
-    margin-bottom: 2em;
+    margin-bottom: 0em;
     text-align: center;
 }
 

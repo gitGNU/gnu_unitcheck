@@ -25,6 +25,8 @@
     require_once('../includes/initialise.php');
 
     require_once("../tests/databaseTests.php");
+    require_once("../tests/newProjectTests.php");
+    require_once("../tests/newUserAccountTests.php");
     require_once("testCleanup.php");
 
     $_SESSION['title'] = 'Test Results';
@@ -41,7 +43,10 @@
     usersTableCreatedTest();
     projectTableCreatedTest();
     testsTableCreatedTest();
+
+    createNewUserAccountTest();
     
+    newProjectTest();
 
     // run POST-cleanup
     runCleanup();

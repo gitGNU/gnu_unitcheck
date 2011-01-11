@@ -93,7 +93,7 @@
                                     <p style="color:#FFFFFF;">UnitCheck &ndash; ' . $_SESSION['title'] . '</p>
                                 </td>
                                 <td id="information">
-                                    <p style="color:#FFFFFF;">version 0.3.0</p>
+                                    <p style="color:#FFFFFF;">version 0.4.0</p>
                                 </td>
                             </tr>
                         </table>
@@ -105,9 +105,29 @@
                                 <span class="separator">| </span>
                                 <a href="../public/configure.php">Configure</a>
                             </li>
+                            <li class="form">
+                                <span class="separator">| </span>
+                                <form method="get" action="search.php">
+                                    <input id="quickSearchForm" class="txt" type="text" name="quickSearch" />
+                                    <input id="find_top" class="btn" type="submit" value="Search" />
+                                </form>
+                                <a title="Quick Shearch Help" href="">[?]</a>
+                            </li>
                             <li>
                                 <span class="separator">| </span>
                                 <a href="../public/reports.php">Reports</a>
+                            </li>
+                            <li id="new_account_container_top">
+                                <span class="separator">| </span>
+                                <a href="newUserAccount.php">New &nbsp;Account</a>
+                            </li>
+                            <li id="mini_login_container_top">
+                                <span class="separator">| </span>
+                                <a id="login_link_top" onclick="" href="">Log In</a>
+                            </li>
+                            <li id="forgot_container_top">
+                                <span class="separator">| </span>
+                                <a id="forgot_link_top onclick="" href="">Forgot Password</a>
                             </li>
                         </ul>
                     </div> <!-- END header -->

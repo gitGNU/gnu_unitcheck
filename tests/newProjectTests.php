@@ -1,7 +1,7 @@
 <?php
 
-     /**
-     * This is the tests test file
+    /**
+     * This is the new project test file
      *
      * Copyright (C) 2011 Tom Kaczocha
      *
@@ -23,11 +23,24 @@
      */
     require_once('../includes/initialise.php');
 
-    // test the successful addition of
-    // new tests
-    function addTestTest() {
-        
-    }
+    // this function tests for the successful
+    // creation of a new project
+    function newProjectTest() {
+        global $database;
+        global $unitCheck;
 
+        $test = new UnitCheckTest("TEST - New Project Created");
+        $unitCheck->addTest($test);
+
+        $project = new UnitCheckProject("UnitCheck");
+
+        $project->createNewProject("UnitCheck");
+
+        $data = $project->getProjectDataSetByName("UnitCheck");
+
+        $test->failUnless($data['project_name'] == 'UnitCheck',
+                "Error: New Project Creation Failed");
+
+    }
 
 ?>

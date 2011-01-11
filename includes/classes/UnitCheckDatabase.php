@@ -2,7 +2,7 @@
 
     /**
      *
-     * Copyright (C) 2010 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
      *
@@ -24,12 +24,12 @@
     /**
      * My_Sql_Database class is a template for database connection objects.
      *
-     * Copyright 	(c) 2010 Tom Kaczocha
+     * Copyright 	(c) 2010, 2011 Tom Kaczocha
      *
      * @package		
      * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright	2010 Tom Kaczocha
-     * @license     GNU General Public License, version 3.0
+     * @license         GNU General Public License, version 3.0
      * @version 	2.0
      * @access		public
      */

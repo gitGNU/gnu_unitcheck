@@ -1,7 +1,7 @@
 <?php
 
-     /**
-     * This is the tests test file
+    /**
+     * This is the new user account test file
      *
      * Copyright (C) 2011 Tom Kaczocha
      *
@@ -23,11 +23,24 @@
      */
     require_once('../includes/initialise.php');
 
-    // test the successful addition of
-    // new tests
-    function addTestTest() {
+    // test for the successful new user
+    // account creation
+    function createNewUserAccountTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
         
-    }
+        $test = new UnitCheckTest("TEST - New User Account Created");
+        $unitCheck->addTest($test);
 
+        $user->createNewUserAccount("Tom", "Kaczocha", "developer",
+                "freedomdeveloper@yahoo.com", "password");
+
+        $data = $user->getUserDataSetByID();
+        
+        $test->failUnless($data['username'] == "developer",
+                "Error: New User Account Creation Failed");
+
+    }
 
 ?>

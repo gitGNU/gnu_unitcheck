@@ -23,6 +23,20 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-12 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Edited version in UnitCheckHeader = 0.4.0
+    * Added new UnitCheckProject class
+    * Added new UnitCheckUser class
+    * Added UnitCheckUser.php & UnitCheckProject.php to initialise.php
+    * Edited styles.css
+    * Added quick search to header
+    * Added New Account link to header
+    * Added Log In link to header
+    * Added Forgot Password link to header
+    * Added new Tests to runTests.php
+    * Added tests/newProjectTests.php file
+    * Added tests/newUserAccountTests.php file
+
 2011-01-11 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited INSTALL file - added Working Set Install Instructions
     * Edited root/README - Updated project information
