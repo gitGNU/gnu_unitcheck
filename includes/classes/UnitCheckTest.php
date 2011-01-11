@@ -31,22 +31,25 @@
      */
     class UnitCheckTest {
 
-        public static $testName = array();
-        public static $testResult = array();
-        public static $errMessage = array();
-        public static $testErrors = array();
+        private $_testID;
+        private $_testName;
+        private $_testResult;
+        private $_errMessage;
+        //public static $testErrors = array();
         private static $totalTests;
         private static $totalSuccess;
         private static $totalFailure;
 
-        public function __construct() {
-            UnitCheckTest::$totalTests = 0;
-            UnitCheckTest::$totalSuccess = 0;
-            UnitCheckTest::$totalFailure = 0;
+        public function __construct($test_name) {
+            $this->_testName = $test_name;
 
-            if (!empty(self::$errMessage)) {
-                self::$testErrors[] = "Test Error";
-            }
+//            UnitCheckTest::$totalTests = 0;
+//            UnitCheckTest::$totalSuccess = 0;
+//            UnitCheckTest::$totalFailure = 0;
+//
+//            if (!empty(self::$errMessage)) {
+//                self::$testErrors[] = "Test Error";
+//            }
 
         }
 
@@ -54,9 +57,7 @@
 
         }
 
-        public function failIf($testName, $condition, $error = "") {
-
-            self::$testName[] = $testName;
+        public function failIf($condition, $error = "") {
 
             if ($condition == FALSE) {
                 self::$testResult[] = "FAILED";
@@ -74,22 +75,23 @@
 
         }
 
-        public function failUnless($testName, $condition, $error = "") {
-
-            self::$testName[] = $testName;
+        public function failUnless($condition, $error = "") {
+            global $testNames;
+            global $testResults;
+            global $errMessages;
 
             if ($condition == TRUE) {
-                self::$testResult[] = "PASSED";
+                $testResults[] = "PASSED";
             }
             else {
-                self::$testResult[] = "FAILED";
+                $testResults[] = "FAILED";
             }
 
-            if ((self::$errMessage != "") && ($condition == FALSE)) {
-                self::$errMessage[] = $error;
+            if (($error != "") && ($condition == FALSE)) {
+                $errMessages[] = $error;
             }
             else {
-                self::$errMessage[] = "";
+                $errMessages[] = "";
             }
 
         }
@@ -121,6 +123,11 @@
             else {
                 return FALSE;
             }
+
+        }
+
+        public function getTestName() {
+            return $this->_testName;
 
         }
 

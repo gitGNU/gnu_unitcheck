@@ -36,7 +36,7 @@
     class UnitCheck {
 
         private $_tests = array();
-
+        private $_projectName;
 
         public function __construct() {
 
@@ -46,72 +46,121 @@
             
         }
 
-        public function addTest(Test $test) {
-            $this->_tests[] = $test;
+        public function addTest(UnitCheckTest $test) {
+            global $testNames;
+            global $testResults;
             
+            if (is_object($test)) {
+                $testNames[] = $test->getTestName();
+                if (count($testNames) == 1) {
+                    $tname = $testNames[0];
+                    //die ("There's one test in array - ".$tname);
+                }
+            }
+            else {
+                die("Not an object");
+            }
+
+        }
+
+        public function displayTestList() {
+
+            echo "Number of Tests: " . count($this->_tests);
+            $test = $this->_tests[0];
+
+
+            echo "<pre>";
+            print_r($test);
+            echo "</pre>";
+
+            if (!empty($test)) {
+                foreach ($test as $t) {
+                    echo "Test Name: " . $t;
+                }
+            }
+            else {
+
+                echo "<br />Unable to print Test<br />";
+            }
+
         }
 
         public function removeTest(Test $test) {
             
         }
 
+        public function getTests() {
+            return $this->_tests;
+
+        }
+
         public function printResults() {
+            global $testNames;
+            global $testResults;
+            global $errMessages;
+
+            $totalTests = 0;
+            $totalSuccess = 0;
+            $totalFailure = 0;
             $i = 0; // local counter variable
 
 
-            echo '<table style="width:1100px; border:1px; margin-left:150px; font-size:14px;">
+            echo '<table style="width:900px; border:0; margin-left:100px; font-size:12px;">
                   <tr>
                   <td colspan="2"><b><center>*****  Test Data Successfully Retrieved  *****</center></b></td>
                   </tr>
 
                     <tr>
                   <td colspan="2"><b><center>*****  Running Tests  *****</center></b></td>
-                  </tr><hr />';
+                  </tr>';
 
-//            foreach ($test->testName as $test) {
-//
-//                if ((self::$errMessage[$i] != "") && (self::$errMessage != NULL)) {
-//                    echo '<tr>
-//                    <td style="width:900px;color:red;">' . $test . ' - ' . self::$errMessage[$i] . '</td>';
-//                }
-//                else {
-//                    echo '<tr>
-//                    <td style="width:900px;">' . $test . '</td>';
-//                }
-//
-//
-//                if (Test::$testResult[Test::$totalTests] == "PASSED") {
-//                    $r = 'style="color:green; weight:bold; font-size:14px;"';
-//                    self::$totalSuccess++;
-//                }
-//                else {
-//                    $r = 'style="color:red; weight:bold; font-size:14px;"';
-//                    self::$totalFailure++;
-//                }
-//
-//                echo '<td ' . $r . '>' . self::$testResult[self::$totalTests] . '</td>';
-//                echo '</tr>';
-//                self::$totalTests++;
-//                $i++;
-//            }
-//
-            echo '<tr>';
-//                <td colspan="2"><b><center>*****  Tests Completed  *****</center></b></td>
-//              </tr>
-//              <tr>
-//                <td><b>Number of Tests Run:</td>
-//                <td>' . self::$totalTests . '</td>
-//              </tr>
-//                <td><b>Success:</b></td>
-//                <td>' . self::$totalSuccess . '</td>
-//              </tr>
-//              <tr>
-//                <td><b>Failed:</b></td>
-//                <td>' . self::$totalFailure . '</td>
-              echo '</tr>
+            foreach ($testNames as $test) {
+
+                if (($errMessages[$i] != "") && ($errMessages != NULL)) {
+                    echo '<tr>
+                    <td style="width:600px;color:red;">' . $test . ' - ' . $errMessages[$i] . '</td>';
+                }
+                else {
+                    echo '<tr>
+                    <td style="width:600px;">' . $test . '</td>';
+                }
+
+
+                if ($testResults[$i] == "PASSED") {
+                    $r = 'style="color:green; weight:bold; font-size:12px;"';
+                    $totalSuccess++;
+                }
+                else {
+                    $r = 'style="color:red; weight:bold; font-size:12px;"';
+                    $totalFailure++;
+                }
+
+                echo '<td ' . $r . '>' . $testResults[$i] . '</td>';
+                echo '</tr>';
+                $totalTests++;
+                $i++;
+            }
+
+            echo '<tr>
+                <td colspan="2"><b><center>*****  Tests Completed  *****</center></b></td>
+              </tr>
+              <tr>
+                <td><b>Number of Tests Run:</td>
+                <td>' . $totalTests . '</td>
+              </tr>
+                <td><b>Success:</b></td>
+                <td>' . $totalSuccess . '</td>
+              </tr>
+              <tr>
+                <td><b>Failed:</b></td>
+                <td>' . $totalFailure . '</td>
+            </tr>
            </table>';
 
         }
+
     }
+
+    $unitCheck = new UnitCheck();
 
 ?>

@@ -22,11 +22,9 @@
      *
      *
      */
-
     require_once('../includes/initialise.php');
 
-    $_SESSION['title'] = 'Report';
-
+    $_SESSION['title'] = 'Report';    
 
     UnitCheckHeader::printHeader();
 
@@ -34,15 +32,34 @@
 
 <div id="index-page">
 
-    <h3>Reports</h3>
-
-
+        <h3>Reports</h3>
 
 </div>
 
 <?php
 
-    UnitCheck::printResults();
+//    $tests = &$unitCheck->getTests();
+//
+//    if (empty($tests)) {
+//        echo "\$tests is empty<br />";
+//    }
+//    foreach ($tests as $test) {
+//        print_r($test);
+//    }
+
+    //$testnames = UnitCheck::getTestNames();
+    //echo "<br />Test Name: ".$testnames."<br />";
+
+    echo "Number of Tests: ".count($testNames)."<br />";
+
+    foreach($testNames as $name) {
+        echo "Test Name: ".$name."<br />";
+    }
+
+
+    //$unitCheck->displayTestList();
+    echo "Finished Printing Tests";
+    //$unitCheck->printResults();
 
     UnitCheckFooter::printFooter();
 

@@ -93,7 +93,7 @@
                                     <p style="color:#FFFFFF;">UnitCheck &ndash; ' . $_SESSION['title'] . '</p>
                                 </td>
                                 <td id="information">
-                                    <p style="color:#FFFFFF;">version 0.1.0</p>
+                                    <p style="color:#FFFFFF;">version 0.3.0</p>
                                 </td>
                             </tr>
                         </table>

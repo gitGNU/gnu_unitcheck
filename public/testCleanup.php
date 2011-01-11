@@ -1,7 +1,7 @@
 <?php
 
     /**
-     * This is the reports page
+     * This is the test cleanup page
      *
      * Copyright 	(c) 2011 Tom Kaczocha
      *
@@ -24,38 +24,17 @@
      */
     require_once('../includes/initialise.php');
 
-    require_once("../tests/databaseTests.php");
-    require_once("testCleanup.php");
 
-    $_SESSION['title'] = 'Test Results';
-    
-    $testNames = array();
-    $testResults = array();
-    $errMessages = array();
+    function runCleanup() {
+        global $database;
 
-    // run PRE-cleanup
-    runCleanup();
+        $result = $database->dropDatabase('tests');
 
-    databaseCreatedTest();
-    settingsTableCreatedTest();
-    usersTableCreatedTest();
-    projectTableCreatedTest();
-    testsTableCreatedTest();
-    
+        if ($result != TRUE) {
+            echo "Error: Cleanup failed to complete!<br />";
+        }
 
-    // run POST-cleanup
-    runCleanup();
-
-    UnitCheckHeader::printHeader();
-    
-
-    // PRINT TEST RESULTS
-    $unitCheck->printResults();
+    }
 
     
-
-    UnitCheckFooter::printFooter();
-
-    //header('Location: reports.php');
-
 ?>

@@ -314,3 +314,26 @@ ul.links {
 #valid {
     text-align: right;
 }
+
+#menu {
+    background-color: #EDF2F2;
+    border: thin solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: black;
+    font-weight: normal;
+    margin-right: 0.5em;
+    margin-top: 1em;
+    text-align: center;
+    width: 10em;
+}
+
+#menu td {
+    border: thin solid;
+    padding: 0.2em 0.5em;
+}
+
+#td.index {
+    background-color: #EEDDFF;
+    color: black;
+}

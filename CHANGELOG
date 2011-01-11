@@ -23,6 +23,35 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-11 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Edited INSTALL file - added Working Set Install Instructions
+    * Edited root/README - Updated project information
+    * Edited addTest() function in UnitCheck class
+    * Added displayTestList() function to UnitCheck class
+    * Added getTests() function to UnitCheck class
+    * Edited printResults() function in UnitCheck class
+    * Added new My_Sql_Database class
+    * Edited project version in UnitCheckHeader.php
+    * Edited UnitCheckTest class
+    * Edited includes/config.php file - added database defines
+    * Added UnitCheckDatabase.php require_once to initialise.php
+    * Added #menu, #menu td & #td.index ids to styles.css
+    * Added an initial menu to public/configure.php
+    * Removed public/content.php
+    * Removed public/navigation.php
+    * Edited public/reports.php
+    * Set up public/runTests.php for running and displaying
+      project test results in the interim. The display will go
+      into public/reports.php later
+    * Added public/testCleanup.php for writing cleanup functions
+      after tests
+    * Removed public/test_configure.php
+    * Removed public/test_monitor.php
+    * Removed public/tests.php
+    * Renamed tests/tests.php to tests/testsTests.php
+    * Added new tests/databaseTests.php
+    * Edited tests/unitCheckTestTests.php
+
 2011-01-10 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Reconfigured the entire GUI - CSS
     * Added docs/ directory

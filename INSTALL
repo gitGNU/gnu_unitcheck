@@ -29,7 +29,13 @@ Installation will be easy. All that will be required is copying the UnitCheck
 project directory into the root of the project you're working on and configuring
 it to suit your needs.
 
+Working Set Instructions
 
+1. Copy the UnitCheck directory into your project.
+
+2. Open PHPMyAdmin and add username and password to priviledges
+
+3. 
 
 
 

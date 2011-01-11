@@ -26,6 +26,7 @@
      */
     require_once('config.php');
 
+    require_once(LIB_PATH . DS . 'UnitCheckDatabase.php');
     require_once(LIB_PATH . DS . 'UnitCheck.php');
     require_once(LIB_PATH . DS . 'UnitCheckSession.php');
     require_once(LIB_PATH . DS . 'UnitCheckTest.php');
