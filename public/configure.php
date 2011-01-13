@@ -1,9 +1,9 @@
 <?php
 
     /**
-     * This is the configure page.
+     * This is the configure file.
      *
-     * Copyright 	(c) 2010 Tom Kaczocha
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com.au>
      *
      * This file is part of UnitCheck.
      *
@@ -22,11 +22,11 @@
      *
      *
      * @package
-     * @author	Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright	2010 Tom Kaczocha
+     * @author          Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @copyright	2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @version 	1.0
-     * @access	public
-     * @License     "GNU General Public License", version="3.0"
+     * @access          public
+     * @License         "GNU General Public License", version="3.0"
      *
      */
     require_once('../includes/initialise.php');
@@ -49,7 +49,7 @@
 //    }
 ?>
 
-
+<h3><center>Run the Setup Wizard Now</center></h3>
 
 <table border="0" width="100%">
         <tr>

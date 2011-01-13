@@ -3,7 +3,7 @@
     /**
      * This is the Home page.
      *
-     * Copyright 	(c) 2010 Tom Kaczocha
+     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
      *
@@ -22,83 +22,89 @@
      *
      *
      * @package
-     * @author	Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright	2010 Tom Kaczocha
+     * @author	        Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @copyright	2010, 2011 Tom Kaczocha
      * @version 	1.0
-     * @access	public
-     * @License     "GNU General Public License", version="3.0"
+     * @access	        public
+     * @License         "GNU General Public License", version="3.0"
      *
      */
     require_once('../includes/initialise.php');
-    require_once('bug_report.php');
 
     $_SESSION['title'] = "Welcome";
 
     UnitCheckHeader::printHeader();
 
+    if ($_SESSION['message'] != "") {
+        echo '<div id="message">';
+        echo $_SESSION['message'];
+        echo "</div>";
+        $_SESSION['message'] = "";
+    }
+
 ?>
 
-        <div id="page-index">
-            <table id="page_table">
-                <tr>
-                    <td>
-                        <h1 id="welcome"> Welcome to UnitCheck</h1>
-                        <div class="intro"></div>
-                        <a id="run_tests" class="uc_common_actions" href="runTests.php">
-                            <span>Run Tests</span>
-                        </a>
-                        <a id="configure" class="uc_common_actions" href="configure.php">
-                            <span>Configure</span>
-                        </a>
-                        <a id="history" class="uc_common_actions" href="reports.php">
-                            <span>Reports</span>
-                        </a>
-                        <form id="quickSearchForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                            <div>
-                                <input id="quickSearchMain" class="quickSearchHelpText" type="text" onblur="" onfocus="" name="quickSearch" />
-                                <input id="find" type="submit" value="Quick Search" />
-                                <ul id="quickSearchLinks" class="additional_links">
-                                    <li>
-                                        <a href="quicksearchhelp.php">Quick Search Help</a>
-                                    </li>
-                                </ul>
-                                <ul class="additional_links">
-                                    <li>
-                                        <a href="../docs/using.php">UnitCheck User's Guide</a>
-                                    </li>
-                                    <li>
-                                        |
-                                        <a href="../docs/release_notes.php">Release Notes</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-                        <div class="outro"></div>
-                   </td>
-                </tr>
-            </table>
-        </div> <!-- END page-index -->
-        
+<div id="page-index">
+        <table id="page_table">
+            <tr>
+                <td>
+                    <h1 id="welcome"> Welcome to UnitCheck</h1>
+                    <div class="intro"></div>
+                    <a id="run_tests" class="uc_common_actions" href="runTests.php">
+                        <span>Run Tests</span>
+                    </a>
+                    <a id="configure" class="uc_common_actions" href="configure.php">
+                        <span>Configure</span>
+                    </a>
+                    <a id="history" class="uc_common_actions" href="reports.php">
+                        <span>Reports</span>
+                    </a>
+                    <form id="quickSearchForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                        <div>
+                            <input id="quickSearchMain" class="quickSearchHelpText" type="text" onblur="" onfocus="" name="quickSearch" />
+                            <input id="find" type="submit" value="Quick Search" />
+                            <ul id="quickSearchLinks" class="additional_links">
+                                <li>
+                                    <a href="quicksearchhelp.php">Quick Search Help</a>
+                                </li>
+                            </ul>
+                            <ul class="additional_links">
+                                <li>
+                                    <a href="../docs/using.php">UnitCheck User's Guide</a>
+                                </li>
+                                <li>
+                                    |
+                                    <a href="../docs/release_notes.php">Release Notes</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                    <div class="outro"></div>
+                </td>
+            </tr>
+        </table>
+</div> <!-- END page-index -->
+
 <!--            <br /><br />
-            <p>Ensure this application is located in the root directory<br />
-                of your project then click the Configure button to configure<br />
-                the application or click on Run Tests if you're happy with<br />
-                the configuration settings.</p>
-            <br />
-            <a href="configure.php"><input type="button" value="Configure" /></a>
-            <br /><br />
-            <a href="../UnitCheck/runTests.php"><input type="button" value="Run Tests" /></a><br />
-        </div>-->
+                            <p>Ensure this application is located in the root directory<br />
+                                of your project then click the Configure button to configure<br />
+                                the application or click on Run Tests if you're happy with<br />
+                                the configuration settings.</p>
+                            <br />
+                            <a href="configure.php"><input type="button" value="Configure" /></a>
+                            <br /><br />
+                            <a href="../UnitCheck/runTests.php"><input type="button" value="Run Tests" /></a><br />
+                        </div>-->
 
 <!--            <p>Copyright &copy; 2010 Tom Kaczocha</p>
-                <p>Please Report Bugs</p>
-        </body>
+                                <p>Please Report Bugs</p>
+                        </body>
 </html>-->
 
-    <?php
+<?php
 
-        UnitCheckFooter::printFooter();
+    UnitCheckFooter::printFooter();
 
 //mail($to, $subject, $message, $headers);
 
-    ?>
+?>

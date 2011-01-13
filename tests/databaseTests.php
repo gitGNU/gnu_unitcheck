@@ -122,6 +122,26 @@
     }
 
     // test for successful creation of
+    // tests table in database
+    function sessionsTableCreatedTest() {
+        global $database;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - Sessions Table Created");
+        $unitCheck->addTest($test);
+
+        @mysql_select_db('tests', $database->getConnection());
+
+        $result = $database->createSessionsTable();
+
+        $result = $database->tableExists("tests", "sessions");
+
+        $test->failUnless($result,
+                "Error: Sessions Table Creation Failed");
+
+    }
+
+    // test for successful creation of
     // database users
     function databaseUsersCreatedTest() {
 

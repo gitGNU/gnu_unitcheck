@@ -3,7 +3,7 @@
     /**
      * This is the test cleanup page
      *
-     * Copyright 	(c) 2011 Tom Kaczocha
+     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
      *

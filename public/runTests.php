@@ -3,7 +3,7 @@
     /**
      * This is the reports page
      *
-     * Copyright 	(c) 2011 Tom Kaczocha
+     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
      *
@@ -27,7 +27,8 @@
     require_once("../tests/databaseTests.php");
     require_once("../tests/newProjectTests.php");
     require_once("../tests/newUserAccountTests.php");
-    require_once("testCleanup.php");
+    require_once("../tests/sessionTests.php");
+    require_once("../includes/resources/testCleanup.php");
 
     $_SESSION['title'] = 'Test Results';
     
@@ -43,7 +44,9 @@
     usersTableCreatedTest();
     projectTableCreatedTest();
     testsTableCreatedTest();
-
+    sessionsTableCreatedTest();
+    
+    isSessionCreatedTest();
     createNewUserAccountTest();
     
     newProjectTest();

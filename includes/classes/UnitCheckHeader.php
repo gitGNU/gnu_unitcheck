@@ -3,7 +3,7 @@
     /**
      * Header class is a template for Header objects.
      *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
      *
@@ -24,7 +24,7 @@
      * @package
      * @author	    Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright   2010, 2011 Tom Kaczocha
-     * @version 	1.0
+     * @version     1.0
      * @access	    public
      * @License     "GNU General Public License", version="3.0"
      *
@@ -93,7 +93,7 @@
                                     <p style="color:#FFFFFF;">UnitCheck &ndash; ' . $_SESSION['title'] . '</p>
                                 </td>
                                 <td id="information">
-                                    <p style="color:#FFFFFF;">version 0.4.0</p>
+                                    <p style="color:#FFFFFF;">version '.VERSION.'</p>
                                 </td>
                             </tr>
                         </table>
@@ -119,7 +119,7 @@
                             </li>
                             <li id="new_account_container_top">
                                 <span class="separator">| </span>
-                                <a href="newUserAccount.php">New &nbsp;Account</a>
+                                <a href="createaccount.php">New &nbsp;Account</a>
                             </li>
                             <li id="mini_login_container_top">
                                 <span class="separator">| </span>

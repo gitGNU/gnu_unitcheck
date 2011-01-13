@@ -1,5 +1,5 @@
 /**
- * This is the content page.
+ * This is CHANGELOG file
  *
  * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
  *
@@ -22,6 +22,28 @@
 ================================================================================
                                CHANGELOG
 ================================================================================
+
+2011-01-13 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added createSessionsTable to UnitcheckDatabase class
+    * Added a new VERSION define in config.php and added
+      it's use to UnitCheckHeader.php
+    * Created a new UnitCheckSession class
+    * Added a default user id to User constructor
+    * Moved UnitCheckHeader & UnitCheckFooter initialisation to
+      the end of the list
+    * Added a new includes/resources/mail.php - contains various
+      email related functions
+    * Moved testCleanup.php to includes/resources/testCleanup.php
+    * Added message id styles to styles.css
+    * Removed public/add_test.php
+    * Renamed public/bug_report.php to public/bugreport.php
+    * Edited configure.php - added a run wizard line
+    * Added public/createaccount.php file
+    * Added public/emailSent.php file
+    * Added public/token.php file
+    * Added sessionsTableCreatedTest to databaseTests.php
+    * Added tests/sessionTests.php for testing sessions
+    * 
 
 2011-01-12 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited version in UnitCheckHeader = 0.4.0
@@ -124,15 +146,6 @@
     * Created public/views/content.php
     * Created public/views/navigation.php
     * Created public/views/tests.php
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,9 +1,9 @@
 <?php
 
     /**
-     * This is the reports page
+     * This is the email sent page
      *
-     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com.au>
      *
      * This file is part of UnitCheck.
      *
@@ -20,47 +20,29 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
      */
+
     require_once('../includes/initialise.php');
+    
 
-    $_SESSION['title'] = 'Report';    
+    $_SESSION['title'] = 'Request for new user account '.$_SESSION['email'].' submitted';
 
+    // print header
     UnitCheckHeader::printHeader();
 
 ?>
 
-<div id="index-page">
+<p>
+        A confirmation email has been sent containing a link to continue creating
+        an account. The link will expire if an account is not created within 3
+        days.
+</p>
 
-        <h3>Reports</h3>
 
-</div>
 
 <?php
 
-//    $tests = &$unitCheck->getTests();
-//
-//    if (empty($tests)) {
-//        echo "\$tests is empty<br />";
-//    }
-//    foreach ($tests as $test) {
-//        print_r($test);
-//    }
-
-    //$testnames = UnitCheck::getTestNames();
-    //echo "<br />Test Name: ".$testnames."<br />";
-
-    echo "Number of Tests: ".count($testNames)."<br />";
-
-    foreach($testNames as $name) {
-        echo "Test Name: ".$name."<br />";
-    }
-
-
-    //$unitCheck->displayTestList();
-    echo "Finished Printing Tests";
-    //$unitCheck->printResults();
-
+    // print footer
     UnitCheckFooter::printFooter();
 
 ?>

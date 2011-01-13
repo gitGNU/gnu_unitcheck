@@ -31,20 +31,133 @@
      */
     class UnitCheckSession {
 
-        private $_sessionID;
+        /**
+         * Session ID
+         *
+         * @access private
+         * @var String
+         */
+        private $_sessionId;
+        /**
+         * Session Issue Date
+         *
+         * @access private
+         * @var String
+         */
+        private $_issueDate;
+        /**
+         * Session Type
+         *
+         * @access private
+         * @var String
+         */
+        private $_sessionType;
+        /**
+         * Event Data
+         *
+         * @access private
+         * @var String
+         */
+        private $_eventData;
+        /**
+         * Browser
+         *
+         * @access private
+         * @var String
+         */
+        private $_browser;
+        /**
+         * IP address
+         *
+         * @access private
+         * @var String
+         */
+        private $_ip;
 
         public function __construct() {
-            session_start();
-            $this->_sessionID = session_id();
-            //echo $this->_sessionID;
+
+            session_start(); // start session
+            $this->_sessionId = session_id();
+
         }
 
-        public function  __destruct() {
+        public function __destruct() {
+            // actions to perform when session ends
+        }
+
+        private function initSession($sid) {
+            
+        }
+
+        /**
+         * Function checks for an existing session
+         * in the database
+         *
+         * @param
+         * @access public
+         *
+         * @return Boolean TRUE if session exists, otherwise FALSE
+         *
+         */
+        public function checkForSession() {
+            global $database; // use global database object
+
+            $session = session_id();
+
+            $query = "SELECT `uid`,`lastmod`,`timeout`,`browser`,`ip` FROM `sessions`
+        			  WHERE sid = '$session';";
+
+            $result = $database->query($query);
+
+            if ($database->numRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        /**
+         * Function adds a new session to database
+         *
+         * @param
+         * @access public
+         *
+         * @return Boolean TRUE if session was successfully added to database
+         * otherwise FALSE
+         *
+         *
+         */
+        public function setNewSession() {
+            global $database;
+            global $user;
+
+            $this->_sessionId = session_id(); // assign session id
+            $this->_browser = $_SERVER['HTTP_USER_AGENT']; // assign browser
+            $this->_ip = $_SERVER['REMOTE_ADDR']; // assign ip address
+            //
+            // build query
+            $query = "INSERT INTO sessions (session_id, user_id, browser, ip)
+        			  VALUES ('$this->_sessionId',
+        			  		  '$user->getUserId()',
+        			  		  '$this->_browser',
+        			  		  '$this->_ip');";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
 
         }
 
         public function getSessionID() {
-            return $this->_sessionID;
+            return $this->_sessionId;
+
         }
 
     }

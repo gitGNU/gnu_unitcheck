@@ -344,6 +344,24 @@
             return $result;
         }
 
+        public function createSessionsTable() {
+
+            $query = "CREATE TABLE IF NOT EXISTS sessions (
+                        user_id mediumint(10) NULL,
+                        issuedate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        session_id varchar(30) NOT NULL,
+                        session_type varchar(20) NOT NULL,
+                        eventdata tinytext NOT NULL,
+                        browser varchar(255) NULL,
+                        ip varchar(15) NULL,
+                        PRIMARY KEY (session_id)
+                      ) ENGINE=MyISAM DEFAULT CHARSET=latin1";
+
+            $result = $this->query($query);
+
+            return $result;
+        }
+
         public function createTestsTable() {
 
             $query = "CREATE TABLE IF NOT EXISTS tests (
@@ -361,6 +379,7 @@
 
             return $result;
         }
+
 
     }
 

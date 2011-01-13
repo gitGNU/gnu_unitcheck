@@ -42,7 +42,7 @@
         private $_email;
         private $_password;
 
-        public function __construct() {
+        public function __construct($id = 0) {
             
         }
 
