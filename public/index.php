@@ -20,27 +20,20 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
-     * @package
-     * @author	        Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright	2010, 2011 Tom Kaczocha
-     * @version 	1.0
-     * @access	        public
-     * @License         "GNU General Public License", version="3.0"
-     *
      */
     require_once('../includes/initialise.php');
 
     $_SESSION['title'] = "Welcome";
+    
+    if ($user->isUserLoggedIn()) {
+//        echo "User is logged in with user ID of: ".$user->getUserID();
+    }else {
+//        echo "User is not logged in.";
+    }
 
     UnitCheckHeader::printHeader();
 
-    if ($_SESSION['message'] != "") {
-        echo '<div id="message">';
-        echo $_SESSION['message'];
-        echo "</div>";
-        $_SESSION['message'] = "";
-    }
+    $helper->printMessage();
 
 ?>
 
@@ -80,31 +73,13 @@
                         </div>
                     </form>
                     <div class="outro"></div>
-                </td>
+                </td>    
             </tr>
         </table>
 </div> <!-- END page-index -->
 
-<!--            <br /><br />
-                            <p>Ensure this application is located in the root directory<br />
-                                of your project then click the Configure button to configure<br />
-                                the application or click on Run Tests if you're happy with<br />
-                                the configuration settings.</p>
-                            <br />
-                            <a href="configure.php"><input type="button" value="Configure" /></a>
-                            <br /><br />
-                            <a href="../UnitCheck/runTests.php"><input type="button" value="Run Tests" /></a><br />
-                        </div>-->
-
-<!--            <p>Copyright &copy; 2010 Tom Kaczocha</p>
-                                <p>Please Report Bugs</p>
-                        </body>
-</html>-->
-
 <?php
 
     UnitCheckFooter::printFooter();
-
-//mail($to, $subject, $message, $headers);
 
 ?>

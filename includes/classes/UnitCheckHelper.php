@@ -73,6 +73,18 @@
 
         }
 
+        public function printMessage() {
+            if ($_SESSION['message'] != "") {
+                echo '<div id="message">';
+                echo $_SESSION['message'];
+                echo "</div>";
+                $_SESSION['message'] = "";
+            }
+
+        }
+
     }
+
+    $helper = new UnitCheckHelper();
 
 ?>

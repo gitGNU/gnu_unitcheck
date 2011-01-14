@@ -67,6 +67,9 @@
          *
          */
         public static function printHeader() {
+            global $user;
+
+            //echo "Login Status: " . $user->isUserLoggedIn();
 
             echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
               <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ar" xml:lang="es-ar">
@@ -93,7 +96,7 @@
                                     <p style="color:#FFFFFF;">UnitCheck &ndash; ' . $_SESSION['title'] . '</p>
                                 </td>
                                 <td id="information">
-                                    <p style="color:#FFFFFF;">version '.VERSION.'</p>
+                                    <p style="color:#FFFFFF;">version ' . VERSION . '</p>
                                 </td>
                             </tr>
                         </table>
@@ -103,35 +106,63 @@
                             </li>
                             <li>
                                 <span class="separator">| </span>
-                                <a href="../public/configure.php">Configure</a>
+                                <a href="../public/new.php">New</a>
                             </li>
-                            <li class="form">
+                            <li>
                                 <span class="separator">| </span>
-                                <form method="get" action="search.php">
-                                    <input id="quickSearchForm" class="txt" type="text" name="quickSearch" />
-                                    <input id="find_top" class="btn" type="submit" value="Search" />
-                                </form>
-                                <a title="Quick Shearch Help" href="">[?]</a>
+                                <a href="../public/configure.php">Configure</a>
                             </li>
                             <li>
                                 <span class="separator">| </span>
                                 <a href="../public/reports.php">Reports</a>
-                            </li>
-                            <li id="new_account_container_top">
+                            </li>';
+
+            if ($user->isUserLoggedIn()) {
+                echo self::loggedIn();
+            }
+            else {
+                echo self::loggedOut();
+            }
+
+            echo '      </ul>
+                    </div> <!-- END header -->
+                    <div id="unitcheck-body">';
+
+        }
+
+        private static function loggedIn() {
+            global $user;
+
+            //$email = $user->getUserEmail();
+            $email = $_SESSION['email'];
+
+            $logout = '<li>
+                            <span class="separator">| </span>
+                            <a href="../public/logout.php">Logout</a> ';
+            $logout .= $email;
+            $logout .= '</li>';
+
+            return $logout;
+
+        }
+
+        private static function loggedOut() {
+            return '<li id="new_account_container_top">
                                 <span class="separator">| </span>
                                 <a href="createaccount.php">New &nbsp;Account</a>
                             </li>
-                            <li id="mini_login_container_top">
+                    <li id="mini_login_container_top">
                                 <span class="separator">| </span>
-                                <a id="login_link_top" onclick="" href="">Log In</a>
+                                <form id="mini_login_top" class="mini_login" method="post" action="login.php">
+                                    <input id="UnitCheck_login_top" class="uc_login type="text" value="login" name="UnitCheck_login" />
+                                    <input id="UnitCheck_password_top" class="uc_login" type="password" value="" name="UnitCheck_password" />
+                                    <input id="login_top" type="submit" value="Log in" name="GoAheadAndLogIn" />
+                                </form>
                             </li>
                             <li id="forgot_container_top">
                                 <span class="separator">| </span>
-                                <a id="forgot_link_top onclick="" href="">Forgot Password</a>
-                            </li>
-                        </ul>
-                    </div> <!-- END header -->
-                    <div id="unitcheck-body">';
+                                <a id="forgot_link_top" href="forgotpassword.php">Forgot Password</a>
+                            </li>';
 
         }
 

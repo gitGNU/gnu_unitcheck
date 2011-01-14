@@ -24,43 +24,66 @@
      */
     require_once('../includes/initialise.php');
 
-    require_once("../tests/databaseTests.php");
-    require_once("../tests/newProjectTests.php");
-    require_once("../tests/newUserAccountTests.php");
-    require_once("../tests/sessionTests.php");
+    require_once("../tests/UnitCheckTests/databaseTests.php");
+    require_once("../tests/UnitCheckTests/newProjectTests.php");
+    require_once("../tests/UnitCheckTests/newUserAccountTests.php");
+    require_once("../tests/UnitCheckTests/sessionTests.php");
+    require_once("../tests/UnitCheckTests/userLoginTests.php");
     require_once("../includes/resources/testCleanup.php");
 
     $_SESSION['title'] = 'Test Results';
-    
+
     $testNames = array();
     $testResults = array();
     $errMessages = array();
 
-    // run PRE-cleanup
-    runCleanup();
-
-    databaseCreatedTest();
-    settingsTableCreatedTest();
-    usersTableCreatedTest();
-    projectTableCreatedTest();
-    testsTableCreatedTest();
-    sessionsTableCreatedTest();
-    
-    isSessionCreatedTest();
-    createNewUserAccountTest();
-    
-    newProjectTest();
-
-    // run POST-cleanup
-    runCleanup();
-
     UnitCheckHeader::printHeader();
-    
 
-    // PRINT TEST RESULTS
-    $unitCheck->printResults();
+    $helper->printMessage();
 
-    
+    if ($user->isUserLoggedIn()) {
+        // run PRE-cleanup
+        runCleanup();
+
+        databaseCreatedTest();
+        testDataTableCreatedTest();
+        adminTableCreatedTest();
+        settingsTableCreatedTest();
+        usersTableCreatedTest();
+        projectTableCreatedTest();
+        userProjectTableCreatedTest();
+        testsTableCreatedTest();
+        sessionsTableCreatedTest();
+
+        isSessionCreatedTest();
+        createNewUserAccountTest();
+        validateEmailTest();
+        validatePasswordTest();
+        duplicateEmailTest();
+
+        userSuccessfullyLoggedInTest();
+        newProjectTest();
+        duplicateProjectTest();
+        addNewTestDirectoryTest();
+        addUserToProjectTest();
+
+        // run POST-cleanup
+        runCleanup();
+
+        fullDatabaseCreatedTest();
+
+        runCleanup();
+
+
+
+        // PRINT TEST RESULTS
+        $unitCheck->printResults();
+    }
+    else {
+        $_SESSION['message'] = "You must be logged in to run tests.";
+        header("Location: index.php");
+        exit();
+    }
 
     UnitCheckFooter::printFooter();
 

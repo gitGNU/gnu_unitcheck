@@ -35,6 +35,7 @@
         private $_projectName;
 
         public function __construct() {
+            $this->_projectName = $projectName;
 
         }
 
@@ -61,7 +62,16 @@
             if ($database->affectedRows($result) == 1) {
                 $pID = $database->getLastID();
                 $this->initProject($pID);
-                return TRUE;
+
+                // create project test directory
+                $result = $this->createProjectDirectory($pName);
+
+                if ($result == TRUE) {
+                    return TRUE;
+                }
+                else {
+                    return FALSE;
+                }
             }
             else {
                 return FALSE;
@@ -93,7 +103,7 @@
 
             $query = "SELECT *
                       FROM projects
-                      WHERE project_name = '" . $pID . "';";
+                      WHERE project_id = '" . $pID . "';";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -122,6 +132,40 @@
                 return FALSE;
             }
 
+        }
+
+        public function createProjectDirectory($projectName) {
+
+            $dir = "../tests/" . $projectName . "Tests";
+
+            if (is_dir($dir) == FALSE) {
+                mkdir($dir, 0777);
+            }
+
+            if (is_dir($dir)) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        public function projectExists($pName) {
+            global $database;
+
+            $query = "SELECT *
+                      FROM projects
+                      WHERE project_name = '" . $pName . "'";
+
+            $result = $database->query($query);
+
+            if ($database->numRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
         }
 
     }

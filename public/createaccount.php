@@ -22,35 +22,70 @@
      *
      */
     require_once('../includes/initialise.php');
-    require_once('../includes/resources/mail.php');
+    //require_once('../includes/resources/mail.php');
 
     $_SESSION['title'] = 'Create a New UnitCheck Account';
 
-    //echo phpinfo();
+    $adminTrue = 0;
 
     if (SENDMAIL) {
         // check for a responding link
         if ($_GET['new'] != "") {
             header("Location: emailSent.php");
+            exit();
         }
         else {
 
         }
     }
-    
+
+    if ($_GET['t'] == 'a') {
+        $adminTrue = "?t=a";
+    }
+
     if ($_POST) {
 
         $email = $_POST['login'];
 
+        $result = $user->userEmailExists($email);
 
-        $_SESSION['email'] = $email;
+        if ($result == FALSE) { // email not yet registered
+            $result = $user->emailCheck($email);
 
-        header("Location: token.php");
+            if ($result == TRUE) {
+                $_SESSION['email'] = $email;
+
+                if ($_GET['t'] == 'a') {
+                    header("Location: token.php?t=a");
+                    exit();
+                }
+                else {
+                    header("Location: token.php?t=n");
+                    exit();
+                }
+            }
+            else {
+                $_SESSION['message'] = "You entered an invalid email address. Please
+                try again.";
+                header("Location: createaccount.php");
+                exit();
+            }
+        }
+        else {
+            $_SESSION['message'] = "The email address you entered is already registered. Please
+                try another or click on 'forgot password' to recover your password for this account.";
+            header("Location: createaccount.php");
+            exit();
+        }
     }
+
+
 
 
     // print header
     UnitCheckHeader::printHeader();
+
+    $helper->printMessage();
 
 ?>
 
@@ -64,19 +99,30 @@
            title="Contact for Account Queries">email</a>.
 </p>
 
-<form id="accountCreationForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        <table>
-            <tr>
-                <td align="right">
-                    <b>Email address:</b>
-                </td>
-                <td>
-                    <input id="login" name="login" size="35">
-                </td>
-            </tr>
-        </table>
-        <br />
-        <input id="send" type="submit" value="Send">
+<form id="accountCreationForm" action="
+<?php
+
+    if ($adminTrue) {
+        echo $_SERVER['PHP_SELF'] . $adminTrue;
+    }
+    else {
+        echo $_SERVER['PHP_SELF'];
+    }
+
+?>"
+      method="post">
+    <table>
+        <tr>
+            <td align="right">
+                <b>Email address:</b>
+            </td>
+            <td>
+                <input id="login" name="login" size="35">
+            </td>
+        </tr>
+    </table>
+    <br />
+    <input id="send" type="submit" value="Send">
 </form>
 
 

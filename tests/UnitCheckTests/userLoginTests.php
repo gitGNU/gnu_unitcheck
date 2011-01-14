@@ -1,7 +1,6 @@
 <?php
-
-    /**
-     * This is the new project test file
+/**
+     * This is the login test file
      *
      * Copyright (C) 2011 Tom Kaczocha
      *
@@ -23,24 +22,23 @@
      */
     require_once('../includes/initialise.php');
 
-    // this function tests for the successful
-    // creation of a new project
-    function newProjectTest() {
+
+    // test for the successful user
+    // login
+    function userSuccessfullyLoggedInTest() {
         global $database;
+        global $user;
         global $unitCheck;
 
-        $test = new UnitCheckTest("TEST - New Project Created");
+        $test = new UnitCheckTest("TEST - User Login Successful");
         $unitCheck->addTest($test);
 
-        $project = new UnitCheckProject("UnitCheck");
+        // get user id for test
+        $user_id = 1;
 
-        $project->createNewProject("UnitCheck");
+        $user->loginUser($user_id);
 
-        $data = $project->getProjectDataSetByName("UnitCheck");
-
-        $test->failUnless($data['project_name'] == 'UnitCheck',
-                "Error: New Project Creation Failed");
-
+        $test->failUnless($user->isUserLoggedIn(),
+                "Error: User not Logged in");
     }
-
 ?>

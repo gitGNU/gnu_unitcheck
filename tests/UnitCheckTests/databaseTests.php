@@ -53,12 +53,12 @@
         @mysql_select_db('tests', $database->getConnection());
 
         $result = $database->createSettingsTable();
-        
+
         $result = $database->tableExists("tests", "settings");
 
         $test->failUnless($result,
                 "Error: Settings Table Creation Failed");
-        
+
     }
 
     // test for successful creation of
@@ -78,6 +78,26 @@
 
         $test->failUnless($result,
                 "Error: Project Table Creation Failed");
+
+    }
+
+    // test for successful creation of
+    // users table in database
+    function userProjectTableCreatedTest() {
+        global $database;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - UserProject Table Created");
+        $unitCheck->addTest($test);
+
+        @mysql_select_db('tests', $database->getConnection());
+
+        $result = $database->createUserProjectTable();
+
+        $result = $database->tableExists("tests", "userprojects");
+
+        $test->failUnless($result,
+                "Error: UserProject Table Creation Failed");
 
     }
 
@@ -142,6 +162,128 @@
     }
 
     // test for successful creation of
+    // testdata table in database
+    function testDataTableCreatedTest() {
+        global $database;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - TestData Table Created");
+        $unitCheck->addTest($test);
+
+        @mysql_select_db('tests', $database->getConnection());
+
+        $result = $database->createTestDataTable();
+
+        $result = $database->tableExists("tests", "testdata");
+
+        $test->failUnless($result,
+                "Error: TestData Table Creation Failed");
+
+    }
+
+    // test for successful creation of
+    // testdata table in database
+    function adminTableCreatedTest() {
+        global $database;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - Admin Table Created");
+        $unitCheck->addTest($test);
+
+        @mysql_select_db('tests', $database->getConnection());
+
+        $result = $database->createAdminTable();
+
+        $result = $database->tableExists("tests", "admin");
+
+        $test->failUnless($result,
+                "Error: Admin Table Creation Failed");
+
+    }
+
+    // test for successful creation of
+    // full database
+    function fullDatabaseCreatedTest() {
+        global $database;
+        global $unitCheck;
+
+        $dbResults = array();
+
+        $test = new UnitCheckTest("TEST - Full Database Created");
+        $unitCheck->addTest($test);
+
+        //@mysql_select_db('tests', $database->getConnection());
+
+
+        if ($res == TRUE) { // database exists -> create all the tables
+            @mysql_select_db('tests', $database->getConnection());
+
+
+            $result = $database->tableExists("tests", "settings");
+            if ($result == TRUE) {
+                $dbResults[] = 1;
+            }
+            else {
+                $dbResults[] = 0;
+            }
+            $result = $database->tableExists("tests", "users");
+            if ($result == TRUE) {
+                $dbResults[] = 1;
+            }
+            else {
+                $dbResults[] = 0;
+            }
+            $result = $database->tableExists("tests", "projects");
+            if ($result == TRUE) {
+                $dbResults[] = 1;
+            }
+            else {
+                $dbResults[] = 0;
+            }
+            $result = $database->tableExists("tests", "sessions");
+            if ($result == TRUE) {
+                $dbResults[] = 1;
+            }
+            else {
+                $dbResults[] = 0;
+            }
+            $result = $database->tableExists("tests", "tests");
+            if ($result == TRUE) {
+                $dbResults[] = 1;
+            }
+            else {
+                $dbResults[] = 0;
+            }
+            $result = $database->tableExists("tests", "testdata");
+            if ($result == TRUE) {
+                $dbResults[] = 1;
+            }
+            else {
+                $dbResults[] = 0;
+            }
+            $result = $database->tableExists("tests", "admin");
+            if ($result == TRUE) {
+                $dbResults[] = 1;
+            }
+            else {
+                $dbResults[] = 0;
+            }
+        }
+
+        $result = 0;
+
+        foreach ($dbResults as $t) {
+            if ($t == 0) {
+                $result++;
+            }
+        }
+
+        $test->failUnless($result == 0,
+                "Error: Full Database Creation Failed");
+
+    }
+
+    // test for successful creation of
     // database users
     function databaseUsersCreatedTest() {
 
@@ -156,7 +298,7 @@
     // test that the correct priviledges
     // were gives to user
     function databaseUserPriviledgesTest() {
-        
+
     }
 
 ?>

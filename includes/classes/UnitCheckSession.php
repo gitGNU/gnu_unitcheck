@@ -83,10 +83,21 @@
 
         public function __destruct() {
             // actions to perform when session ends
+
         }
 
         private function initSession($sid) {
+            if ($this->_sessionId != "") {
+                $result = $this->checkForSession();
+                if ($result == FALSE) {
+                    $this->setNewSession();
+                }
+            }
+            else {
+                $this->setNewSession();
+            }
             
+
         }
 
         /**
@@ -104,8 +115,9 @@
 
             $session = session_id();
 
-            $query = "SELECT `uid`,`lastmod`,`timeout`,`browser`,`ip` FROM `sessions`
-        			  WHERE sid = '$session';";
+            $query = "SELECT  *
+                      FROM sessions
+                      WHERE session_id = '" . $session . "';";
 
             $result = $database->query($query);
 
@@ -136,7 +148,7 @@
             $this->_sessionId = session_id(); // assign session id
             $this->_browser = $_SERVER['HTTP_USER_AGENT']; // assign browser
             $this->_ip = $_SERVER['REMOTE_ADDR']; // assign ip address
-            //
+            
             // build query
             $query = "INSERT INTO sessions (session_id, user_id, browser, ip)
         			  VALUES ('$this->_sessionId',
@@ -163,6 +175,5 @@
     }
 
     $session = new UnitCheckSession();
-    
 
 ?>

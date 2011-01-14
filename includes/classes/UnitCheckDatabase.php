@@ -311,14 +311,13 @@
         }
 
         public function createUsersTable() {
-                      
+
             $query = "CREATE TABLE IF NOT EXISTS users (
                         user_id mediumint(10) unsigned NOT NULL auto_increment,
-                        project_id mediumint(10) unsigned NOT NULL,
+                        mainproject_id mediumint(10) unsigned NOT NULL,
                         user_first_name varchar(60) NOT NULL,
                         user_last_name varchar(60) NOT NULL,
                         email varchar(100) NOT NULL,
-                        username varchar(60) NOT NULL,
                         password varchar(10) NOT NULL,
                         active int(10) NOT NULL,
                         lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -328,6 +327,7 @@
             $result = $this->query($query);
 
             return $result;
+
         }
 
         public function createProjectTable() {
@@ -342,6 +342,22 @@
             $result = $this->query($query);
 
             return $result;
+
+        }
+
+        public function createUserProjectTable() {
+
+            $query = "CREATE TABLE IF NOT EXISTS userprojects (
+                        project_id mediumint(10) NOT NULL,
+                        user_id mediumint(10) NOT NULL,
+                        lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        PRIMARY KEY (project_id)
+                      ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
+
+            $result = $this->query($query);
+
+            return $result;
+
         }
 
         public function createSessionsTable() {
@@ -360,6 +376,7 @@
             $result = $this->query($query);
 
             return $result;
+
         }
 
         public function createTestsTable() {
@@ -378,8 +395,65 @@
             $result = $this->query($query);
 
             return $result;
+
         }
 
+        public function createTestDataTable() {
+
+            $query = "CREATE TABLE IF NOT EXISTS testdata (
+                        testdata_id mediumint(10) unsigned NOT NULL auto_increment,
+                        testdata_name varchar(60) NOT NULL,
+                        testdata_value varchar(10) NOT NULL,
+                        lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        PRIMARY KEY (testdata_id)
+                      ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
+
+            $result = $this->query($query);
+
+            return $result;
+
+        }
+
+        public function createAdminTable() {
+
+            $query = "CREATE TABLE IF NOT EXISTS admin (
+                        admin_id mediumint(10) unsigned NOT NULL auto_increment,
+                        user_id varchar(60) NOT NULL,
+                        lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        PRIMARY KEY (admin_id)
+                      ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
+
+            $result = $this->query($query);
+
+            return $result;
+
+        }
+
+        public function createFullDatabase($name) {
+
+            // test database
+            $this->createDatabase($name);
+
+            $this->openConnection();
+
+            // test each table
+            $dbResults[] = $this->createSettingsTable();
+            $dbResults[] = $this->createUsersTable();
+            $dbResults[] = $this->createProjectTable();
+            $dbResults[] = $this->createUserProjectTable();
+            $dbResults[] = $this->createSessionsTable();
+            $dbResults[] = $this->createTestsTable();
+            $dbResults[] = $this->createTestDataTable();
+            $dbResults[] = $this->createAdminTable();
+
+            foreach ($dbResults as $t) {
+                if ($t == 0) {
+                    return FALSE;
+                }
+            }
+
+            return TRUE;
+        }
 
     }
 

@@ -24,17 +24,21 @@
      */
     require_once('../includes/initialise.php');
 
-    $_SESSION['title'] = 'Report';    
+    $_SESSION['title'] = 'Report';
 
-    UnitCheckHeader::printHeader();
+    if ($user->isUserLoggedIn()) {
+
+        UnitCheckHeader::printHeader();
+
+        $helper->printMessage();
 
 ?>
 
-<div id="index-page">
+        <div id="index-page">
 
-        <h3>Reports</h3>
+            <h3>Reports</h3>
 
-</div>
+        </div>
 
 <?php
 
@@ -46,21 +50,26 @@
 //    foreach ($tests as $test) {
 //        print_r($test);
 //    }
+        //$testnames = UnitCheck::getTestNames();
+        //echo "<br />Test Name: ".$testnames."<br />";
 
-    //$testnames = UnitCheck::getTestNames();
-    //echo "<br />Test Name: ".$testnames."<br />";
+        echo "Number of Tests: " . count($testNames) . "<br />";
 
-    echo "Number of Tests: ".count($testNames)."<br />";
+        foreach ($testNames as $name) {
+            echo "Test Name: " . $name . "<br />";
+        }
 
-    foreach($testNames as $name) {
-        echo "Test Name: ".$name."<br />";
+
+        //$unitCheck->displayTestList();
+        echo "Finished Printing Tests";
+        //$unitCheck->printResults();
+
+        UnitCheckFooter::printFooter();
     }
-
-
-    //$unitCheck->displayTestList();
-    echo "Finished Printing Tests";
-    //$unitCheck->printResults();
-
-    UnitCheckFooter::printFooter();
+    else {
+        $_SESSION['message'] = "You must be logged in to view your reports.";
+        header("Location: index.php");
+        exit();
+    }
 
 ?>

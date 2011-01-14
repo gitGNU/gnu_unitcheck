@@ -1,9 +1,9 @@
 <?php
 
     /**
-     * This is the test cleanup page
+     * This is the forgot password file.
      *
-     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com.au>
      *
      * This file is part of UnitCheck.
      *
@@ -20,26 +20,37 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
      */
     require_once('../includes/initialise.php');
 
-    function runCleanup() {
-        global $database;
+    $_SESSION['title'] = "Recover Forgotten Password";
 
-        // cleanup database
-        $result = $database->dropDatabase('tests');
 
-        if ($result != TRUE) {
-            echo "Error: Cleanup failed to complete!<br />";
-        }
+    // print header
+    UnitCheckHeader::printHeader();
 
-        // cleanup files and directories
-        $dir = "../tests/UnitTestingTests";
-        if (is_dir($dir)) {
-            rmdir($dir);
-        }
+    $helper->printMessage();
 
-    }
+?>
+
+<p>
+    Enter your email address to recover your password. Your password will be
+    sent to you via email.
+</p>
+<p>
+    Form Coming Soon.
+</p>
+
+<form id="forgotpassword" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
+    
+</form>
+
+
+
+
+<?php
+
+    // print footer
+    UnitCheckFooter::printFooter();
 
 ?>

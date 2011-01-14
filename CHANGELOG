@@ -23,6 +23,41 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-14 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added loggedIn() & loggedOut() functions to UnitCheckHeader class
+    * Edited UnitCheckSession class
+    * Added userEmailExists() function to UnitCheckUser class
+    * Added loginUser() & logoutUser() functions to UnitCheckUser class
+    * Added verifyPassword() function to UnitCheckUser class
+    * Added updateSesion() function to UnitCheckUser class
+    * Added validatePassword() function to UnitCheckUser class
+    * Added addUserToProject() function to UnitCheckUser class
+    * Added getUserProjects() function to UnitCheckUser class
+    * Added password protection to configure.php
+    * Added password protection to runTests.php
+    * Added password protection to reports.php
+    * Edited createaccount.php
+    * Added new public/fogotpassword.php
+    * Added new public/login.php
+    * Added new public/logout.php
+    * Added new public/new.php - creates a new project
+
+2011-01-13 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Moved UnitCheck Test files to UnitCheckTests/ directory
+    * UnitCheck is not able to register new users
+    * Added createUserProjectsTable() function to UnitCheckDatabase class
+    * Added createTestDataTable() function to UnitCheckDatabase class
+    * Added createAdminTable() function to UnitCheckDatabase class
+    * Added createFullDatabase() function UnitCheckDatabase class
+    * Added printMessage() function to UnitCheckHelper class
+    * Added createProjectDirectory() function to UnitCheckProject class
+    * Added projectExists() function to UnitCheckProject class
+    * Gave UnitCheckUser object control over the Session Object
+    * Added registerAdmin() function to UnitCheckUser class
+    * Added getUserResultSet() function to UnitCheckUser class
+    * Added new cleanup directive to resources/testCleanup.php
+    * Moved all test files into UnitCheckTests/ directory
+
 2011-01-12 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Edited version in UnitCheckHeader = 0.4.0
     * Added new UnitCheckProject class

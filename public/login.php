@@ -1,8 +1,8 @@
 <?php
 
     /**
-     * This is the test cleanup page
-     *
+     * This is the login script
+     * 
      * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
@@ -20,26 +20,33 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
      */
     require_once('../includes/initialise.php');
 
-    function runCleanup() {
-        global $database;
+    if ($_POST) {
+        // get POST data
+        $email = $database->escapeValue($_POST['UnitCheck_login']);
+        $password = $database->escapeValue($_POST['UnitCheck_password']);
 
-        // cleanup database
-        $result = $database->dropDatabase('tests');
+        //echo "Email: " . $email . "<br />";
+        //echo "Password: " . $password . "<br />";
 
-        if ($result != TRUE) {
-            echo "Error: Cleanup failed to complete!<br />";
+        $result = UnitCheckUser::authenticateUser($email, $password);
+
+        //echo "Result: ".$result."<br />";
+
+        if ($result != FALSE) {
+            $user->loginUser($result);
+
+            $_SESSION['message'] = "You have successfully loged in.";
+            header('Location: index.php');
+            exit();
         }
-
-        // cleanup files and directories
-        $dir = "../tests/UnitTestingTests";
-        if (is_dir($dir)) {
-            rmdir($dir);
+        else {
+            $_SESSION['message'] = "You have entered invalid credentials.";
+            header('Location: index.php');
+            exit();
         }
-
     }
 
 ?>

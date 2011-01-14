@@ -1,9 +1,9 @@
 <?php
 
     /**
-     * This is the new user account test file
+     * This is the login script
      *
-     * Copyright (C) 2011 Tom Kaczocha
+     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * This file is part of UnitCheck.
      *
@@ -23,24 +23,17 @@
      */
     require_once('../includes/initialise.php');
 
-    // test for the successful new user
-    // account creation
-    function createNewUserAccountTest() {
-        global $database;
-        global $unitCheck;
-        global $user;
-        
-        $test = new UnitCheckTest("TEST - New User Account Created");
-        $unitCheck->addTest($test);
 
-        $user->createNewUserAccount("Tom", "Kaczocha", "developer",
-                "freedomdeveloper@yahoo.com", "password");
-
-        $data = $user->getUserDataSetByID();
-        
-        $test->failUnless($data['username'] == "developer",
-                "Error: New User Account Creation Failed");
-
+    if (!$user->isUserLoggedIn()) { // Not logged in
+        $_SESSION['message'] = "Error: User is not logged in.";
+        header("Location: index.php");
+        exit();
+    }
+    else {
+        $user->logoutUser();
+        $_SESSION['message'] = "You have successfully logged out.";
+        header("Location: index.php");
+        exit();
     }
 
 ?>

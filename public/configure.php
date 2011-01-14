@@ -33,75 +33,77 @@
 
     $_SESSION['title'] = 'Configure';
 
-    $clean = 0;
-    
-    // print header
-    UnitCheckHeader::printHeader();
+    if ($user->isUserLoggedIn()) {
 
-    // check for previous test directories
-//    $dirs = $directory->getDirectoriesArray("../projects");
 
-//    if ($clean) {
-//        $database->dropDatabase('unitcheck');
-//    }
-//    else {
-//        $database->createDatabase('unitcheck');
-//    }
+        // print header
+        UnitCheckHeader::printHeader();
+
+        $helper->printMessage();
+
 ?>
 
-<h3><center>Run the Setup Wizard Now</center></h3>
+        <h3><center>Run the Setup Wizard Now</center></h3>
 
-<table border="0" width="100%">
-        <tr>
-            <td>
-                <table id="menu">
-                    <tr>
-                        <td class="index">
-                            <a title="Show all parameters" href="configure.php">Index</a>
-                        </td>
-                    </tr
-                    <tr>
-                        <td>
-                            <a title="Settings that are required for proper operation of UnitCheck" href="configure.php?section=core">Required Settings</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="selected_section">
-                            <span title="Miscellaneous general settings that are not required.">General</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a title="Set up project policies" href="configure.php?section=project">Project Policies</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a title="Report Policies" href="configure.php?section=reports">Reports</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a title="Database Policies" href="configure.php?section=database">Database</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a title="Email settings" href="configure.php?section=email">Email</a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-</table>
+        <table border="0" width="100%">
+            <tr>
+                <td>
+                    <table id="menu">
+                        <tr>
+                            <td class="index">
+                                <a title="Show all parameters" href="configure.php">Index</a>
+                            </td>
+                        </tr
+                        <tr>
+                            <td>
+                                <a title="Settings that are required for proper operation of UnitCheck" href="configure.php?section=core">Required Settings</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="selected_section">
+                                <span title="Miscellaneous general settings that are not required.">General</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a title="Set up project policies" href="configure.php?section=project">Project Policies</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a title="Report Policies" href="configure.php?section=reports">Reports</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a title="Database Policies" href="configure.php?section=database">Database</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a title="Email settings" href="configure.php?section=email">Email</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
 
+
+        <li align="right">Add admin-email to project configure</li>
 
 
 
 <?php
 
-    // print footer
-    UnitCheckFooter::printFooter();
+        // print footer
+        UnitCheckFooter::printFooter();
+    }
+    else {
+        $_SESSION['message'] = "You must be logged in to set your configuration.";
+        header("Location: index.php");
+        exit();
+    }
 
 ?>
 
