@@ -587,6 +587,24 @@
 
         }
 
+        public function getUserFullName() {
+            global $database;
+
+            $query = "SELECT user_first_name, user_last_name,
+                      CONCAT( user_first_name, ' ', user_last_name) AS 'fullname'
+                      FROM users
+                      WHERE email = '".$_SESSION['email']."';";
+
+            $result = $database->query($query);
+            $data = $database->fetchArray($result);
+
+            if (!empty($data)) {
+                return $data['fullname'];
+            }
+            else {
+                return FALSE;
+            }
+        }
     }
 
     // When user first enters the site they are given a user_id

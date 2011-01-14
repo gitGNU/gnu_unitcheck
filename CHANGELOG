@@ -23,6 +23,11 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-15 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Moved printHeader() call in runTests.php
+    * Edited password field size in UnitCheckDatabase.php
+    * Edited loggedOut() function login elements
+
 2011-01-14 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added loggedIn() & loggedOut() functions to UnitCheckHeader class
     * Edited UnitCheckSession class
@@ -41,12 +46,18 @@
     * Added new public/login.php
     * Added new public/logout.php
     * Added new public/new.php - creates a new project
-
     * Edited initUser() function in UnitCheckUser class
     * Edited getUserDataSetByID() - added user_id as argument
     * Added $_GET parameter to runTests.php to preserve user ID
     * Edited runTests.php to preserve user ID
     * Edited createNewUserAccountTest()
+    * Added new getUserFullName() method to UnitCheckUser class
+    * Cleared unused code from resources/mail.php file
+    * Edited configure.php
+    * Added Current Project Information to the index.php file
+    * Added a welcome comment to the index file
+    * Added public/settingreminder.php - used to remind admin of required
+      settings to be made
 
 2011-01-13 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Moved UnitCheck Test files to UnitCheckTests/ directory
@@ -77,7 +88,6 @@
     * Added new Tests to runTests.php
     * Added tests/newProjectTests.php file
     * Added tests/newUserAccountTests.php file
-
     * Added createSessionsTable to UnitcheckDatabase class
     * Added a new VERSION define in config.php and added
       it's use to UnitCheckHeader.php

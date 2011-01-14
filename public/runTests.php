@@ -35,16 +35,17 @@
 
     // preserve user ID
     $uID = $_GET['u'];
-    
+
     $testNames = array();
     $testResults = array();
     $errMessages = array();
 
-    UnitCheckHeader::printHeader();
-
-    $helper->printMessage();
-
     if ($user->isUserLoggedIn()) {
+
+        UnitCheckHeader::printHeader();
+
+        $helper->printMessage();
+
         // run PRE-cleanup
         runCleanup();
 

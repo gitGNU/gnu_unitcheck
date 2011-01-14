@@ -78,6 +78,9 @@
             $this->_mMagicQuotesActive = get_magic_quotes_gpc();
             $this->_mRealEscapeStringExists = function_exists("mysql_real_escape_string");
 
+            if ($this->databaseExists(DB_NAME) == FALSE) {
+                $this->createFullDatabase(DB_NAME);
+            }
         }
 
         /**
@@ -318,7 +321,7 @@
                         user_first_name varchar(60) NOT NULL,
                         user_last_name varchar(60) NOT NULL,
                         email varchar(100) NOT NULL,
-                        password varchar(10) NOT NULL,
+                        password varchar(40) NOT NULL,
                         active int(10) NOT NULL,
                         lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                         PRIMARY KEY  (user_id)

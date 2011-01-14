@@ -149,13 +149,13 @@
         private static function loggedOut() {
             return '<li id="new_account_container_top">
                                 <span class="separator">| </span>
-                                <a href="createaccount.php">New &nbsp;Account</a>
+                                <a href="createaccount.php">New &nbsp; Account</a>
                             </li>
                     <li id="mini_login_container_top">
                                 <span class="separator">| </span>
                                 <form id="mini_login_top" class="mini_login" method="post" action="login.php">
-                                    <input id="UnitCheck_login_top" class="uc_login type="text" value="login" name="UnitCheck_login" />
-                                    <input id="UnitCheck_password_top" class="uc_login" type="password" value="" name="UnitCheck_password" />
+                                    <input id="UnitCheck_login_top" class="uc_login type="text" value="email" onblur="email" onfocus="" onClick="clear" name="UnitCheck_login" />
+                                    <input id="UnitCheck_password_top" class="uc_login" type="password" value="password" onblur="" onfocus="" name="UnitCheck_password" />
                                     <input id="login_top" type="submit" value="Log in" name="GoAheadAndLogIn" />
                                 </form>
                             </li>

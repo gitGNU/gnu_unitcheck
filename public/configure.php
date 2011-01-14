@@ -89,9 +89,9 @@
             </tr>
         </table>
 
-
-        <li align="right">Add admin-email to project configure</li>
-
+        <ul>        
+            <li align="right">Add maintainer-email to project configure</li>
+        </ul>
 
 
 <?php

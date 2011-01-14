@@ -29,20 +29,23 @@
     if ($user->isUserLoggedIn()) {
         $logedin = TRUE;
         $uID = $user->getUserID();
-    }else {
+    }
+    else {
         $logedin = FALSE;
     }
 
     UnitCheckHeader::printHeader();
-    
+
     $helper->printMessage();
+
+    $resultSet = UnitCheckProject::getProjectResultSet();
 
 ?>
 
 <div id="page-index">
         <table id="page_table">
             <tr>
-                <td>
+                <td rowspan="1">
                     <h1 id="welcome"> Welcome to UnitCheck</h1>
                     <div class="intro"></div>
                     <a id="run_tests" class="uc_common_actions" href="runTests.php?u=<?php echo $uID; ?>">
@@ -54,9 +57,36 @@
                     <a id="history" class="uc_common_actions" href="reports.php">
                         <span>Reports</span>
                     </a>
+                </td>
+                <td style="max-width: 100px;">
+                    <h3>Current Project Information</h3>
+                    <table id="project_table">
+                        <tr>
+                            <th>Project Name:</th>
+                            <!--<th>Number of Tests:</th>-->
+                        </tr>
+
+                    
+                <?php
+
+                    while ($data = $database->fetchArray($resultSet, MYSQL_ASSOC)) {
+                        echo "<tr>
+                                <td>" . $data['project_name'] . "</td><td>&nbsp;</td>";
+                        echo "</tr>";
+                    }
+
+                ?>
+                </table>
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <form id="quickSearchForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                         <div>
-                            <input id="quickSearchMain" class="quickSearchHelpText" type="text" onblur="" onfocus="" name="quickSearch" />
+                            <input id="quickSearchMain" class="quickSearchHelpText" type="text" onblur="search" onfocus="" name="quickSearch" />
                             <input id="find" type="submit" value="Quick Search" />
                             <ul id="quickSearchLinks" class="additional_links">
                                 <li>
@@ -75,13 +105,31 @@
                         </div>
                     </form>
                     <div class="outro"></div>
-                </td>    
+                </td>
+                <td style="text-align: left;">
+                    <p>
+                        Thank you for using UnitCheck.
+                    </p>
+                    <p>
+                        UnitCheck is a PHP project testing system and is used primarily to automate unit and regression testing.
+                        UnitCheck is a free software designed to assist PHP developers test their web applications.
+                    </p>
+                    <p>
+                        Please report bugs <a href="mailto:freedomdeveloper@yahoo.com?subject=UnitCheck Project Bug" title="Bug Reporting">here</a>
+                        and features you'd like to see in this implementation
+                        <a href="mailto:freedomdeveloper@yahoo.com?subject=UnitCheck Project Feature Request" title="Feature Requests">here</a>
+                    </p>
+
+                </td>
+                <td style="width: 200px;">
+                    &nbsp;
+                </td>
             </tr>
         </table>
 </div> <!-- END page-index -->
 
 <?php
 
-    UnitCheckFooter::printFooter();
+                    UnitCheckFooter::printFooter();
 
 ?>
