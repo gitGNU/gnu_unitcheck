@@ -33,6 +33,9 @@
 
     $_SESSION['title'] = 'Test Results';
 
+    // preserve user ID
+    $uID = $_GET['u'];
+    
     $testNames = array();
     $testResults = array();
     $errMessages = array();
@@ -75,9 +78,11 @@
         runCleanup();
 
 
-
         // PRINT TEST RESULTS
         $unitCheck->printResults();
+
+        // return to real USER ID
+        $_SESSION['user_id'] = $uID;
     }
     else {
         $_SESSION['message'] = "You must be logged in to run tests.";
@@ -86,7 +91,5 @@
     }
 
     UnitCheckFooter::printFooter();
-
-    //header('Location: reports.php');
 
 ?>

@@ -34,13 +34,11 @@
         $test = new UnitCheckTest("TEST - New User Account Created");
         $unitCheck->addTest($test);
 
-        $user->createNewUserAccount("Tom", "Kaczocha",
+        $uID = $user->createNewUserAccount("Tom", "Kaczocha",
                 "freedomdeveloper@yahoo.com", "password");
-
-        $data = $user->getUserDataSetByID();
-
-//        echo "Printing Account Information:<br />";
-//        $helper->printArray($data);
+        
+        //echo "<br />LAST ID: ".$uID;
+        $data = $user->getUserDataSetByID($uID);
 
         $test->failUnless($data['email'] == "freedomdeveloper@yahoo.com",
                 "Error: New User Account Creation Failed");

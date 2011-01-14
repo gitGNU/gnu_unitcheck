@@ -42,13 +42,19 @@
         private $_password;
         private $_mainProject;
         private $_userIsLoggedIn;
-        
 
         public function __construct($id = 0) {
             global $session;
 
             $this->checkUserLogin();
             $this->initUser($this->_userID);
+//            echo "<br />USER ID: " . $this->_userID;
+//            echo "<br />FIRST NAME: " . $this->_user_first_name;
+//            echo "<br />LAST NAME: " . $this->_user_last_name;
+//            echo "<br />EMAIL: " . $this->_email;
+//            echo "<br />PASSWORD: " . $this->_password;
+//            echo "<br />MAIN PROJECT: " . $this->_mainProject;
+//            echo "<br />IS LOGGED IN: " . $this->_userIsLoggedIn;
 
             // check for matching session in database
             $session_status = $session->checkForSession();
@@ -59,6 +65,7 @@
             else { // no match -> create new session object
                 $session->setNewSession();
             }
+
         }
 
         public function __destruct() {
@@ -66,17 +73,21 @@
         }
 
         private function initUser($uID) {
+            //echo "INIT USER ID: ".$uID;
             $this->_userID = $uID;
 
-            $data = $this->getUserDataSetByID();
+            $data = $this->getUserDataSetByID($uID);
 
-            $this->_user_first_name = $data['user_first_name'];
-            $this->_user_last_name = $data['user_last_name'];
-            $this->_email = $data['email'];
-            $this->_password = $data['password'];
-            $this->_mainProject = $data['project_id'];
+            if ($data != FALSE) {
+                $this->_user_first_name = $data['user_first_name'];
+                $this->_user_last_name = $data['user_last_name'];
+                $this->_email = $data['email'];
+                $this->_password = $data['password'];
+                $this->_mainProject = $data['project_id'];
 
-            $_SESSION['email'] = $this->_email;
+                $_SESSION['email'] = $this->_email;
+                //echo "<br />NOT FALSE<br />";
+            }
 
         }
 
@@ -95,7 +106,7 @@
             if ($database->affectedRows($result) == 1) {
                 $uID = $database->getLastID();
                 $this->initUser($uID);
-                return TRUE;
+                return $uID;
             }
             else {
                 return FALSE;
@@ -123,18 +134,18 @@
 
         }
 
-        public function getUserDataSetByID() {
+        public function getUserDataSetByID($uID) {
             global $database;
-
+            
             $query = "SELECT *
                       FROM users
-                      WHERE user_id = '" . $this->_userID . "';";
+                      WHERE user_id = '" . $uID . "';";
 
+            //echo "<br />DATASET QUERY: ".$query;
             $result = $database->query($query);
+            $data = $database->fetchArray($result);
 
-
-            if ($database->numRows($result) == 1) {
-                $data = $database->fetchArray($result);
+            if (!empty($data)) {
                 return $data;
             }
             else {
@@ -299,7 +310,7 @@
 			 AND password = '" . md5($password) . "'
 			 LIMIT 1;";
 
-            echo "<br />AUTH Query: " . $query . "<br />";
+            //echo "<br />AUTH Query: " . $query . "<br />";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -360,7 +371,7 @@
          */
         public function logoutUser() {
             unset($_SESSION['user_id']);
-            //unset($_SESSION['email']);
+            unset($_SESSION['email']);
             unset($this->_UserID);
             $this->_userIsLoggedIn = false;
 

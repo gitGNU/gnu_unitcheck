@@ -42,6 +42,12 @@
     * Added new public/logout.php
     * Added new public/new.php - creates a new project
 
+    * Edited initUser() function in UnitCheckUser class
+    * Edited getUserDataSetByID() - added user_id as argument
+    * Added $_GET parameter to runTests.php to preserve user ID
+    * Edited runTests.php to preserve user ID
+    * Edited createNewUserAccountTest()
+
 2011-01-13 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Moved UnitCheck Test files to UnitCheckTests/ directory
     * UnitCheck is not able to register new users

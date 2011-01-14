@@ -24,15 +24,17 @@
     require_once('../includes/initialise.php');
 
     $_SESSION['title'] = "Welcome";
-    
+    $uID = 0;
+
     if ($user->isUserLoggedIn()) {
-//        echo "User is logged in with user ID of: ".$user->getUserID();
+        $logedin = TRUE;
+        $uID = $user->getUserID();
     }else {
-//        echo "User is not logged in.";
+        $logedin = FALSE;
     }
 
     UnitCheckHeader::printHeader();
-
+    
     $helper->printMessage();
 
 ?>
@@ -43,7 +45,7 @@
                 <td>
                     <h1 id="welcome"> Welcome to UnitCheck</h1>
                     <div class="intro"></div>
-                    <a id="run_tests" class="uc_common_actions" href="runTests.php">
+                    <a id="run_tests" class="uc_common_actions" href="runTests.php?u=<?php echo $uID; ?>">
                         <span>Run Tests</span>
                     </a>
                     <a id="configure" class="uc_common_actions" href="configure.php">
