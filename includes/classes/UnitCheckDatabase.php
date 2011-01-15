@@ -369,7 +369,7 @@
             $query = "CREATE TABLE IF NOT EXISTS sessions (
                         user_id mediumint(10) NULL,
                         issuedate timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                        session_id varchar(30) NOT NULL,
+                        session_id varchar(40) NOT NULL,
                         session_type varchar(20) NOT NULL,
                         eventdata tinytext NOT NULL,
                         browser varchar(255) NULL,
