@@ -338,6 +338,7 @@
             $query = "CREATE TABLE IF NOT EXISTS projects (
                         project_id mediumint(10) unsigned NOT NULL auto_increment,
                         project_name varchar(60) NOT NULL,
+                        creation_date varchar(30) NOT NULL,
                         lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                         PRIMARY KEY (project_id)
                       ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";

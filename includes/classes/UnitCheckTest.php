@@ -35,6 +35,8 @@
         private $_testName;
         private $_testResult;
         private $_errMessage;
+        private $_projectID;
+        
         //public static $testErrors = array();
         private static $totalTests;
         private static $totalSuccess;

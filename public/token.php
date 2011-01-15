@@ -25,19 +25,24 @@
 
     $_SESSION['title'] = 'Create a new user account for \'' . $_SESSION['email'] . '\'';
 
-    $adminTrue = 0;
+    $adminTrue = FALSE;
 
     // check if a new admin account
     // is being created
     if ($_GET['t'] == 'a') {
-        $adminTrue = 1;
+        $adminTrue = TRUE;
         $_SESSION['newtype'] == 1;
     }
     else {
         $_SESSION['newtype'] == 0;
     }
 
+
     if ($_POST) {
+
+        if ($_SESSION['newtype'] == 1) {
+            $adminTrue = TRUE;
+        }
 
         $_SESSION['firstname'] = $firstName = $database->escapeValue($_POST['firstname']);
         $_SESSION['lastname'] = $lastName = $database->escapeValue($_POST['lastname']);
@@ -48,15 +53,15 @@
 
         if ($result == TRUE) {
             // register user
-            $result = $user->createNewUserAccount($firstName, $lastName, $_SESSION['email'], $password1);
+            $uID = $user->createNewUserAccount($firstName, $lastName, $_SESSION['email'], $password1);
 
-            if ($result == FALSE) {
+            if ($uID == FALSE) {
                 $_SESSION['message'] = "New account registration failed.
                 Please try again later.";
             }
 
             if ($adminTrue) {
-                $result = $user->registerAdmin();
+                $result = $user->registerAdmin($uID);
             }
         }
         else {

@@ -27,6 +27,20 @@
     * Moved printHeader() call in runTests.php
     * Edited password field size in UnitCheckDatabase.php
     * Edited loggedOut() function login elements
+    * Added creation_date data variable to projects table
+    * Edited UnitCheckProject constructor
+    * Added getter methods to UnitCheckProject
+    * Added a private project ID variable to UnitCheckTest
+    * Edited registerAdmin() function in UnitCheckUser class
+    * Added getAdminResultSet() function to UnitCheckUser class
+    * Added isUserAdmin() function to UnitCheckUser class
+    * Edited createaccount.php to register admin account
+    * Edited project display in index.php
+    * Added new public/project.php for viewing project information
+    * Added two tests to runTests.php
+    * Edited public/token.php
+    * Added projectDataRetrievedTest to newProjectTests.php
+    * Added firstUserIsAdminTest to newUserAccountTests.php
 
 2011-01-14 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added loggedIn() & loggedOut() functions to UnitCheckHeader class

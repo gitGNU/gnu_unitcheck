@@ -43,6 +43,12 @@
         $adminTrue = "?t=a";
     }
 
+    $result = $user->getAdminResultSet();
+
+    if ($result == FALSE) {
+        $adminTrue = "?t=a";
+    }
+
     if ($_POST) {
 
         $email = $_POST['login'];

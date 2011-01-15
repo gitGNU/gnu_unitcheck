@@ -3,7 +3,7 @@
     /**
      * This is the new project file
      *
-     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com.au>
+     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com.au>
      *
      * This file is part of UnitCheck.
      *
@@ -20,18 +20,10 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
-     * @package
-     * @author          Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright	2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @version 	1.0
-     * @access          public
-     * @License         "GNU General Public License", version="3.0"
-     *
      */
     require_once('../includes/initialise.php');
 
-    $_SESSION['title'] = 'New Project Wizard';
+    $_SESSION['title'] = 'New Accounts Menu';
 
     if ($user->isUserLoggedIn()) {
 
@@ -111,7 +103,7 @@
 ?>
 
         <form id="create" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <table cellspacing="4" cellpadding="2" border="0">
+            <table cellspacing="4" cellpadding="2" border="0" >
                 <tr>
                     <td colspan="3">
                         <h3>New Project</h3>

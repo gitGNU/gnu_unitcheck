@@ -144,4 +144,34 @@
 
     }
 
+    // test makes sure that project data
+    // is retrieved properly
+    function projectDataRetrievedTest() {
+        global $database;
+        global $unitCheck;
+
+        $pID = 1;
+
+        $test = new UnitCheckTest("TEST - Project Data Retrieved");
+        $unitCheck->addTest($test);
+
+        $project = new UnitCheckProject($pID);
+
+        $pID = $project->getProjectID();
+        $pName = $project->getProjectName();
+        $pCreation = $project->getProjectCreationDate();
+        $pMod = $project->getProjectModDate();
+
+        if (($pID != "") && ($pName != "") && ($pCreation != "") && ($pMod != "")) {
+            $status = TRUE;
+        }
+        else {
+            $status = FALSE;
+        }
+
+
+        $test->failUnless($status == TRUE,
+                "Error: Project data not retrieved");
+    }
+
 ?>

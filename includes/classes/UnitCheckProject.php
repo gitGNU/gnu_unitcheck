@@ -33,9 +33,14 @@
 
         private $_projectID;
         private $_projectName;
+        private $_creationDate;
+        private $_lastMod;
 
-        public function __construct() {
-            $this->_projectName = $projectName;
+        public function __construct($pID = "") {
+            if ($pID != "") {
+                $this->initProject($pID);
+                
+            }
 
         }
 
@@ -48,14 +53,33 @@
 
             $this->_projectID = $data['project_id'];
             $this->_projectName = $data['project_name'];
+            $this->_creationDate = $data['creation_date'];
+            $this->_lastMod = $data['lastmod'];
 
+        }
+
+        public function getProjectID() {
+            return $this->_projectID;
+        }
+
+        public function getProjectName() {
+            return $this->_projectName;
+        }
+
+        public function getProjectCreationDate() {
+            return $this->_creationDate;
+        }
+
+        public function getProjectModDate() {
+            return $this->_lastMod;
         }
 
         public function createNewProject($pName) {
             global $database;
 
             $query = "INSERT INTO projects
-                      SET project_name = '" . $pName . "';";
+                      SET project_name = '" . $pName . "',
+                          creation_date = NOW();";
 
             $result = $database->query($query);
 
@@ -166,6 +190,7 @@
             else {
                 return FALSE;
             }
+
         }
 
     }

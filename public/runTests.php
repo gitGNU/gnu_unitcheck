@@ -64,13 +64,15 @@
         validateEmailTest();
         validatePasswordTest();
         duplicateEmailTest();
-
+        firstUserIsAdminTest();
+        
         userSuccessfullyLoggedInTest();
         newProjectTest();
         duplicateProjectTest();
         addNewTestDirectoryTest();
         addUserToProjectTest();
-
+        projectDataRetrievedTest();
+        
         // run POST-cleanup
         runCleanup();
 

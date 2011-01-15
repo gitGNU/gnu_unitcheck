@@ -55,7 +55,6 @@
 //            echo "<br />PASSWORD: " . $this->_password;
 //            echo "<br />MAIN PROJECT: " . $this->_mainProject;
 //            echo "<br />IS LOGGED IN: " . $this->_userIsLoggedIn;
-
             // check for matching session in database
             $session_status = $session->checkForSession();
 
@@ -114,11 +113,11 @@
 
         }
 
-        public function registerAdmin() {
+        public function registerAdmin($uID) {
             global $database;
 
             $query = "INSERT INTO admin
-                      SET user_id = '" . $this->_userID . "';";
+                      SET user_id = '" . $uID . "';";
 
             if ($this->_userID == "") {
                 die("User ID blank");
@@ -134,9 +133,25 @@
 
         }
 
+        public function getAdminResultSet() {
+            global $database;
+
+            $query = "SELECT *
+                      FROM admin;";
+
+            $result = $database->query($query);
+
+            if ($database->numRows($result) > 0) {
+                return $result;
+            }
+            else {
+                return FALSE;
+            }
+        }
+
         public function getUserDataSetByID($uID) {
             global $database;
-            
+
             $query = "SELECT *
                       FROM users
                       WHERE user_id = '" . $uID . "';";
@@ -593,7 +608,7 @@
             $query = "SELECT user_first_name, user_last_name,
                       CONCAT( user_first_name, ' ', user_last_name) AS 'fullname'
                       FROM users
-                      WHERE email = '".$_SESSION['email']."';";
+                      WHERE email = '" . $_SESSION['email'] . "';";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -604,7 +619,27 @@
             else {
                 return FALSE;
             }
+
         }
+
+        public function isUserAdmin($uID) {
+            global $database;
+
+            $query = "SELECT admin_id
+                      FROM admin
+                      WHERE user_id = '" . $uID . "';";
+
+            $result = $database->query($query);
+
+            if ($database->numRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
     }
 
     // When user first enters the site they are given a user_id

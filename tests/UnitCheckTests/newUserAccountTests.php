@@ -35,7 +35,10 @@
         $unitCheck->addTest($test);
 
         $uID = $user->createNewUserAccount("Tom", "Kaczocha",
-                "freedomdeveloper@yahoo.com", "password");
+                        "freedomdeveloper@yahoo.com", "password");
+
+        // register admin
+        $result = $user->registerAdmin($uID);
         
         //echo "<br />LAST ID: ".$uID;
         $data = $user->getUserDataSetByID($uID);
@@ -124,10 +127,10 @@
         global $database;
         global $unitCheck;
         global $user;
-        
+
         $count = 0;
         $newEmail = "freedomdeveloper@yahoo.com";
-        
+
         $test = new UnitCheckTest("TEST - Duplicate User Account Creation Prevented");
         $unitCheck->addTest($test);
 
@@ -135,7 +138,7 @@
 
         if ($result == FALSE) {
             $user->createNewUserAccount("Tom", "Kaczocha",
-                "freedomdeveloper@yahoo.com", "password");
+                    "freedomdeveloper@yahoo.com", "password");
 
             $resultSet = $user->getUserResultSet();
 
@@ -146,10 +149,32 @@
             }
         }
         else {
-
+            
         }
-        
+
         $test->failUnless($count == 0,
                 "Error: Duplicate User Account Created");
+
     }
+
+    // test ensures that when the first user
+    // is created after the database is created
+    // that user becomes an admin
+    function firstUserIsAdminTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
+
+        $userID = 1;
+
+        $test = new UnitCheckTest("TEST - First User Is Admin");
+        $unitCheck->addTest($test);
+
+        $result = $user->isUserAdmin($userID);
+        
+        $test->failUnless($result,
+                "Error: No Admin Created");
+
+    }
+
 ?>

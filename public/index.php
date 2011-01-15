@@ -59,24 +59,24 @@
                     </a>
                 </td>
                 <td style="max-width: 100px;">
-                    <h3>Current Project Information</h3>
-                    <table id="project_table">
+                    <h3 align="left">Current Projects</h3>
+                    <table id="project_table" cellspacing="4" cellpadding="2" border="0">
                         <tr>
                             <th>Project Name:</th>
                             <!--<th>Number of Tests:</th>-->
                         </tr>
 
-                    
-                <?php
 
-                    while ($data = $database->fetchArray($resultSet, MYSQL_ASSOC)) {
-                        echo "<tr>
-                                <td>" . $data['project_name'] . "</td><td>&nbsp;</td>";
-                        echo "</tr>";
-                    }
+                    <?php
 
-                ?>
-                </table>
+                        while ($data = $database->fetchArray($resultSet, MYSQL_ASSOC)) {
+                            echo '<tr>
+                                <td align="left"><a href="project.php?pid=' . $data['project_id'] . '">' . $data['project_name'] . '</a></td><td>&nbsp;</td>';
+                            echo '</tr>';
+                        }
+
+                    ?>
+                    </table>
                 </td>
                 <td>
                     &nbsp;
@@ -130,6 +130,6 @@
 
 <?php
 
-                    UnitCheckFooter::printFooter();
+                        UnitCheckFooter::printFooter();
 
 ?>
