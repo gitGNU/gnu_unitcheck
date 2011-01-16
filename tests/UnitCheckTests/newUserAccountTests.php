@@ -177,4 +177,105 @@
 
     }
 
+    // test ensures that users first name
+    // is updated successfully
+    function userFirstNameUpdatedTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
+
+        $userID = 1;
+        $fName = "Joe";
+        $lName = "Kaczocha";
+        $email = "freedomdeveloper@yahoo.com";
+
+        $test = new UnitCheckTest("TEST - User First Name Updated");
+        $unitCheck->addTest($test);
+
+        $result = $user->updateProfile($fName, $lName, $email);
+        
+        $data = $user->getUserDataSetByID($userID);
+        
+        $result = $test->assertEquals($data['user_first_name'], $fName);
+
+        $test->failUnless($result,
+                "Error: Failed to Update Users First Name");
+
+    }
+
+    // test ensures that users last name
+    // is updated successfully
+    function userLastNameUpdatedTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
+
+        $userID = 1;
+        $fName = "Tom";
+        $lName = "Jones";
+        $email = "freedomdeveloper@yahoo.com";
+
+        $test = new UnitCheckTest("TEST - User Last Name Updated");
+        $unitCheck->addTest($test);
+
+        $result = $user->updateProfile($fName, $lName, $email);
+
+        $data = $user->getUserDataSetByID($userID);
+
+        $result = $test->assertEquals($data['user_last_name'], $lName);
+
+        $test->failUnless($result,
+                "Error: Failed to Update Users Last Name");
+
+    }
+
+    // test ensures that users email
+    // is updated successfully
+    function userEmailUpdatedTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
+
+        $userID = 1;
+        $fName = "Tom";
+        $lName = "Kaczocha";
+        $email = "tomjones@yahoo.com";
+
+        $test = new UnitCheckTest("TEST - User Email Updated");
+        $unitCheck->addTest($test);
+
+        $result = $user->updateProfile($fName, $lName, $email);
+
+        $data = $user->getUserDataSetByID($userID);
+
+        $result = $test->assertEquals($data['email'], $email);
+
+        $test->failUnless($result,
+                "Error: Failed to Update Users Email");
+
+    }
+
+    // test ensures that users password
+    // is updated successfully
+    function userPasswordUpdatedTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
+
+        $userID = 1;
+        $newPass = "freedom";
+
+        $test = new UnitCheckTest("TEST - User Password Updated");
+        $unitCheck->addTest($test);
+
+        $result = $user->updateUserPassword($newPass);
+
+        $data = $user->getUserDataSetByID($userID);
+
+        $result = $test->assertEquals($data['password'], md5($newPass));
+
+        $test->failUnless($result,
+                "Error: Failed to Update Users Password");
+
+    }
 ?>

@@ -128,7 +128,7 @@
         </tr>
     </table>
     <br />
-    <input id="send" type="submit" value="Send">
+    <input id="send" type="submit" value="Continue">
 </form>
 
 

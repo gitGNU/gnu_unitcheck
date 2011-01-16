@@ -22,6 +22,53 @@
 ================================================================================
                                CHANGELOG
 ================================================================================
+2011-01-17 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added function_name to tests table
+    * Edited test_active size in tests table
+    * Added createTestResultsTable() function to UnitCheckDatabase class
+    * 
+
+2011-01-16 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Removed PRIMARY KEY from userprojects table
+    * Removed test_result column from tests table
+    * Added createTestDependenciesTable() function to UnitCheckDatabase class
+    * Edited UnitCheckFooter.php
+    * Edited UnitCheckHeader.php
+    * Edited UnitCheckTest class constructor
+    * Edited assertEquals() method in UnitCheckTest class
+    * Added getTestAUthor() method to UnitCheckTest class
+    * Added getTestGroup() method to UnitCheckTest class
+    * Added addNewTest() method to UnitCheckTest class
+    * Added removeTest() method to UnitCheckTest class
+    * Added new UnitCheckTestDependency class
+    * Edited updateProfile() method in UnitCheckUser class
+    * Edited updateUserPassword() method in UnitCheckUser class
+    * Added getUserProjectID() method to UnitCheckUser class
+    * Added updateMainProject() method to UnitCheckUser class
+    * Added styles for input.required, select.required in styles.css
+    * Added new addnewproject.php file
+    * Added new addnewtest.php file
+    * Edited submit button in createaccount.php
+    * Added new edit.php file
+    * Added new editaccount.php file
+    * Added new editproject.php file
+    * Added new edittest.php file
+    * Edited images in index.php file
+    * Edited project list in index.php file
+    * Edited new.php file - made in a link menu to other new pages
+    * Edited submit button in token.php file
+    * Added testDependenciesTableCreatedTest() function to databaseTests.php
+    * Added testResultsTableCreatedTest() function to databaseTests.php
+    * Added projectIDSetAsMainProject4UserTest() function to newProjectTests.php
+    * Added updateAsMainProjectTest() function to newProjectTests.php
+    * Added updateProjectNameTest() function to newProjectTests.php
+    * Added userFirstNameUpdatedTest() function to newUserAccountTests.php
+    * Added userLastNameUpdatedTest() function to newUserAccountTests.php
+    * Added userEmailUpdatedTest() function to newUserAccountTests.php
+    * Added userPasswordUpdatedTest() function to newUserAccountTests.php
+    * Added addNewTestTest() function to testsTests.php
+    * Added testDataSetRetrievedTest() function to testsTests.php
+    * Added testResultSetRetrievedTest() function to testsTests.php
 
 2011-01-15 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Moved printHeader() call in runTests.php
@@ -41,6 +88,7 @@
     * Edited public/token.php
     * Added projectDataRetrievedTest to newProjectTests.php
     * Added firstUserIsAdminTest to newUserAccountTests.php
+    * Edited session table structure
 
 2011-01-14 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added loggedIn() & loggedOut() functions to UnitCheckHeader class

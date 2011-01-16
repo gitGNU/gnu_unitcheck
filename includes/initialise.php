@@ -31,6 +31,7 @@
     require_once(LIB_PATH . DS . 'UnitCheckSession.php');
     require_once(LIB_PATH . DS . 'UnitCheckUser.php');
     require_once(LIB_PATH . DS . 'UnitCheckTest.php');
+    require_once(LIB_PATH . DS . 'UnitCheckTestDependency.php');
     require_once(LIB_PATH . DS . 'UnitCheckDirectory.php');
     require_once(LIB_PATH . DS . 'UnitCheckHelper.php');
     require_once(LIB_PATH . DS . 'UnitCheckProject.php');

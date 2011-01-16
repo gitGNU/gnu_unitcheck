@@ -166,7 +166,7 @@
         <tr>
             <th align="right">&nbsp;</th>
             <td>
-                <input id="confirm" type="submit" value="Send" />
+                <input id="confirm" type="submit" value="Create Account" />
             </td>
         </tr>
     </table>
@@ -178,7 +178,7 @@
     If you do not wish to create an account with this email click the cancel
     account button button below and your details will be forgotten.
 </p>
-<form id="cancel_account_form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form id="cancel_account_form" action="<?php echo "index.php"; ?>" method="post">
     <input id="confirm" type="submit" value="Cancel Account" />
 </form>
 

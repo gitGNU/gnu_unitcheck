@@ -82,7 +82,7 @@
                 $this->_user_last_name = $data['user_last_name'];
                 $this->_email = $data['email'];
                 $this->_password = $data['password'];
-                $this->_mainProject = $data['project_id'];
+                $this->_mainProject = $data['mainproject_id'];
 
                 $_SESSION['email'] = $this->_email;
                 //echo "<br />NOT FALSE<br />";
@@ -147,6 +147,7 @@
             else {
                 return FALSE;
             }
+
         }
 
         public function getUserDataSetByID($uID) {
@@ -460,13 +461,14 @@
          * @return Boolean TRUE if successful, otherwise FALSE
          *
          */
-        public function updateProfile($realname, $new_pass) {
+        public function updateProfile($fName, $lName, $email) {
             global $database;
 
             $query = "UPDATE users
-                      SET password = '$new_pass',
-			  realname = '$realname'
-		      WHERE uid = '" . $this->_userID . "';";
+                      SET user_first_name = '$fName',
+			  user_last_name = '$lName',
+                          email = '$email'
+		      WHERE user_id = '" . $this->_userID . "';";
 
             $result = $database->query($query);
 
@@ -488,12 +490,12 @@
          * @return Boolean TRUE if Successful, FALSE otherwise
          *
          */
-        public function updateUserPassword($new_pass) {
+        public function updateUserPassword($newpass) {
             global $database;
 
             $query = "UPDATE users
-                      SET password = '$new_pass'
-		      WHERE uid = '" . $this->_userID . "';";
+                      SET password = '" . md5($newpass) . "'
+		      WHERE user_id = '" . $this->_userID . "';";
 
             $result = $database->query($query);
 
@@ -569,12 +571,26 @@
             global $database;
             global $user;
 
-            $query = "INSERT INTO userprojects (user_id, project_id)
+            $status = 0;
+
+            $query1 = "INSERT INTO userprojects (user_id, project_id)
                       VALUES ('" . $user->getUserID() . "', '" . $pID . "');";
 
-            $result = $database->query($query);
+            $query2 = "UPDATE users
+                       SET mainproject_id = '" . $pID . "'
+                       WHERE user_id = '" . $this->_userID . "';";
 
+            $result = $database->query($query1);
             if ($database->affectedRows($result) == 1) {
+                $status++;
+            }
+
+            $result = $database->query($query2);
+            if ($database->affectedRows($result) == 1) {
+                $status++;
+            }
+
+            if ($status == 2) {
                 return TRUE;
             }
             else {
@@ -638,6 +654,47 @@
                 return FALSE;
             }
 
+        }
+
+        public function getUserProjectID() {
+            return $this->_mainProject;
+
+        }
+
+        public function getUserProjectName() {
+            global $database;
+
+            $query = "SELECT *
+                      FROM projects
+                      WHERE project_id = '".$this->_mainProject."';";
+
+            $result = $database->query($query);
+            $data = $database->fetchArray($result);
+
+            if (!empty($data)) {
+                return $data['project_name'];
+            }
+            else {
+                return FALSE;
+            }
+
+        }
+
+        public function updateMainProject($pID) {
+            global $database;
+
+            $query = "UPDATE users
+                      SET mainproject_id = '" . $pID . "'
+                      WHERE user_id = '" . $this->_userID . "';";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return FALSE;
+            }
         }
 
     }

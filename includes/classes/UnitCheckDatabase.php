@@ -354,8 +354,7 @@
             $query = "CREATE TABLE IF NOT EXISTS userprojects (
                         project_id mediumint(10) NOT NULL,
                         user_id mediumint(10) NOT NULL,
-                        lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                        PRIMARY KEY (project_id)
+                        lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
                       ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
 
             $result = $this->query($query);
@@ -389,10 +388,10 @@
                         test_id mediumint(10) unsigned NOT NULL auto_increment,
                         project_id mediumint(10) unsigned NOT NULL,
                         test_name varchar(60) NOT NULL,
-                        test_result varchar(10) NOT NULL,
-                        test_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        function_name varchar(150) NOT NULL,
+                        test_author varchar(50) NOT NULL,
                         test_group varchar(10) NOT NULL,
-                        test_active int(10) NOT NULL,
+                        test_active int(5) NOT NULL,
                         PRIMARY KEY (test_id)
                       ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
 
@@ -433,6 +432,37 @@
 
         }
 
+        public function createTestDependenciesTable() {
+
+            $query = "CREATE TABLE IF NOT EXISTS testdependencies (
+                        dependency_id mediumint(10) unsigned NOT NULL auto_increment,
+                        test_id varchar(60) NOT NULL,
+                        dependency_value varchar(100) NOT NULL,
+                        lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                        PRIMARY KEY (dependency_id)
+                      ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
+
+            $result = $this->query($query);
+
+            return $result;
+            
+        }
+
+        public function createTestResultsTable() {
+            
+            $query = "CREATE TABLE IF NOT EXISTS testresults (
+                        result_id mediumint(10) unsigned NOT NULL auto_increment,
+                        test_id mediumint(10) NOT NULL,
+                        user_id varchar(60) NOT NULL,
+                        test_date datetime NOT NULL,
+                        PRIMARY KEY (result_id)
+                      ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
+
+            $result = $this->query($query);
+
+            return $result;
+        }
+
         public function createFullDatabase($name) {
 
             // test database
@@ -449,6 +479,7 @@
             $dbResults[] = $this->createTestsTable();
             $dbResults[] = $this->createTestDataTable();
             $dbResults[] = $this->createAdminTable();
+            $dbResults[] = $this->createTestDependenciesTable();
 
             foreach ($dbResults as $t) {
                 if ($t == 0) {

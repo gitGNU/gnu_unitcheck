@@ -29,7 +29,9 @@
     require_once("../tests/UnitCheckTests/newUserAccountTests.php");
     require_once("../tests/UnitCheckTests/sessionTests.php");
     require_once("../tests/UnitCheckTests/userLoginTests.php");
+    require_once("../tests/UnitCheckTests/testsTests.php");
     require_once("../includes/resources/testCleanup.php");
+
 
     $_SESSION['title'] = 'Test Results';
 
@@ -58,6 +60,8 @@
         userProjectTableCreatedTest();
         testsTableCreatedTest();
         sessionsTableCreatedTest();
+        testDependenciesTableCreatedTest();
+        testResultsTableCreatedTest();
 
         isSessionCreatedTest();
         createNewUserAccountTest();
@@ -65,20 +69,48 @@
         validatePasswordTest();
         duplicateEmailTest();
         firstUserIsAdminTest();
+        userFirstNameUpdatedTest();
+        userLastNameUpdatedTest();
+        userEmailUpdatedTest();
+        userPasswordUpdatedTest();
         
+
         userSuccessfullyLoggedInTest();
         newProjectTest();
+        projectIDSetAsMainProject4UserTest();
         duplicateProjectTest();
         addNewTestDirectoryTest();
         addUserToProjectTest();
+        updateAsMainProjectTest();
         projectDataRetrievedTest();
+        updateProjectNameTest();
+
+
+        getFunctionNameTest();
+        addNewTestTest();
+        testDataSetRetrievedTest();
+        testResultSetRetrievedTest();
+        lastTestDateRetrievedTest();
+        addedTestNameTest();
+        addedTestErrorMessageTest();
+        addedTestBodyTest();
+        addedTestDependenciesTest();
+        addedTestProjectIDTest();
+        addedTestAuthorTest();
+        updatedTestNameTest();
+        updatedTestDependenciesTest();
+        updatedTestErrorMessageTest();
+        updatedTestBodyTest();
+        updatedTestAuthorTest();
+        updatedTestProjectIDTest();
         
+
         // run POST-cleanup
-        runCleanup();
+        //runCleanup();
 
-        fullDatabaseCreatedTest();
+        //fullDatabaseCreatedTest();
 
-        runCleanup();
+        //runCleanup();
 
 
         // PRINT TEST RESULTS

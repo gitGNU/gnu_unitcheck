@@ -182,7 +182,7 @@
     }
 
     // test for successful creation of
-    // testdata table in database
+    // admin table in database
     function adminTableCreatedTest() {
         global $database;
         global $unitCheck;
@@ -198,6 +198,46 @@
 
         $test->failUnless($result,
                 "Error: Admin Table Creation Failed");
+
+    }
+
+    // test for successful creation of
+    // testdependencies table in database
+    function testDependenciesTableCreatedTest() {
+        global $database;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - Test Dependencies Table Created");
+        $unitCheck->addTest($test);
+
+        @mysql_select_db('tests', $database->getConnection());
+
+        $result = $database->createTestDependenciesTable();
+
+        $result = $database->tableExists("tests", "testdependencies");
+
+        $test->failUnless($result,
+                "Error: Test Dependencies Table Creation Failed");
+
+    }
+
+    // test for successful creation of
+    // testdata table in database
+    function testResultsTableCreatedTest() {
+        global $database;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - Test Results Table Created");
+        $unitCheck->addTest($test);
+
+        @mysql_select_db('tests', $database->getConnection());
+
+        $result = $database->createTestResultsTable();
+
+        $result = $database->tableExists("tests", "testresults");
+
+        $test->failUnless($result,
+                "Error: Test Results Table Creation Failed");
 
     }
 
@@ -283,22 +323,22 @@
 
     }
 
-    // test for successful creation of
-    // database users
-    function databaseUsersCreatedTest() {
-
-    }
-
-    // test that the correct priviledges
-    // were gives to admin
-    function databaseAdminPriviledgesTest() {
-
-    }
-
-    // test that the correct priviledges
-    // were gives to user
-    function databaseUserPriviledgesTest() {
-
-    }
+//    // test for successful creation of
+//    // database users
+//    function databaseUsersCreatedTest() {
+//
+//    }
+//
+//    // test that the correct priviledges
+//    // were gives to admin
+//    function databaseAdminPriviledgesTest() {
+//
+//    }
+//
+//    // test that the correct priviledges
+//    // were gives to user
+//    function databaseUserPriviledgesTest() {
+//
+//    }
 
 ?>

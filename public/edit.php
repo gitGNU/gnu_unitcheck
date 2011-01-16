@@ -23,7 +23,7 @@
      */
     require_once('../includes/initialise.php');
 
-    $_SESSION['title'] = 'New Accounts Menu';
+    $_SESSION['title'] = 'Edit';
 
     if ($user->isUserLoggedIn()) {
 
@@ -41,14 +41,14 @@
                 <tr>
                     <td colspan="3">
                         <div class="intro"></div>
-                        <a id="run_tests" class="uc_common_actions" href="addnewtest.php">
-                            <span>Add New Test</span>
+                        <a id="run_tests" class="uc_common_actions" href="edittest.php">
+                            <span>Edit Test</span>
                         </a>
-                        <a id="history" class="uc_common_actions" href="addnewproject.php">
-                            <span>Add New Project</span>
+                        <a id="history" class="uc_common_actions" href="editproject.php">
+                            <span>Edit Project</span>
                         </a>
-                        <a id="configure" class="uc_common_actions" href="createaccount.php">
-                            <span>Add New User</span>
+                        <a id="configure" class="uc_common_actions" href="editaccount.php?uid=<?php echo $user->getUserID(); ?>">
+                            <span>Edit Account</span>
                         </a>
                     </td>
                 </tr>
@@ -71,4 +71,3 @@
     }
 
 ?>
-

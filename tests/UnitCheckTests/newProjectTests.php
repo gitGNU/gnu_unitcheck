@@ -174,4 +174,75 @@
                 "Error: Project data not retrieved");
     }
 
+    // test makes sure that project data
+    // is retrieved properly
+    function projectIDSetAsMainProject4UserTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
+
+        $uID = 1;
+        $pID = 1;
+        
+        $test = new UnitCheckTest("TEST - Project ID Set As Main");
+        $unitCheck->addTest($test);
+
+        $result = $user->addUserToProject($pID);
+
+        $data = $user->getUserDataSetByID($uID);
+
+        $test->failUnless($data['mainproject_id'] == 1,
+                "Error: Failed to Set Project ID as Main");
+    }
+
+    // test makes sure that project data
+    // is retrieved properly
+    function updateAsMainProjectTest() {
+        global $database;
+        global $unitCheck;
+        global $user;
+
+        $cMain = 2;
+        $nMain = 1;
+        $status = FALSE;
+
+        $test = new UnitCheckTest("TEST - Update as Main Project");
+        $unitCheck->addTest($test);
+
+        $project = new UnitCheckProject();
+
+        $project->createNewProject("Check");
+
+        // get project data
+        $data = $project->getProjectDataSetByName("Check");
+        $pID = $data['project_id'];
+
+        //echo "Project ID: ".$pID;
+        // add user to project
+
+        $result = $user->addUserToProject($pID);
+        //echo "Add user to Project Result: ".$result;
+
+        $result = $user->updateMainProject($nMain);
+        
+        $userProject = $user->getUserProjectID();
+
+        $test->failUnless($userProject == nMain,
+                "Error: Failed to Update Main Project");
+    }
+
+    // test makes sure that project name
+    // is updated successfully
+    function updateProjectNameTest() {
+        global $database;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - Update Project Name");
+        $unitCheck->addTest($test);
+
+
+        $test->failUnless($status == TRUE,
+                "Error: Failed to Update Project Name");
+    }
+
 ?>

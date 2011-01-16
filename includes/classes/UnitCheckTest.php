@@ -33,14 +33,15 @@
 
         private $_testID;
         private $_testName;
-        private $_testResult;
+        private $_author;
+        private $_group;
         private $_errMessage;
         private $_projectID;
-        
-        //public static $testErrors = array();
-        private static $totalTests;
-        private static $totalSuccess;
-        private static $totalFailure;
+
+//        //public static $testErrors = array();
+//        private static $totalTests;
+//        private static $totalSuccess;
+//        private static $totalFailure;
 
         public function __construct($test_name) {
             $this->_testName = $test_name;
@@ -56,6 +57,11 @@
         }
 
         public function __destruct() {
+
+        }
+
+        public function initTest() {
+            $data = getTestDataSetByID($tID);
 
         }
 
@@ -118,7 +124,7 @@
 
         }
 
-        public function assertEquals($value1, $value2, $error = "") {
+        public function assertEquals($value1, $value2) {
             if ($value1 == $value2) {
                 return TRUE;
             }
@@ -128,9 +134,93 @@
 
         }
 
+        public function getTestID() {
+            return $this->_testID;
+
+        }
+
         public function getTestName() {
             return $this->_testName;
 
+        }
+
+        public function getTestAuthor() {
+            return $this->_author;
+
+        }
+
+        public function getTestGroup() {
+            return $this->_group;
+
+        }
+
+        public function getErrorMessage() {
+            return $this->_errMessage;
+
+        }
+
+        public function getTestProjectID() {
+            return $this->_projectID;
+
+        }
+
+        public function updateTestName() {
+
+        }
+
+        public function updateErrorMessage() {
+
+        }
+
+        public function updateTestAuthor() {
+
+        }
+
+        public function updateTestGroup() {
+
+        }
+
+        public function updateTestProject() {
+
+        }
+
+        public function addNewTest($testName, $testBody, $errorMessage, $testAuthor, $project_id, $active, $testGroup = 0) {
+            global $database;
+
+            $query = "INSERT INTO tests (test_name, test_body, error_message, project_id, test_author, test_group, test_active)
+                      VALUES ($testName, $testBody, $errorMessage, $project_id, $testAuthor, $testGroup, $active);";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                $tID = $database->getLastID();
+                return $tID;
+            }
+            else {
+                return FALSE;
+            }
+        }
+
+        public function removeTest() {
+            global $database;
+
+            $query = "UPDATE tests
+                      SET active = '0'
+                      WHERE test_id = '".$this->_testID."'";
+
+            $result = $database->query($query);
+            
+        }
+
+        public function getTestDataSetByID($tID) {
+            global $database;
+
+            $query = "";
+
+        }
+
+        public function getTestDataSetByName($testName) {
+            
         }
 
     }

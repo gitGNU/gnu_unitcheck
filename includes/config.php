@@ -64,5 +64,5 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     defined('SENDMAIL') ? null : define('SENDMAIL', FALSE);
-    defined('VERSION') ? null : define('VERSION', '0.12.0');
+    defined('VERSION') ? null : define('VERSION', '0.18.5');
 ?>

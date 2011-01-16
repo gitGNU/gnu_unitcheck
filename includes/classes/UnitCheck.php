@@ -127,11 +127,11 @@
 
 
                 if ($testResults[$i] == "PASSED") {
-                    $r = 'style="color:green; weight:bold; font-size:12px;"';
+                    $r = 'style="color:green; font-weight:bold; font-size:12px;"';
                     $totalSuccess++;
                 }
                 else {
-                    $r = 'style="color:red; weight:bold; font-size:12px;"';
+                    $r = 'style="color:red; font-weight:bold; font-size:12px;"';
                     $totalFailure++;
                 }
 

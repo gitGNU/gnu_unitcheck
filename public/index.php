@@ -51,11 +51,11 @@
                     <a id="run_tests" class="uc_common_actions" href="runTests.php?u=<?php echo $uID; ?>">
                         <span>Run Tests</span>
                     </a>
-                    <a id="configure" class="uc_common_actions" href="configure.php">
-                        <span>Configure</span>
+                    <a id="configure" class="uc_common_actions" href="new.php">
+                        <span>Add New</span>
                     </a>
-                    <a id="history" class="uc_common_actions" href="reports.php">
-                        <span>Reports</span>
+                    <a id="history" class="uc_common_actions" href="edit.php">
+                        <span>Edit</span>
                     </a>
                 </td>
                 <td style="max-width: 100px;">
@@ -70,9 +70,18 @@
                     <?php
 
                         while ($data = $database->fetchArray($resultSet, MYSQL_ASSOC)) {
-                            echo '<tr>
+
+                            if ($data['project_id'] == $user->getUserProjectID()) {
+
+                                echo '<tr>
+                                <td align="left"><img style="border: none;" src="' . IMAGE_PATH . DS . 'right.png" alt="Main Project Symbol"><a href="project.php?pid=' . $data['project_id'] . 'title="Main Project">' . $data['project_name'] . '</a></td><td>&nbsp;</td>';
+                                echo '</tr>';
+                            }
+                            else {
+                                echo '<tr>
                                 <td align="left"><a href="project.php?pid=' . $data['project_id'] . '">' . $data['project_name'] . '</a></td><td>&nbsp;</td>';
-                            echo '</tr>';
+                                echo '</tr>';
+                            }
                         }
 
                     ?>

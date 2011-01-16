@@ -349,3 +349,13 @@ ul.links {
     background-color: #EEDDFF;
     color: black;
 }
+
+input.required,
+select.required,
+span.required_explanation {
+    background-color: #FFF7CD;
+}
+
+form th {
+    vertical-align: top;
+}

@@ -23,7 +23,7 @@
      */
     require_once('../includes/initialise.php');
 
-    $_SESSION['title'] = 'New Accounts Menu';
+    $_SESSION['title'] = 'Edit Project';
 
     if ($user->isUserLoggedIn()) {
 
@@ -40,15 +40,15 @@
             <table cellspacing="4" cellpadding="2" border="0" >
                 <tr>
                     <td colspan="3">
-                        <div class="intro"></div>
-                        <a id="run_tests" class="uc_common_actions" href="addnewtest.php">
-                            <span>Add New Test</span>
+<!--                        <div class="intro"></div>
+                        <a id="run_tests" class="uc_common_actions" href="edittest.php">
+                            <span>Edit Test</span>
                         </a>
-                        <a id="history" class="uc_common_actions" href="addnewproject.php">
-                            <span>Add New Project</span>
+                        <a id="history" class="uc_common_actions" href="editproject.php">
+                            <span>Edit Project</span>
                         </a>
-                        <a id="configure" class="uc_common_actions" href="createaccount.php">
-                            <span>Add New User</span>
+                        <a id="configure" class="uc_common_actions" href="editaccount.php">
+                            <span>Edit Account</span>-->
                         </a>
                     </td>
                 </tr>
@@ -65,10 +65,9 @@
         UnitCheckFooter::printFooter();
     }
     else {
-        $_SESSION['message'] = "You must be logged in to access this feature.";
+        $_SESSION['message'] = "You must be logged in to edit a project.";
         header("Location: index.php");
         exit();
     }
 
 ?>
-

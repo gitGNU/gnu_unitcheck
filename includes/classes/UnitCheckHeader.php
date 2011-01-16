@@ -106,7 +106,11 @@
                             </li>
                             <li>
                                 <span class="separator">| </span>
-                                <a href="../public/new.php">New</a>
+                                <a href="../public/new.php">Add New</a>
+                            </li>
+                            <li>
+                                <span class="separator">| </span>
+                                <a href="../public/edit.php">Edit</a>
                             </li>
                             <li>
                                 <span class="separator">| </span>
