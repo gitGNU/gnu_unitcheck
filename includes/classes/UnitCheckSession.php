@@ -1,11 +1,12 @@
 <?php
 
     /**
-     * Session class is a template for Session objects.
-     *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckSession attributes and methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -20,13 +21,15 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
-     * @package
+     */
+
+    /**
+     * @copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @license         "GNU General Public License", version="3.0"
      * @author          Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright       2010, 2011 Tom Kaczocha
      * @version 	1.0
      * @access          public
-     * @License         "GNU General Public License", version="3.0"
      *
      */
     class UnitCheckSession {
@@ -104,7 +107,6 @@
          * Function checks for an existing session
          * in the database
          *
-         * @param
          * @access public
          *
          * @return Boolean TRUE if session exists, otherwise FALSE
@@ -133,7 +135,6 @@
         /**
          * Function adds a new session to database
          *
-         * @param
          * @access public
          *
          * @return Boolean TRUE if session was successfully added to database

@@ -1,11 +1,12 @@
 <?php
 
     /**
-     * Session class is a template for Session objects.
-     *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckHelper attributes and methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -20,13 +21,15 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
-     * @package
+     */
+
+    /**
+     * @package     UnitCheck
      * @author	    Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright   2010, 2011 Tom Kaczocha
-     * @version 	2.0
+     * @version     2.0
      * @access	    public
-     * @License     "GNU General Public License", version="3.0"
+     * @license     "GNU General Public License", version="3.0"
      *
      */
     class UnitCheckHelper {
@@ -34,10 +37,7 @@
         /**
          * UnitCheckHelper Constructor
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function __construct() {
@@ -47,10 +47,7 @@
         /**
          * UnitCheckHelper Destructor
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function __destruct() {
@@ -63,7 +60,6 @@
          * @param String $array
          * @access public
          * @static
-         * @return
          *
          */
         public static function printArray($array) {

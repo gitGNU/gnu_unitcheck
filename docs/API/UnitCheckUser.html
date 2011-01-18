@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class UnitCheckUser</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class UnitCheckUser</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">UnitCheckUser class is a template for UnitCheck User objects.</p>
+<p class="description"><p>Copyright 	(c) 2010, 2011 Tom Kaczocha</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Tom Kaczocha &lt;<a href="mailto:freedomdeveloper@yahoo.com">freedomdeveloper@yahoo.com</a>&gt;</li>
+				<li><span class="field">version:</span> 1.0</li>
+				<li><span class="field">copyright:</span> 2010 Tom Kaczocha</li>
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">license:</span> GNU</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_UnitCheckUser.php.html">/UnitCheckUser.php</a> (line <span class="field">36</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																				<div class="method-definition">
+					static 						<span class="method-result">String|Boolean</span>
+										<a href="#authenticateUser" title="details" class="method-name">authenticateUser</a>
+											([<span class="var-type">String</span>&nbsp;<span class="var-name">$email</span> = <span class="var-default">''</span>], [<span class="var-type">String</span>&nbsp;<span class="var-name">$password</span> = <span class="var-default">''</span>])
+									</div>
+																																																																																																																																																																																																																
+												<div class="method-definition">
+											<span class="method-result">UnitCheckUser</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">0</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#__destruct" title="details" class="method-name">__destruct</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#addUserToProject" title="details" class="method-name">addUserToProject</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$pID</span>)
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#createNewUserAccount" title="details" class="method-name">createNewUserAccount</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$fname</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$lname</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$email</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$pass</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Boolean</span>
+										<a href="#emailCheck" title="details" class="method-name">emailCheck</a>
+											(<span class="var-type">String</span>&nbsp;<span class="var-name">$email</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">String</span>
+										<a href="#generatePassword" title="details" class="method-name">generatePassword</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getAdminResultSet" title="details" class="method-name">getAdminResultSet</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Boolean</span>
+										<a href="#getIsUserActive" title="details" class="method-name">getIsUserActive</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getUserDataSetByID" title="details" class="method-name">getUserDataSetByID</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">String</span>
+										<a href="#getUserEmail" title="details" class="method-name">getUserEmail</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getUserFullName" title="details" class="method-name">getUserFullName</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">String</span>
+										<a href="#getUserID" title="details" class="method-name">getUserID</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getUserProjectID" title="details" class="method-name">getUserProjectID</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getUserProjectName" title="details" class="method-name">getUserProjectName</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getUserProjects" title="details" class="method-name">getUserProjects</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getUserResultSet" title="details" class="method-name">getUserResultSet</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#isUserAdmin" title="details" class="method-name">isUserAdmin</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Boolean</span>
+										<a href="#isUserLoggedIn" title="details" class="method-name">isUserLoggedIn</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#loginUser" title="details" class="method-name">loginUser</a>
+											(<span class="var-type">String</span>&nbsp;<span class="var-name">$user_id</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#logoutUser" title="details" class="method-name">logoutUser</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#registerAdmin" title="details" class="method-name">registerAdmin</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#updateMainProject" title="details" class="method-name">updateMainProject</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$pID</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Boolean</span>
+										<a href="#updateProfile" title="details" class="method-name">updateProfile</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$fName</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$lName</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$email</span>, <span class="var-type">String</span>&nbsp;<span class="var-name">$address</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Boolean</span>
+										<a href="#updateSession" title="details" class="method-name">updateSession</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Boolean</span>
+										<a href="#updateUserPassword" title="details" class="method-name">updateUserPassword</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$newpass</span>, <span class="var-type">String</span>&nbsp;<span class="var-name">$new_pass</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#userEmailExists" title="details" class="method-name">userEmailExists</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$newEmail</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#validatePassword" title="details" class="method-name">validatePassword</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$pass1</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$pass2</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Boolean</span>
+										<a href="#verifyPassword" title="details" class="method-name">verifyPassword</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$password</span>, <span class="var-type">String</span>&nbsp;<span class="var-name">$realname</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodauthenticateUser" id="authenticateUser"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method authenticateUser</span> (line <span class="line-number">320</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function authenticates user login attempt</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Email if login Successful, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">String|Boolean</span>
+		<span class="method-name">
+			authenticateUser
+		</span>
+					([<span class="var-type">String</span>&nbsp;<span class="var-name">$email</span> = <span class="var-default">''</span>], [<span class="var-type">String</span>&nbsp;<span class="var-name">$password</span> = <span class="var-default">''</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">String</span>
+				<span class="var-name">$email</span><span class="var-description">: Email</span>			</li>
+					<li>
+				<span class="var-type">String</span>
+				<span class="var-name">$password</span><span class="var-description">: Password</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">46</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">UnitCheckUser</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$id</span> = <span class="var-default">0</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method__destruct" id="__destruct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Destructor __destruct</span> (line <span class="line-number">70</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			__destruct
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodaddUserToProject" id="addUserToProject"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addUserToProject</span> (line <span class="line-number">570</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addUserToProject
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$pID</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pID</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcreateNewUserAccount" id="createNewUserAccount"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">createNewUserAccount</span> (line <span class="line-number">93</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			createNewUserAccount
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$fname</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$lname</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$email</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$pass</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$fname</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$lname</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$email</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pass</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodemailCheck" id="emailCheck"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">emailCheck</span> (line <span class="line-number">441</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function validates email address input</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 1 if matches, otherwise 0</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			emailCheck
+		</span>
+					(<span class="var-type">String</span>&nbsp;<span class="var-name">$email</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">String</span>
+				<span class="var-name">$email</span><span class="var-description">: Email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgeneratePassword" id="generatePassword"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">generatePassword</span> (line <span class="line-number">408</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function generates a new password</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Password</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">String</span>
+		<span class="method-name">
+			generatePassword
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetAdminResultSet" id="getAdminResultSet"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getAdminResultSet</span> (line <span class="line-number">136</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getAdminResultSet
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetIsUserActive" id="getIsUserActive"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getIsUserActive</span> (line <span class="line-number">222</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function gets users status</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if active, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			getIsUserActive
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUserDataSetByID" id="getUserDataSetByID"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserDataSetByID</span> (line <span class="line-number">153</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getUserDataSetByID
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$uID</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetUserEmail" id="getUserEmail"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserEmail</span> (line <span class="line-number">208</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function gets users email</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> User Email</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">String</span>
+		<span class="method-name">
+			getUserEmail
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUserFullName" id="getUserFullName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserFullName</span> (line <span class="line-number">629</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getUserFullName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUserID" id="getUserID"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserID</span> (line <span class="line-number">194</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function gets user ID</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> User ID</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">String</span>
+		<span class="method-name">
+			getUserID
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUserProjectID" id="getUserProjectID"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserProjectID</span> (line <span class="line-number">667</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getUserProjectID
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUserProjectName" id="getUserProjectName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserProjectName</span> (line <span class="line-number">673</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getUserProjectName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUserProjects" id="getUserProjects"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserProjects</span> (line <span class="line-number">610</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getUserProjects
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$uID</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetUserResultSet" id="getUserResultSet"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUserResultSet</span> (line <span class="line-number">173</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getUserResultSet
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodisUserAdmin" id="isUserAdmin"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">isUserAdmin</span> (line <span class="line-number">649</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			isUserAdmin
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$uID</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisUserLoggedIn" id="isUserLoggedIn"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">isUserLoggedIn</span> (line <span class="line-number">304</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function checks whether user is logged in</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if logged in, FALSE if not</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			isUserLoggedIn
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodloginUser" id="loginUser"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">loginUser</span> (line <span class="line-number">370</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function logs user in</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			loginUser
+		</span>
+					(<span class="var-type">String</span>&nbsp;<span class="var-name">$user_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">String</span>
+				<span class="var-name">$user_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodlogoutUser" id="logoutUser"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">logoutUser</span> (line <span class="line-number">388</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function logs user out</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			logoutUser
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodregisterAdmin" id="registerAdmin"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">registerAdmin</span> (line <span class="line-number">116</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			registerAdmin
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$uID</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$uID</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdateMainProject" id="updateMainProject"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateMainProject</span> (line <span class="line-number">692</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			updateMainProject
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$pID</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pID</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdateProfile" id="updateProfile"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateProfile</span> (line <span class="line-number">464</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function is a wrapper for filer_var and  validates entered email</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if successful, otherwise FALSE</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			updateProfile
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$fName</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$lName</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$email</span>, <span class="var-type">String</span>&nbsp;<span class="var-name">$address</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">String</span>
+				<span class="var-name">$address</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$fName</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$lName</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$email</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodupdateSession" id="updateSession"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateSession</span> (line <span class="line-number">540</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function updates user ID in session table</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if session exists, otherwise FALSE</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			updateSession
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodupdateUserPassword" id="updateUserPassword"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateUserPassword</span> (line <span class="line-number">493</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function updates user password</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if Successful, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			updateUserPassword
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$newpass</span>, <span class="var-type">String</span>&nbsp;<span class="var-name">$new_pass</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">String</span>
+				<span class="var-name">$new_pass</span><span class="var-description">: New Password</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$newpass</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoduserEmailExists" id="userEmailExists"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">userEmailExists</span> (line <span class="line-number">343</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			userEmailExists
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$newEmail</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$newEmail</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodvalidatePassword" id="validatePassword"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">validatePassword</span> (line <span class="line-number">560</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			validatePassword
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$pass1</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$pass2</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pass1</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$pass2</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodverifyPassword" id="verifyPassword"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">verifyPassword</span> (line <span class="line-number">520</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Function updates users realname</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> TRUE if Successful, FALSE otherwise</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			verifyPassword
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$password</span>, <span class="var-type">String</span>&nbsp;<span class="var-name">$realname</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">String</span>
+				<span class="var-name">$realname</span><span class="var-description">: Real Name</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$password</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Tue, 18 Jan 2011 17:41:25 +1100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

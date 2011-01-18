@@ -74,7 +74,7 @@
                             if ($data['project_id'] == $user->getUserProjectID()) {
 
                                 echo '<tr>
-                                <td align="left"><img style="border: none;" src="' . IMAGE_PATH . DS . 'right.png" alt="Main Project Symbol"><a href="project.php?pid=' . $data['project_id'] . 'title="Main Project">' . $data['project_name'] . '</a></td><td>&nbsp;</td>';
+                                <td align="left"><img style="border: none;" src="' . IMAGE_PATH . DS . 'right.png" alt="Main Project Symbol"><a href="project.php?pid=' . $data['project_id'] . '" title="Main Project">' . $data['project_name'] . '</a></td><td>&nbsp;</td>';
                                 echo '</tr>';
                             }
                             else {

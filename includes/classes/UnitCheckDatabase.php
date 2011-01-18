@@ -1,10 +1,13 @@
 <?php
 
     /**
-     *
-     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckTestDatabase attributes and
+     * methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -24,9 +27,7 @@
     /**
      * My_Sql_Database class is a template for database connection objects.
      *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha
-     *
-     * @package		
+     * @package         UnitCheck
      * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright	2010 Tom Kaczocha
      * @license         GNU General Public License, version 3.0
@@ -67,10 +68,7 @@
         /**
          * Database Constructor
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function __construct() {
@@ -86,10 +84,7 @@
         /**
          * Function opens a connection to the database
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function openConnection() {
@@ -129,10 +124,7 @@
         /**
          * Function closes last database connection
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function closeConnection() {
@@ -202,7 +194,6 @@
         /**
          * Function gets the number of affected rows by the last INSERT, UPDATE, REPLACE or DELETE query
          *
-         * @param
          * @access public
          *
          * @return String Number of Rows
@@ -216,10 +207,8 @@
         /**
          * Function confirms query
          *
-         * @param $result ResultSet
+         * @param $result ResultSet Query ResultSet
          * @access private
-         *
-         * @return
          *
          */
         private function confirmQuery($result) {

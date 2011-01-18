@@ -22,11 +22,28 @@
 ================================================================================
                                CHANGELOG
 ================================================================================
+
+2011-01-18 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Added docs/API/ directory
+    * Added library documentation to docs/API/ directory
+    * Edited includes/classes/README file
+    * Edited comments for includes/classes/UnitCheck.php
+    * Edited comments for includes/classes/UnitCheckDatabase.php
+    * Edited comments for includes/classes/UnitCheckDirectory.php
+    * Edited comments for includes/classes/UnitCheckFooter.php
+    * Edited comments for includes/classes/UnitCheckHeader.php
+    * Edited comments for includes/classes/UnitCheckHelper.php
+    * Edited comments for includes/classes/UnitCheckProject.php
+    * Edited comments for includes/classes/UnitCheckSession.php
+    * Edited comments for includes/classes/UnitCheckTest.php
+    * Edited comments for includes/classes/UnitCheckDependency.php
+    * Edited comments for includes/classes/UnitCheckUser.php
+    * Added API link to UnitCheckFooter.php
+
 2011-01-17 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added function_name to tests table
     * Edited test_active size in tests table
     * Added createTestResultsTable() function to UnitCheckDatabase class
-    * 
 
 2011-01-16 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Removed PRIMARY KEY from userprojects table

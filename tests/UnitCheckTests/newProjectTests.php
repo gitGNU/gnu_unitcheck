@@ -61,9 +61,13 @@
         // get project data
         $data = $project->getProjectDataSetByName("UnitTesting");
         $pID = $data['project_id'];
+        echo "<br />TEST -- addUserToProjectTest() pID: " . $pID . "<br />";
 
-        // add user to project
+
+        // add user to project - FAILING
         $result = $user->addUserToProject($pID);
+        echo "<br />TEST - addUserToProjectTest() Result: " . $result . "<br /><br />";
+
 
         $data = $user->getUserProjects($user->getUserID());
 
@@ -91,7 +95,6 @@
         $unitCheck->addTest($test);
 
         $project = new UnitCheckProject();
-
 
         $result = $project->createProjectDirectory("UnitTesting");
 
@@ -123,7 +126,7 @@
         $project = new UnitCheckProject();
 
         $result = $project->projectExists($newProject);
-
+        echo "TEST - duplicateProjectTest - projectExists() Result: " . $result . "<br />";
         if ($result == FALSE) {
             $project->createNewProject("UnitTesting");
 
@@ -172,6 +175,7 @@
 
         $test->failUnless($status == TRUE,
                 "Error: Project data not retrieved");
+
     }
 
     // test makes sure that project data
@@ -183,16 +187,17 @@
 
         $uID = 1;
         $pID = 1;
-        
+
         $test = new UnitCheckTest("TEST - Project ID Set As Main");
         $unitCheck->addTest($test);
 
         $result = $user->addUserToProject($pID);
-
+        echo "TEST - projectIDSetAsMainProject4UserTest - AddUserToProject() Result: " . $result . "<br />";
         $data = $user->getUserDataSetByID($uID);
 
         $test->failUnless($data['mainproject_id'] == 1,
                 "Error: Failed to Set Project ID as Main");
+
     }
 
     // test makes sure that project data
@@ -217,18 +222,23 @@
         $data = $project->getProjectDataSetByName("Check");
         $pID = $data['project_id'];
 
-        //echo "Project ID: ".$pID;
+        echo "TEST - updateAsMainProjectTest - Project ID: " . $pID . "<br />";
         // add user to project
 
         $result = $user->addUserToProject($pID);
-        //echo "Add user to Project Result: ".$result;
+        echo "TEST - updateAsMainProjectTest - Add user to Project Result: " . $result . "<br />";
 
         $result = $user->updateMainProject($nMain);
-        
-        $userProject = $user->getUserProjectID();
+        echo "TEST - updateAsMainProjectTest - Update Main Project Result: " . $result . "<br />";
 
-        $test->failUnless($userProject == nMain,
+        $userProject = $user->getUserProjectID();
+        echo "TEST - updateAsMainProjectTest - Updated Project ID: " . $userProject;
+
+        $test->failUnless($userProject == $nMain,
                 "Error: Failed to Update Main Project");
+
+        //echo "<meta http-equiv='refresh' content='0;URL=runTests.php'>";
+
     }
 
     // test makes sure that project name
@@ -243,6 +253,7 @@
 
         $test->failUnless($status == TRUE,
                 "Error: Failed to Update Project Name");
+
     }
 
 ?>

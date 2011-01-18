@@ -1,11 +1,12 @@
 <?php
 
     /**
-     * UnitCheckProject class is a template for UnitCheck Project objects.
-     *
-     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckProject attributes and methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -20,26 +21,50 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
-     * @package
+     */
+
+    /** @package     UnitCheck
      * @author	    Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright   2011 Tom Kaczocha
      * @version     1.0
      * @access	    public
-     * @License     "GNU General Public License", version="3.0"
+     * @license     "GNU General Public License", version="3.0"
      *
      */
     class UnitCheckProject {
 
+        /**
+         * Project ID
+         *
+         * @access private
+         * @var String
+         */
         private $_projectID;
+        /**
+         * Project Name
+         *
+         * @access private
+         * @var String
+         */
         private $_projectName;
+        /**
+         * Creation Date
+         *
+         * @access private
+         * @var String
+         */
         private $_creationDate;
+        /**
+         * Last Modified
+         *
+         * @access private
+         * @var String
+         */
         private $_lastMod;
 
         public function __construct($pID = "") {
             if ($pID != "") {
                 $this->initProject($pID);
-                
             }
 
         }
@@ -60,18 +85,22 @@
 
         public function getProjectID() {
             return $this->_projectID;
+
         }
 
         public function getProjectName() {
             return $this->_projectName;
+
         }
 
         public function getProjectCreationDate() {
             return $this->_creationDate;
+
         }
 
         public function getProjectModDate() {
             return $this->_lastMod;
+
         }
 
         public function createNewProject($pName) {

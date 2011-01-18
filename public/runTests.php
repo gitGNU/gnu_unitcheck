@@ -76,6 +76,8 @@
         
 
         userSuccessfullyLoggedInTest();
+        
+
         newProjectTest();
         projectIDSetAsMainProject4UserTest();
         duplicateProjectTest();
@@ -103,14 +105,15 @@
         updatedTestBodyTest();
         updatedTestAuthorTest();
         updatedTestProjectIDTest();
+
         
 
         // run POST-cleanup
-        //runCleanup();
+        runCleanup();
 
-        //fullDatabaseCreatedTest();
+        fullDatabaseCreatedTest();
 
-        //runCleanup();
+        runCleanup();
 
 
         // PRINT TEST RESULTS

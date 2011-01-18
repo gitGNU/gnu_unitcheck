@@ -1,11 +1,12 @@
 <?php
 
     /**
-     * Header class is a template for Header objects.
-     *
-     * Copyright (c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckHeader attributes and methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -20,24 +21,22 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
+     */
+
+    /**
      *
-     * @package
+     * @package     UnitCheck
      * @author	    Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright   2010, 2011 Tom Kaczocha
+     * @copyright   (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @version     1.0
-     * @access	    public
-     * @License     "GNU General Public License", version="3.0"
-     *
+     * 
      */
     class UnitCheckHeader {
 
         /**
          * UnitCheckHeader Constructor
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function __construct() {
@@ -47,10 +46,7 @@
         /**
          * UnitCheckHeader Destructor
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function __destruct() {
@@ -60,10 +56,7 @@
         /**
          * Function prints UnitCheck header
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public static function printHeader() {

@@ -1,10 +1,12 @@
 <?php
 
     /**
-     *
-     * Copyright (C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheck attributes and methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -22,11 +24,9 @@
      */
 
     /**
-     * UnitCheck class is a template for UnitCheck objects.
+     * 
      *
-     * Copyright 	(C) 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
-     * @package
+     * @package         UnitCheck
      * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright	2011 Tom Kaczocha
      * @license         GNU General Public License, version 3.0
@@ -35,21 +35,52 @@
      */
     class UnitCheck {
 
+        /**
+         * Tests Array
+         *
+         * @access private
+         * @var String
+         */
         private $_tests = array();
+        /**
+         * Project Name
+         *
+         * @access private
+         * @var String
+         */
         private $_projectName;
 
+        /**
+         * UnitCheck object Constructor
+         *
+         * @access public
+         *
+         */
         public function __construct() {
 
         }
 
+        /**
+         * UnitCheck object Constructor
+         *
+         * @access public
+         *
+         */
         public function __destruct() {
             
         }
 
+        /**
+         * Function adds new Tests to database
+         *
+         * @param $test UnitCheckTest Test Object
+         * @access public
+         *
+         */
         public function addTest(UnitCheckTest $test) {
             global $testNames;
             global $testResults;
-            
+
             if (is_object($test)) {
                 $testNames[] = $test->getTestName();
                 if (count($testNames) == 1) {
@@ -63,6 +94,12 @@
 
         }
 
+        /**
+         * Function displays a list of tests
+         *
+         * @access public
+         *
+         */
         public function displayTestList() {
 
             echo "Number of Tests: " . count($this->_tests);
@@ -85,15 +122,35 @@
 
         }
 
-        public function removeTest(Test $test) {
+        /**
+         * Function removes a test from the database
+         *
+         * @param $test UnitCheckTest Test
+         * @access public
+         *
+         */
+        public function removeTest(UnitCheckTest $test) {
             
         }
 
+        /**
+         * Function returns the test array
+         *
+         * @access public
+         *
+         * @return Array UnitCheckTest array
+         */
         public function getTests() {
             return $this->_tests;
 
         }
 
+        /**
+         * Function prints test results
+         *
+         * @access public
+         *
+         */
         public function printResults() {
             global $testNames;
             global $testResults;

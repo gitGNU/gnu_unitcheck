@@ -1,10 +1,12 @@
 <?php
 
     /**
-     *
-     * Copyright (C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckUser attributes and methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -22,27 +24,74 @@
      */
 
     /**
-     * UnitCheckUser class is a template for UnitCheck User objects.
+     * UnitCheckUser class is a template for UnitCheckUser objects.
      *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha
-     *
-     * @package
+     * @package         UnitCheck
      * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
-     * @copyright	2010 Tom Kaczocha
+     * @copyright	2010, 2011 Tom Kaczocha
      * @license         GNU General Public License, version 3.0
      * @version 	1.0
      * @access		public
      */
     class UnitCheckUser {
 
+        /**
+         * User ID
+         *
+         * @access private
+         * @var String
+         */
         private $_userID;
+        /**
+         * User's First Name
+         *
+         * @access private
+         * @var String
+         */
         private $_user_first_name;
+        /**
+         * User's Last Name
+         *
+         * @access private
+         * @var String
+         */
         private $_user_last_name;
+        /**
+         * Email
+         *
+         * @access private
+         * @var String
+         */
         private $_email;
+        /**
+         * Password
+         *
+         * @access private
+         * @var String
+         */
         private $_password;
-        private $_mainProject;
+        /**
+         * Main Project ID
+         *
+         * @access private
+         * @var String
+         */
+        private $_mainProjectID;
+        /**
+         * User Logged in Flag
+         *
+         * @access private
+         * @var String
+         */
         private $_userIsLoggedIn;
 
+         /**
+         * UnitCheck User Object Constructor
+         *
+         * @param String User ID
+         * @access public
+         *
+         */
         public function __construct($id = 0) {
             global $session;
 
@@ -53,7 +102,7 @@
 //            echo "<br />LAST NAME: " . $this->_user_last_name;
 //            echo "<br />EMAIL: " . $this->_email;
 //            echo "<br />PASSWORD: " . $this->_password;
-//            echo "<br />MAIN PROJECT: " . $this->_mainProject;
+//            echo "<br />MAIN PROJECT: " . $this->_mainProjectIDIDIDID;
 //            echo "<br />IS LOGGED IN: " . $this->_userIsLoggedIn;
             // check for matching session in database
             $session_status = $session->checkForSession();
@@ -67,10 +116,23 @@
 
         }
 
+        /**
+         * UnitCheck User Object Destructor
+         *
+         * @access public
+         *
+         */
         public function __destruct() {
             
         }
 
+        /**
+         * Function initialises a user object
+         *
+         * @param String User ID
+         * @access public
+         *
+         */
         private function initUser($uID) {
             //echo "INIT USER ID: ".$uID;
             $this->_userID = $uID;
@@ -82,14 +144,28 @@
                 $this->_user_last_name = $data['user_last_name'];
                 $this->_email = $data['email'];
                 $this->_password = $data['password'];
-                $this->_mainProject = $data['mainproject_id'];
-
+                $this->_mainProjectID = $data['mainproject_id'];
+                echo "Init User Main Project ID: " . $this->_mainProjectID . "<br />";
                 $_SESSION['email'] = $this->_email;
                 //echo "<br />NOT FALSE<br />";
             }
 
         }
 
+        /**
+         * Function adds a new user to the database
+         *
+         * @param Stirng First Name
+         * @param String Last Name
+         * @param String Email
+         * @param String Password
+         * 
+         * @access public
+         *
+         * @return String|Boolean User ID if successful,
+         * else FALSE
+         *
+         */
         public function createNewUserAccount($fname, $lname, $email, $pass) {
             global $database;
 
@@ -108,11 +184,20 @@
                 return $uID;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function adds an admin to the database
+         *
+         * @param String User ID
+         * @access public
+         *
+         * @return Boolean TRUE if successful, else FALSE
+         *
+         */
         public function registerAdmin($uID) {
             global $database;
 
@@ -128,11 +213,20 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function returns Admin ResultSet
+         *
+         * @access public
+         *
+         * @return ResultSet|Boolean Admin ResultSet if successful
+         * else FALSE
+         *
+         */
         public function getAdminResultSet() {
             global $database;
 
@@ -145,11 +239,21 @@
                 return $result;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function returns user DataSet by ID
+         *
+         * @param String User ID
+         * @access public
+         *
+         * @return DataSet|Boolean User DataSet if successful
+         * else FALSE
+         *
+         */
         public function getUserDataSetByID($uID) {
             global $database;
 
@@ -165,11 +269,19 @@
                 return $data;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function returns user ResultSet
+         *
+         * @access public
+         *
+         * @return ResultSet User ResultSet
+         *
+         */
         public function getUserResultSet() {
             global $database;
 
@@ -183,9 +295,8 @@
         }
 
         /**
-         * Function gets user ID
+         * Function returns user ID
          *
-         * @param
          * @access public
          *
          * @return String User ID
@@ -197,9 +308,8 @@
         }
 
         /**
-         * Function gets users email
+         * Function returns users email
          *
-         * @param
          * @access public
          *
          * @return String User Email
@@ -213,7 +323,6 @@
         /**
          * Function gets users status
          *
-         * @param
          * @access public
          *
          * @return Boolean TRUE if active, FALSE otherwise
@@ -227,10 +336,9 @@
         /**
          * Function sets User ID
          *
-         * @param String $id User ID
+         * @param String User ID
          * @access private
          *
-         * @return
          *
          */
         private function setUserID($id) {
@@ -241,10 +349,8 @@
         /**
          * Function sets user password
          *
-         * @param String $password Password
+         * @param String Password
          * @access private
-         *
-         * @return
          *
          */
         private function setPassword($password) {
@@ -255,10 +361,8 @@
         /**
          * Function sets user email
          *
-         * @param String $email Email
+         * @param String Email
          * @access private
-         *
-         * @return
          *
          */
         private function setUserEmail($email) {
@@ -266,6 +370,13 @@
 
         }
 
+        /**
+         * Function sets user status
+         *
+         * @param String Status
+         * @access private
+         *
+         */
         private function setIsActive($status) {
             $this->_isActive = $status;
 
@@ -275,10 +386,7 @@
          * Function checks whether user is logged in
          * Sets Flag to TRUE if logged in, FALSE if not
          *
-         * @param
          * @access private
-         *
-         * @return
          *
          */
         private function checkUserLogin() {
@@ -296,10 +404,10 @@
         /**
          * Function checks whether user is logged in
          *
-         * @param
          * @access public
          *
          * @return Boolean TRUE if logged in, FALSE if not
+         * 
          */
         public function isUserLoggedIn() {
             return $this->_userIsLoggedIn;
@@ -309,11 +417,12 @@
         /**
          * Function authenticates user login attempt
          *
-         * @param String $email Email
-         * @param String $password Password
+         * @param String Email
+         * @param String Password
          *
          * @access public
          * @static
+         * 
          * @return String|Boolean Email if login Successful, FALSE otherwise
          *
          */
@@ -335,11 +444,21 @@
                 return $data['user_id'];
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function validates that an email exists
+         * in the database
+         *
+         * @param String Email
+         * @access public
+         *
+         * @return Boolean TRUE if exists, else FALSE
+         *
+         */
         public function userEmailExists($newEmail) {
             global $database;
 
@@ -353,7 +472,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -361,15 +480,13 @@
         /**
          * Function logs user in
          *
-         * @param String $user_id
+         * @param String User ID
          * @access public
          *
-         * @return
-         *
          */
-        public function loginUser($user_id) {
-            if ($user_id) {
-                $this->_userID = $_SESSION['user_id'] = $user_id;
+        public function loginUser($uID) {
+            if ($uID) {
+                $this->_userID = $_SESSION['user_id'] = $uID;
                 $this->_userIsLoggedIn = TRUE;
                 $this->initUser($this->_userID);
             }
@@ -379,10 +496,7 @@
         /**
          * Function logs user out
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function logoutUser() {
@@ -397,45 +511,12 @@
         }
 
         /**
-         * Function generates a new password
-         *
-         * @param
-         * @access public
-         *
-         * @return String Password
-         *
-         */
-        public function generatePassword() {
-            $pass = "";
-            $c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)(-_!@=.0123456789";
-            /*             * for($i=0;$i<26;$i++)
-              $c[$i]=chr(97+$i);
-              for($i=0;$i<26;$i++)
-              $c[$i+26]=chr(65+$i);
-              $c[52]=")";
-              $c[53]="(";
-              $c[54]="-";
-              $c[55]="_";
-              $c[56]="!";
-              $c[57]="@";
-              $c[58]="=";
-              $c[59]=".";
-              for($i=0;$i<10;$i++)
-              $c[$i+60]=$i;* */
-            $pass = "";
-            for ($i = 0; $i < 12; $i++)
-                $pass.=$c[rand(0, 69)];
-            return $pass;
-
-        }
-
-        /**
          * Function validates email address input
          *
-         * @param String $email Email
+         * @param String Email
          * @access public
          *
-         * @return Boolean 1 if matches, otherwise 0
+         * @return Boolean TRUE if matches, otherwise FALSE
          *
          */
         public function emailCheck($email) {
@@ -452,10 +533,11 @@
         }
 
         /**
-         * Function is a wrapper for filer_var and
-         * validates entered email
+         * Function updates users profile
          *
-         * @param String $address
+         * @param String First Name
+         * @param String Last Name
+         * @param String Email
          * @access public
          *
          * @return Boolean TRUE if successful, otherwise FALSE
@@ -476,7 +558,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -484,7 +566,7 @@
         /**
          * Function updates user password
          *
-         * @param String $new_pass New Password
+         * @param String New Password
          * @access public
          *
          * @return Boolean TRUE if Successful, FALSE otherwise
@@ -503,7 +585,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -511,7 +593,7 @@
         /**
          * Function updates users realname
          *
-         * @param String $realname Real Name
+         * @param String Password
          * @access public
          *
          * @return Boolean TRUE if Successful, FALSE otherwise
@@ -523,7 +605,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -531,7 +613,6 @@
         /**
          * Function updates user ID in session table
          *
-         * @param
          * @access public
          *
          * @return Boolean TRUE if session exists, otherwise FALSE
@@ -552,21 +633,41 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function validates a users password
+         *
+         * @param String Password 1
+         * @param String Password 2
+         *
+         * @access public
+         *
+         * @return Boolean TRUE if valid, else FALSE
+         *
+         */
         public function validatePassword($pass1, $pass2) {
             if (($pass1 == $pass2) && (strlen($pass1) >= 6)) {
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function adds a user to project
+         *
+         * @param String Project ID
+         * @access public
+         *
+         * @return Boolean TRUE if successful, else FALSE
+         *
+         */
         public function addUserToProject($pID) {
             global $database;
             global $user;
@@ -574,31 +675,48 @@
             $status = 0;
 
             $query1 = "INSERT INTO userprojects (user_id, project_id)
-                      VALUES ('" . $user->getUserID() . "', '" . $pID . "');";
+                      VALUES ('" . $this->_userID . "', '" . $pID . "');";
 
+            //echo "<br />QUERY 1: " . $query1 . "<br />";
             $query2 = "UPDATE users
                        SET mainproject_id = '" . $pID . "'
                        WHERE user_id = '" . $this->_userID . "';";
 
+            //echo "<br />QUERY 2: " . $query2 . "<br /><br />";
+
             $result = $database->query($query1);
+            //echo "Query 1 Result = " . $result . "<br />";
             if ($database->affectedRows($result) == 1) {
+
                 $status++;
             }
 
             $result = $database->query($query2);
+            //echo "Query 2 Result = " . $result . "<br />";
             if ($database->affectedRows($result) == 1) {
                 $status++;
             }
 
             if ($status == 2) {
+                //echo "Add User to Project TRUE<br />";
                 return TRUE;
             }
             else {
-                return FALSE;
+                //echo "Add User to Project FALSE<br />";
+                return 0;
             }
 
         }
 
+        /**
+         * Function returns the users projects
+         *
+         * @param String User ID
+         * @access public
+         *
+         * @return DataSet|Boolean User Projects DataSet or FALSE
+         *
+         */
         public function getUserProjects($uID) {
             global $database;
 
@@ -613,11 +731,19 @@
                 return $data;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function returns users Full Name
+         *
+         * @access public
+         *
+         * @return String|Boolean Full Name or FALSE
+         *
+         */
         public function getUserFullName() {
             global $database;
 
@@ -633,11 +759,20 @@
                 return $data['fullname'];
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function checks whether the user is an administrator
+         *
+         * @param String User ID
+         * @access public
+         *
+         * @return Boolean TRUE if is admin, else FALSE
+         *
+         */
         public function isUserAdmin($uID) {
             global $database;
 
@@ -651,22 +786,39 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function returns users project ID
+         *
+         * @access public
+         *
+         * @return String Project ID
+         * 
+         */
         public function getUserProjectID() {
-            return $this->_mainProject;
+            echo "<br />USER Project ID = " . $this->_mainProjectID . "<br />";
+            return $this->_mainProjectID;
 
         }
 
+        /**
+         * Function returns users project name
+         *
+         * @access public
+         *
+         * @return String|Boolean Project name or FALSE
+         *
+         */
         public function getUserProjectName() {
             global $database;
 
             $query = "SELECT *
                       FROM projects
-                      WHERE project_id = '".$this->_mainProject."';";
+                      WHERE project_id = '" . $this->_mainProjectID . "';";
 
             $result = $database->query($query);
             $data = $database->fetchArray($result);
@@ -675,11 +827,20 @@
                 return $data['project_name'];
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
 
+        /**
+         * Function updates the users main project ID
+         *
+         * @param String Project ID
+         * @access public
+         *
+         * @return Boolean TRUE if successful, otherwise FALSE
+         * 
+         */
         public function updateMainProject($pID) {
             global $database;
 
@@ -690,11 +851,14 @@
             $result = $database->query($query);
 
             if ($database->affectedRows($result) == 1) {
+//                echo "DB TRUE Result: " . $result . "<br />";
                 return TRUE;
             }
             else {
-                return FALSE;
+//                echo "DB FALSE Result: " . $result . "<br />";
+                return 0;
             }
+
         }
 
     }

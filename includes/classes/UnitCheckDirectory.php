@@ -1,11 +1,13 @@
 <?php
 
     /**
-     * UnitCheckDirectory class is a template for UnitCheckDirectory objects.
-     *
-     * Copyright 	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckTestDirectory attributes and
+     * methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -20,13 +22,15 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
-     * @package
-     * @author	  	Tom Kaczocha <freedomdeveloper@yahoo.com>
+     */
+
+    /**
+     * @package     UnitCheck
+     * @author      Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright   2010, 2011 Tom Kaczocha
-     * @version	 	1.0
-     * @access	 	public
-     * @License	 	"GNU General Public License", version="3.0"
+     * @version     1.0
+     * @access      public
+     * @license     "GNU General Public License", version="3.0"
      *
      */
     class UnitCheckDirectory {
@@ -52,10 +56,7 @@
         /**
          * UnitCheckDirectory Constructor
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function __construct() {
@@ -68,10 +69,7 @@
         /**
          * UnitCheckDirectory Destructor
          *
-         * @param
          * @access public
-         *
-         * @return
          *
          */
         public function __destruct() {
@@ -81,7 +79,7 @@
         /**
          * Function gets a list of directories in a directory
          *
-         * @param
+         * @param $dir String Directory
          * @access public
          *
          * @return String|Boolean String array of directories, otherwise FALSE
@@ -121,7 +119,7 @@
         /**
          * Function gets a list of files in a directory
          *
-         * @param
+         * @param $dir String Directory
          * @access public
          *
          * @return String|Boolean String array of files, otherwise FALSE
@@ -158,7 +156,6 @@
          * Function gets a complete list of all files and directories in the
          * project directory.
          *
-         * @param
          * @access public
          *
          * @return String|Boolean String array of directories, otherwise FALSE
@@ -207,7 +204,7 @@
         /**
          * Function sets client directory.
          *
-         * @param
+         * @param $dir String Directory
          * @access public
          *
          * @return Boolean TRUE if successful, otherwise FALSE
@@ -228,7 +225,6 @@
         /**
          * Function gets client directory.
          *
-         * @param
          * @access public
          *
          * @return String|Boolean Client directory if successful, otherwise FALSE

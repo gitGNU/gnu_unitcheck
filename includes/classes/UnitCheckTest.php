@@ -1,11 +1,12 @@
 <?php
 
     /**
-     * Test class is a template for Test objects.
-     *
-     * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
-     *
      * This file is part of UnitCheck.
+     * This file contains all the UnitCheckTest attributes and methods.
+     *
+     * @author		Tom Kaczocha <freedomdeveloper@yahoo.com>
+     * @package         UnitCheck
+     * @copyright	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
      *
      * UnitCheck is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
@@ -20,22 +21,59 @@
      * You should have received a copy of the GNU General Public License
      * along with UnitCheck.  If not, see <http://www.gnu.org/licenses/>.
      *
-     *
-     * @package
+     */
+
+     /** @package     UnitCheck
      * @author	    Tom Kaczocha <freedomdeveloper@yahoo.com>
      * @copyright   2010, 2011 Tom Kaczocha
-     * @version 	1.0
+     * @version     1.0
      * @access	    public
-     * @License     "GNU General Public License", version="3.0"
+     * @license     "GNU General Public License", version="3.0"
      *
      */
     class UnitCheckTest {
 
+        /**
+         * Test ID
+         *
+         * @access private
+         * @var String
+         */
         private $_testID;
+        /**
+         * Test Name
+         *
+         * @access private
+         * @var String
+         */
         private $_testName;
+        /**
+         * Test Author
+         *
+         * @access private
+         * @var String
+         */
         private $_author;
+        /**
+         * Test Group
+         *
+         * @access private
+         * @var String
+         */
         private $_group;
+        /**
+         * Test Error Message
+         *
+         * @access private
+         * @var String
+         */
         private $_errMessage;
+        /**
+         * Project ID
+         *
+         * @access private
+         * @var String
+         */
         private $_projectID;
 
 //        //public static $testErrors = array();

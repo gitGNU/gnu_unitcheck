@@ -23,15 +23,34 @@
      */
     require_once('../includes/initialise.php');
 
+    $pID = 0;
+    $main = FALSE;
+
     if ($_GET) {
+        // get project ID
         $pID = $_GET['pid'];
+
+        if ($_GET['op'] == 'main') {
+            // make this project the main project
+            $main = TRUE;
+        }
 
         $project = new UnitCheckProject($pID);
 
-        $_SESSION['title'] = 'Project - ' . $project->getProjectName();
+        $_SESSION['title'] = 'Project: ' . $project->getProjectName();
     }
 
     if ($user->isUserLoggedIn()) {
+
+        if ($main == TRUE) {
+            $result = $user->updateMainProject($pID);
+//            "<br />Update Result: " . $result;
+            if ($result == TRUE) {
+                $_SESSION['message'] = "This project is now the main project.";
+                header("Location: project.php?pid=" . $pID);
+                exit();
+            }
+        }
 
         UnitCheckHeader::printHeader();
 
@@ -62,10 +81,15 @@
             <?php echo $project->getProjectName(); ?>
             </td>
             <td>
-                <?php echo $project->getProjectCreationDate(); ?>
+            <?php echo $project->getProjectCreationDate(); ?>
             </td>
             <td>
-                <?php echo $project->getProjectModDate(); ?>
+            <?php echo $project->getProjectModDate(); ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="project.php?pid=<?php echo $pID; ?>&op=main"><input type="button" value="Main" title="Make this the Main Project"></a>
             </td>
         </tr>
 </table>
