@@ -39,6 +39,7 @@
     * Edited comments for includes/classes/UnitCheckDependency.php
     * Edited comments for includes/classes/UnitCheckUser.php
     * Added API link to UnitCheckFooter.php
+    * Edited UnitCheck Version
 
 2011-01-17 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added function_name to tests table
