@@ -91,7 +91,7 @@
         /**
          * Function initialises the Test Dependency Object
          *
-         * @param $tID String Test ID
+         * @param String Test ID
          * @access private
          *
          */
@@ -108,7 +108,7 @@
         /**
          * Function gets the Test Dependency DataSet
          *
-         * @param $dID String Dependency ID
+         * @param String Dependency ID
          * @access public
          *
          * @return DataSet|Boolean Dependency DataSet or FALSE if unsuccessful
@@ -136,8 +136,8 @@
         /**
          * Function adds a new Test Dependency to database
          *
-         * @param $tID String Test ID
-         * @param $value String Dependency value
+         * @param String Test ID
+         * @param String Dependency value
          * @access public
          *
          * @return Boolean TRUE if successful, FALSE if unsuccessful
@@ -163,8 +163,8 @@
         /**
          * Function removes a test dependency from the database
          *
-         * @param $tID String Test ID
-         * @param $dID String Dependency ID
+         * @param String Test ID
+         * @param String Dependency ID
          * @access public
          *
          * @return Boolean TRUE if successful, FALSE if unsuccessful

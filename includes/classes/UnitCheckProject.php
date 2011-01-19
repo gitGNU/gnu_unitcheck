@@ -62,6 +62,13 @@
          */
         private $_lastMod;
 
+        /**
+         * UnitCheck object Constructor
+         *
+         * @param String Project ID
+         * @access public
+         *
+         */
         public function __construct($pID = "") {
             if ($pID != "") {
                 $this->initProject($pID);
@@ -69,10 +76,24 @@
 
         }
 
+        /**
+         * UnitCheckProject Object Destructor
+         *
+         * @access public
+         *
+         */
         public function __destruct() {
 
         }
 
+        /**
+         * Function initialises a UnitCheckProject
+         * object
+         *
+         * @param String Project ID
+         * @access public
+         *
+         */
         private function initProject($pID) {
             $data = $this->getProjectDataSetByID($pID);
 
@@ -83,26 +104,69 @@
 
         }
 
+        /**
+         * Function returns project ID
+         *
+         * @access public
+         *
+         * @return String Project ID
+         *
+         */
         public function getProjectID() {
             return $this->_projectID;
 
         }
 
+        /**
+         * Function returns Project Name
+         *
+         * @access public
+         *
+         * @return String Project Name
+         *
+         */
         public function getProjectName() {
             return $this->_projectName;
 
         }
 
+        /**
+         * Function returns Project Creation Date
+         *
+         * @access public
+         *
+         * @return String Project Creation Date
+         *
+         */
         public function getProjectCreationDate() {
             return $this->_creationDate;
 
         }
 
+        /**
+         * Function returns the project's last modified
+         * date
+         *
+         * @access public
+         *
+         * @return String Last Modified Date
+         *
+         */
         public function getProjectModDate() {
             return $this->_lastMod;
 
         }
 
+        /**
+         * Function adds a new project to the
+         * database
+         *
+         * @param Stirng Project Name
+         * @access public
+         *
+         * @return Boolean TRUE if successful, else FALSE
+         *
+         */
         public function createNewProject($pName) {
             global $database;
 
@@ -132,6 +196,17 @@
 
         }
 
+        /**
+         * Function returns project DataSet by Project
+         * Name
+         *
+         * @param String Project Name
+         * @access public
+         *
+         * @return DataSet|Boolean Project DataSet or FALSE
+         * if unsuccessful
+         *
+         */
         public function getProjectDataSetByName($pName) {
             global $database;
 
@@ -151,6 +226,16 @@
 
         }
 
+        /**
+         * Function returns project DataSet by Project ID
+         *
+         * @param String Project ID
+         * @access public
+         *
+         * @return DataSet|Boolean Project DataSet or FALSE
+         * if unsuccessful
+         *
+         */
         public function getProjectDataSetByID($pID) {
             global $database;
 
@@ -170,6 +255,14 @@
 
         }
 
+        /**
+         * Function returns a project ResultSet
+         *
+         * @access public
+         *
+         * @return ResultSet Project ResultSet
+         *
+         */
         public static function getProjectResultSet() {
             global $database;
 
@@ -187,6 +280,15 @@
 
         }
 
+        /**
+         * Function creates a Project Directory
+         *
+         * @param String Project Name
+         * @access public
+         *
+         * @return Boolean TRUE if project exists, else FALSE
+         *
+         */
         public function createProjectDirectory($projectName) {
 
             $dir = "../tests/" . $projectName . "Tests";
@@ -204,6 +306,15 @@
 
         }
 
+        /**
+         * Function checks whether a project exists
+         *
+         * @param String Project Name
+         * @access public
+         *
+         * @return Boolean TRUE if project exists, else FALSE
+         *
+         */
         public function projectExists($pName) {
             global $database;
 

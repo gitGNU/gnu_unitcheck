@@ -73,7 +73,7 @@
         /**
          * Function adds new Tests to database
          *
-         * @param $test UnitCheckTest Test Object
+         * @param UnitCheckTest Test Object
          * @access public
          *
          */
@@ -125,7 +125,7 @@
         /**
          * Function removes a test from the database
          *
-         * @param $test UnitCheckTest Test
+         * @param UnitCheckTest Test
          * @access public
          *
          */

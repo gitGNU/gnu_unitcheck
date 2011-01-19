@@ -79,7 +79,7 @@
         /**
          * Function gets a list of directories in a directory
          *
-         * @param $dir String Directory
+         * @param String Directory Name
          * @access public
          *
          * @return String|Boolean String array of directories, otherwise FALSE
@@ -119,7 +119,7 @@
         /**
          * Function gets a list of files in a directory
          *
-         * @param $dir String Directory
+         * @param String Directory Name
          * @access public
          *
          * @return String|Boolean String array of files, otherwise FALSE
@@ -190,6 +190,16 @@
 
         }
 
+        /**
+         * Function adds Files to Tree Array
+         *
+         * @param String
+         * @param String
+         * @access private
+         *
+         * @return Boolean TRUE if successful, else FALSE
+         *
+         */
         private function addFilesToTreeArray($element, $files) {
 
 //			// add files to
@@ -204,7 +214,7 @@
         /**
          * Function sets client directory.
          *
-         * @param $dir String Directory
+         * @param String Directory Name
          * @access public
          *
          * @return Boolean TRUE if successful, otherwise FALSE

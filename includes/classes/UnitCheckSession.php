@@ -77,6 +77,12 @@
          */
         private $_ip;
 
+        /**
+         * UnitCheckSession object Constructor
+         *
+         * @access public
+         *
+         */
         public function __construct() {
 
             session_start(); // start session
@@ -84,11 +90,24 @@
 
         }
 
+        /**
+         * UnitCheckSession object Destructor
+         *
+         * @access public
+         *
+         */
         public function __destruct() {
             // actions to perform when session ends
 
         }
 
+        /**
+         * Function initialises a Session
+         * object
+         *
+         * @access private
+         *
+         */
         private function initSession($sid) {
             if ($this->_sessionId != "") {
                 $result = $this->checkForSession();
@@ -99,7 +118,6 @@
             else {
                 $this->setNewSession();
             }
-            
 
         }
 
@@ -140,7 +158,6 @@
          * @return Boolean TRUE if session was successfully added to database
          * otherwise FALSE
          *
-         *
          */
         public function setNewSession() {
             global $database;
@@ -149,7 +166,6 @@
             $this->_sessionId = session_id(); // assign session id
             $this->_browser = $_SERVER['HTTP_USER_AGENT']; // assign browser
             $this->_ip = $_SERVER['REMOTE_ADDR']; // assign ip address
-            
             // build query
             $query = "INSERT INTO sessions (session_id, user_id, browser, ip)
         			  VALUES ('$this->_sessionId',
@@ -168,6 +184,14 @@
 
         }
 
+        /**
+         * Function returns Session ID
+         *
+         * @access public
+         *
+         * @return String Session ID
+         *
+         */
         public function getSessionID() {
             return $this->_sessionId;
 
