@@ -181,17 +181,17 @@
                 $this->initProject($pID);
 
                 // create project test directory
-                $result = $this->createProjectDirectory($pName);
+                //$result = $this->createProjectDirectory($pName);
 
                 if ($result == TRUE) {
-                    return TRUE;
+                    return $pID;
                 }
                 else {
-                    return FALSE;
+                    return 0;
                 }
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -221,7 +221,7 @@
                 return $data;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -250,7 +250,7 @@
                 return $data;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -275,7 +275,7 @@
                 return $result;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -301,7 +301,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -328,7 +328,36 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
+            }
+
+        }
+
+        /**
+         * Function updates project name by ID
+         *
+         * @param String Project ID
+         * @param String New Project Name
+         * @access public
+         *
+         * @return Boolean TRUE if project exists, else FALSE
+         *
+         */
+        public function updateProjectNameByID($pID, $pName) {
+            global $database;
+
+            $query = "UPDATE projects
+                      SET project_name = '" . $pName . "'
+
+                      WHERE project_id = '" . $pID . "'";
+
+            $result = $database->query($query);
+
+            if ($database->affectedRows($result) == 1) {
+                return TRUE;
+            }
+            else {
+                return 0;
             }
 
         }

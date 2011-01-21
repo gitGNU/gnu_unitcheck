@@ -41,12 +41,26 @@
          */
         private $_testID;
         /**
+         * Project ID
+         *
+         * @access private
+         * @var String
+         */
+        private $_projectID;
+        /**
          * Test Name
          *
          * @access private
          * @var String
          */
         private $_testName;
+        /**
+         * Test function invocation name
+         *
+         * @access private
+         * @var String
+         */
+        private $_functionName;
         /**
          * Test Author
          *
@@ -60,7 +74,14 @@
          * @access private
          * @var String
          */
-        private $_group;
+        private $_suiteID;
+        /**
+         * Active status
+         *
+         * @access private
+         * @var String
+         */
+        private $_active;
         /**
          * Test Error Message
          *
@@ -69,12 +90,19 @@
          */
         private $_errMessage;
         /**
-         * Project ID
+         * Comments
          *
          * @access private
          * @var String
          */
-        private $_projectID;
+        private $_comments;
+        /**
+         * Last Modified date
+         *
+         * @access private
+         * @var String
+         */
+        private $_lastMod;
 
         /**
          * UnitCheckTest object Constructor
@@ -120,7 +148,14 @@
 
             $this->_testID = $data['test_id'];
             $this->_testName = $data['test_name'];
-            $this->_author = $data['author'];
+            $this->_functionName = $data['function_name'];
+            $this->_author = $data['test_author'];
+            $this->_suiteID = $data['suite_id'];
+            $this->_active = $data['test_active'];
+            $this->_comments = $data['comments'];
+            $this->_errMessage = $data['error_message'];
+            $this->_projectID = $data['project_id'];
+            $this->_lastMod = $data['lastmod'];
 
         }
 
@@ -194,7 +229,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -214,7 +249,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -236,7 +271,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -395,11 +430,21 @@
          * else FALSE
          *
          */
-        public function addNewTest($testName, $testBody, $errorMessage, $testAuthor, $project_id, $active, $testGroup = 0) {
+        public function addNewTest($testName, $testBody, $functionName, $errorMessage, $testAuthor, $projectID, $status, $comments, $testSuite = 0) {
             global $database;
 
-            $query = "INSERT INTO tests (test_name, test_body, error_message, project_id, test_author, test_group, test_active)
-                      VALUES ($testName, $testBody, $errorMessage, $project_id, $testAuthor, $testGroup, $active);";
+            $query = "INSERT INTO tests
+                      SET test_name = '" . $testName . "',
+                          test_body = '" . $testBody . "',
+                          function_name = '" . $functionName . "',
+                          error_message = '" . $errorMessage . "',
+                          project_id = '" . $projectID . "',
+                          test_author = '" . $testAuthor . "',
+                          suite_id = '" . $testSuite . "',
+                          status = '" . $status . "',
+                          comments = '" . $comments . "';";
+
+            //echo "<br /><b>New Test Query:</b><br />" . $query . "<br /><br />";
 
             $result = $database->query($query);
 
@@ -408,7 +453,7 @@
                 return $tID;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -437,15 +482,120 @@
          * @param String Test ID
          * @access public
          *
-         * @return String Project ID
+         * @return DataSet|Boolean Test DataSet if successful,
+         * else FALSE
          *
          */
         public function getTestDataSetByID($tID) {
             global $database;
 
-            $query = "";
+            $query = "SELECT *
+                      FROM tests
+                      WHERE test_id = '" . $tID . "';";
 
             $result = $database->query($query);
+            $data = $database->fetchArray($result);
+
+            if (!empty($data)) {
+                return $data;
+            }
+            else {
+                return 0;
+            }
+
+        }
+
+        /**
+         * Function validates test function body
+         * to criteria
+         *
+         * @param String Test Function Body
+         * @access public
+         *
+         * @return Boolean TRUE if successful,
+         * else FALSE
+         *
+         */
+        public function validateTestBody($functionBody) {
+
+            // test for the word 'function at the start'
+
+            $result = strpos($functionBody, "function");
+            //echo "'function' word check Result: " . $result . "<br />";
+
+            if (!is_bool($result)) { // string contains the word 'function'
+                // test for opening and closing braces
+                $openBrace = substr_count($functionBody, "{");
+                $closeBrace = substr_count($functionBody, "}");
+
+                //echo "'{' check Result: " . $openBrace . "<br />";
+                //echo "'}' check Result: " . $closeBrace . "<br />";
+
+                $openPer = strpos($functionBody, "(");
+                $closePer = strpos($functionBody, ")");
+
+                if ((!is_bool($openPer)) && (!is_bool($closePer))) {
+                    $openPos = strpos($functionBody, "{");
+                    $closePos = strpos($functionBody, "}");
+
+                    if (($openPer < $openPos) && ($closePer < $openPos)) {
+
+                        // test for even number of braces
+                        if ($openBrace == $closeBrace) {
+                            return TRUE;
+                        }
+                        else {
+                            return 0;
+                        }
+                    }
+                    else {
+                        return 0;
+                    }
+                }
+                else {
+                    return 0;
+                }
+            }
+            else {
+                return 0;
+            }
+
+        }
+
+        /**
+         * Function extracts name from function
+         * body and formats it to specification
+         *
+         * @param String Test Function Body
+         * @access public
+         *
+         * @return String|Boolean Function name if successful,
+         * else FALSE
+         *
+         */
+        public function extractFunctionName($functionBody) {
+            global $helper;
+            $finalFunctionName = "";
+            
+            // find end-position of the 'function' keyword
+            $keywordLength = strlen("function");
+            //echo "End position of 'function' = ".$keywordLength."<br />";
+            // find end-position of the ')'
+            $endOfFunction = strpos($functionBody, ")");
+
+            $functionNameLength = ($endOfFunction - $keywordLength);
+            $functionName = trim(substr($functionBody, $keywordLength + 1, $functionNameLength));
+            $finalFunctionName = $helper->removeAllSpaces($functionName);
+
+            $nameLen = strlen($finalFunctionName);
+            $openPerPos = strpos($finalFunctionName, "(");
+            
+            //echo "( position is = " . $openPerPos . "<br />";
+            //echo ") position is = " . $nameLen . "<br />";
+            $finalFunctionName .= ";";
+            //echo "Function name is: '" . $finalFunctionName . "'<br /><br />";
+
+            return $finalFunctionName;
 
         }
 

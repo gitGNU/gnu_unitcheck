@@ -25,20 +25,32 @@
 
     // test to ensure that session is created when
     // user enters site
-    function isSessionCreatedTest() {
+    function sessionCreatedTest() {
         global $session;
+        global $database;
         global $session_id;
         global $unitCheck;
 
         $test = new UnitCheckTest("TEST - Session Created");
         $unitCheck->addTest($test);
 
-        $session->setNewSession();
-        
-        $session_id = $session->getSessionID();
+        $result = $database->createFullDatabase('tests');
+
+        if ($result) {
+            
+            $session->setNewSession();
+
+            $session_id = $session->getSessionID();
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $session_id = "";
+        }
 
         $test->failUnless($session_id != "",
                 "Error: Session Not Created.");
+
     }
 
 //    // test to ensure session is added to database

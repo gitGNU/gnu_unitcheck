@@ -34,14 +34,21 @@
         $test = new UnitCheckTest("TEST - New User Account Created");
         $unitCheck->addTest($test);
 
-        $uID = $user->createNewUserAccount("Tom", "Kaczocha",
-                        "freedomdeveloper@yahoo.com", "password");
+        $result = $database->createFullDatabase('tests');
 
-        // register admin
-        $result = $user->registerAdmin($uID);
-        
-        //echo "<br />LAST ID: ".$uID;
-        $data = $user->getUserDataSetByID($uID);
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
+
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
+
+            $data = $user->getUserDataSetByID($uID);
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $data['email'] = "";
+        }
 
         $test->failUnless($data['email'] == "freedomdeveloper@yahoo.com",
                 "Error: New User Account Creation Failed");
@@ -51,7 +58,6 @@
     // test verifies Email function
     // for correct functionality
     function validateEmailTest() {
-        global $database;
         global $unitCheck;
         global $user;
 
@@ -87,7 +93,6 @@
     // test verifies validate Password
     // function for correct functionality
     function validatePasswordTest() {
-        global $database;
         global $unitCheck;
         global $user;
 
@@ -134,25 +139,38 @@
         $test = new UnitCheckTest("TEST - Duplicate User Account Creation Prevented");
         $unitCheck->addTest($test);
 
-        $result = $user->userEmailExists($newEmail);
+        $result = $database->createFullDatabase('tests');
 
-        if ($result == FALSE) {
-            $user->createNewUserAccount("Tom", "Kaczocha",
-                    "freedomdeveloper@yahoo.com", "password");
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
 
-            $resultSet = $user->getUserResultSet();
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
 
-            while ($data = $database->fetchArray($resultSet, MYSQL_ASSOC)) {
-                if ($data['email'] == $newEmail) {
-                    $count++;
+            if ($uID != "") {
+                $result = $user->userEmailExists($newEmail);
+
+                if ($result == 0) {
+                    $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
+
+                    $resultSet = $user->getUserResultSet();
+
+                    while ($data = $database->fetchArray($resultSet, MYSQL_ASSOC)) {
+                        if ($data['email'] == $newEmail) {
+                            $count++;
+                        }
+                    }
+                }
+                else {
+                    $count = 1;
                 }
             }
-        }
-        else {
-            
+
+            $database->dropDatabase('tests');
         }
 
-        $test->failUnless($count == 0,
+        $test->failUnless($count == 1,
                 "Error: Duplicate User Account Created");
 
     }
@@ -166,13 +184,30 @@
         global $user;
 
         $userID = 1;
+        $testResult = "";
 
         $test = new UnitCheckTest("TEST - First User Is Admin");
         $unitCheck->addTest($test);
 
-        $result = $user->isUserAdmin($userID);
-        
-        $test->failUnless($result,
+        $result = $database->createFullDatabase('tests');
+
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
+
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
+
+            // register admin
+            // shouldn't be testing this here
+            $result = $user->registerAdmin($uID);
+            if ($result) {
+                $testResult = $user->isUserAdmin($userID);
+            }
+
+            $database->dropDatabase('tests');
+        }
+
+        $test->failUnless($testResult,
                 "Error: No Admin Created");
 
     }
@@ -184,6 +219,7 @@
         global $unitCheck;
         global $user;
 
+        $testResult = "";
         $userID = 1;
         $fName = "Joe";
         $lName = "Kaczocha";
@@ -192,13 +228,27 @@
         $test = new UnitCheckTest("TEST - User First Name Updated");
         $unitCheck->addTest($test);
 
-        $result = $user->updateProfile($fName, $lName, $email);
-        
-        $data = $user->getUserDataSetByID($userID);
-        
-        $result = $test->assertEquals($data['user_first_name'], $fName);
+        $result = $database->createFullDatabase('tests');
 
-        $test->failUnless($result,
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
+
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
+
+            if ($uID == 1) {
+
+                $result = $user->updateProfile($fName, $lName, $email);
+
+                $data = $user->getUserDataSetByID($userID);
+
+                $testResult = $test->assertEquals($data['user_first_name'], $fName);
+            }
+
+            $database->dropDatabase('tests');
+        }
+
+        $test->failUnless($testResult,
                 "Error: Failed to Update Users First Name");
 
     }
@@ -210,6 +260,7 @@
         global $unitCheck;
         global $user;
 
+        $testResult = "";
         $userID = 1;
         $fName = "Tom";
         $lName = "Jones";
@@ -218,13 +269,27 @@
         $test = new UnitCheckTest("TEST - User Last Name Updated");
         $unitCheck->addTest($test);
 
-        $result = $user->updateProfile($fName, $lName, $email);
+        $result = $database->createFullDatabase('tests');
 
-        $data = $user->getUserDataSetByID($userID);
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
 
-        $result = $test->assertEquals($data['user_last_name'], $lName);
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
 
-        $test->failUnless($result,
+            if ($uID == 1) {
+
+                $result = $user->updateProfile($fName, $lName, $email);
+
+                $data = $user->getUserDataSetByID($userID);
+
+                $testResult = $test->assertEquals($data['user_last_name'], $lName);
+            }
+
+            $database->dropDatabase('tests');
+        }
+
+        $test->failUnless($testResult,
                 "Error: Failed to Update Users Last Name");
 
     }
@@ -236,6 +301,7 @@
         global $unitCheck;
         global $user;
 
+        $testResult = "";
         $userID = 1;
         $fName = "Tom";
         $lName = "Kaczocha";
@@ -244,13 +310,26 @@
         $test = new UnitCheckTest("TEST - User Email Updated");
         $unitCheck->addTest($test);
 
-        $result = $user->updateProfile($fName, $lName, $email);
+        $result = $database->createFullDatabase('tests');
 
-        $data = $user->getUserDataSetByID($userID);
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
 
-        $result = $test->assertEquals($data['email'], $email);
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
 
-        $test->failUnless($result,
+            if ($uID == 1) {
+                $result = $user->updateProfile($fName, $lName, $email);
+
+                $data = $user->getUserDataSetByID($userID);
+
+                $testResult = $test->assertEquals($data['email'], $email);
+            }
+            $database->dropDatabase('tests');
+        }
+
+
+        $test->failUnless($testResult,
                 "Error: Failed to Update Users Email");
 
     }
@@ -262,20 +341,69 @@
         global $unitCheck;
         global $user;
 
+        $testResult = "";
         $userID = 1;
         $newPass = "freedom";
 
         $test = new UnitCheckTest("TEST - User Password Updated");
         $unitCheck->addTest($test);
 
-        $result = $user->updateUserPassword($newPass);
+        $result = $database->createFullDatabase('tests');
 
-        $data = $user->getUserDataSetByID($userID);
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
 
-        $result = $test->assertEquals($data['password'], md5($newPass));
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
 
-        $test->failUnless($result,
+            if ($uID == 1) {
+                $result = $user->updateUserPassword($newPass);
+
+                $data = $user->getUserDataSetByID($userID);
+
+                $testResult = $test->assertEquals($data['password'], md5($newPass));
+            }
+            $database->dropDatabase('tests');
+        }
+
+        $test->failUnless($testResult,
                 "Error: Failed to Update Users Password");
 
     }
+
+    // test for the successful user
+    // login
+    function userSuccessfullyLoggedInTest() {
+        global $database;
+        global $user;
+        global $unitCheck;
+
+        $test = new UnitCheckTest("TEST - User Login Successful");
+        $unitCheck->addTest($test);
+
+        $result = $database->createFullDatabase('tests');
+
+        if ($result) {
+            mysql_select_db('tests', $database->getConnection());
+
+            $uID = $user->createNewUserAccount("Tom", "Kaczocha",
+                            "freedomdeveloper@yahoo.com", "password");
+
+            if ($uID == 1) {
+                // get user id for test
+                $userID = 1;
+
+                $user->loginUser($userID);
+
+                $testResult = $user->isUserLoggedIn();
+            }
+
+            $database->dropDatabase('tests');
+        }
+
+        $test->failUnless($testResult,
+                "Error: User not Logged in");
+
+    }
+
 ?>

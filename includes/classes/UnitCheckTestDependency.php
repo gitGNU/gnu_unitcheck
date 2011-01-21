@@ -128,7 +128,7 @@
                 return $data;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -155,7 +155,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -184,7 +184,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }

@@ -42,4 +42,15 @@
 
     }
 
+    function removeProjectDirectory($pName) {
+
+        // cleanup files and directories
+        $dir = "../tests/" . $pName . "Tests";
+        
+        if (is_dir($dir)) {
+            rmdir($dir);
+        }
+
+    }
+
 ?>

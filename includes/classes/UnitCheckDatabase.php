@@ -34,7 +34,7 @@
      * @version 	2.0
      * @access		public
      */
-    class My_Sql_Database {
+    class UnitCheckDatabase {
 
         /**
          * Magic Quotes Active Flag
@@ -88,7 +88,7 @@
          * @access public
          *
          */
-        public function openConnection() {
+        public function openConnection($dbName = "") {
             // Make the _mConnection.
             $this->_mConnection = @mysql_connect(SERVER, UNITCHECK_ADMIN, UNITCHECK_ADMIN_PASSWORD);
 
@@ -297,7 +297,7 @@
                 }
             }
 
-            return FALSE;
+            return 0;
 
         }
 
@@ -324,7 +324,7 @@
                 }
             }
 
-            return FALSE;
+            return 0;
 
         }
 
@@ -486,12 +486,16 @@
 
             $query = "CREATE TABLE IF NOT EXISTS tests (
                         test_id mediumint(10) unsigned NOT NULL auto_increment,
+                        suite_id varchar(10) NOT NULL,
                         project_id mediumint(10) unsigned NOT NULL,
                         test_name varchar(60) NOT NULL,
+                        test_body varchar(5000) NOT NULL,
                         function_name varchar(150) NOT NULL,
                         test_author varchar(50) NOT NULL,
-                        test_group varchar(10) NOT NULL,
-                        test_active int(5) NOT NULL,
+                        status int(5) NOT NULL,
+                        comments varchar(100) NULL,
+                        error_message varchar(100) NOT NULL,
+                        lastmod timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                         PRIMARY KEY (test_id)
                       ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=0;";
 
@@ -612,33 +616,37 @@
         public function createFullDatabase($name) {
 
             // test database
-            $this->createDatabase($name);
+            $result = $this->createDatabase($name);
+            
+            if ($result) {
+                //$this->openConnection();
+                @mysql_select_db($name, $this->getConnection());
+                                
+                // test each table
+                $dbResults[] = $this->createSettingsTable();
+                $dbResults[] = $this->createUsersTable();
+                $dbResults[] = $this->createProjectTable();
+                $dbResults[] = $this->createUserProjectTable();
+                $dbResults[] = $this->createSessionsTable();
+                $dbResults[] = $this->createTestsTable();
+                $dbResults[] = $this->createTestDataTable();
+                $dbResults[] = $this->createAdminTable();
+                $dbResults[] = $this->createTestDependenciesTable();
+                $dbResults[] = $this->createTestResultsTable();
 
-            $this->openConnection();
-
-            // test each table
-            $dbResults[] = $this->createSettingsTable();
-            $dbResults[] = $this->createUsersTable();
-            $dbResults[] = $this->createProjectTable();
-            $dbResults[] = $this->createUserProjectTable();
-            $dbResults[] = $this->createSessionsTable();
-            $dbResults[] = $this->createTestsTable();
-            $dbResults[] = $this->createTestDataTable();
-            $dbResults[] = $this->createAdminTable();
-            $dbResults[] = $this->createTestDependenciesTable();
-
-            foreach ($dbResults as $t) {
-                if ($t == 0) {
-                    return FALSE;
+                foreach ($dbResults as $t) {
+                    if ($t == 0) {
+                        return 0;
+                    }
                 }
-            }
 
-            return TRUE;
+                return TRUE;
+            }
 
         }
 
     }
 
-    $database = new My_Sql_Database();
+    $database = new UnitCheckDatabase();
 
 ?>

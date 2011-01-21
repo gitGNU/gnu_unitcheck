@@ -145,7 +145,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -168,10 +168,10 @@
             $this->_ip = $_SERVER['REMOTE_ADDR']; // assign ip address
             // build query
             $query = "INSERT INTO sessions (session_id, user_id, browser, ip)
-        			  VALUES ('$this->_sessionId',
-        			  		  '$user->getUserId()',
-        			  		  '$this->_browser',
-        			  		  '$this->_ip');";
+        			  VALUES ('" . $this->_sessionId . "',
+        			  		  '" . $user->getUserId() . "',
+        			  		  '" . $this->_browser . "',
+        			  		  '" . $this->_ip . "');";
 
             $result = $database->query($query);
 
@@ -179,7 +179,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }

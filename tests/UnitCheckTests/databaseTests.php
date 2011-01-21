@@ -39,6 +39,8 @@
         $test->failUnless($result,
                 "Error: Database Creation Failed");
 
+        $database->dropDatabase('tests');
+
     }
 
     // test for successful creation of
@@ -50,11 +52,20 @@
         $test = new UnitCheckTest("TEST - Settings Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createSettingsTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "settings");
+            $result = $database->createSettingsTable();
+
+            $result = $database->tableExists("tests", "settings");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: Settings Table Creation Failed");
@@ -70,11 +81,20 @@
         $test = new UnitCheckTest("TEST - Project Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createProjectTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "projects");
+            $result = $database->createProjectTable();
+
+            $result = $database->tableExists("tests", "projects");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: Project Table Creation Failed");
@@ -90,11 +110,20 @@
         $test = new UnitCheckTest("TEST - UserProject Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createUserProjectTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "userprojects");
+            $result = $database->createUserProjectTable();
+
+            $result = $database->tableExists("tests", "userprojects");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: UserProject Table Creation Failed");
@@ -110,11 +139,21 @@
         $test = new UnitCheckTest("TEST - Users Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createUsersTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "users");
+            $result = $database->createUsersTable();
+
+            $result = $database->tableExists("tests", "users");
+
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: Users Table Creation Failed");
@@ -130,14 +169,23 @@
         $test = new UnitCheckTest("TEST - Tests Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createTestsTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "tests");
+            $result = $database->createTestsTable();
 
-        $test->failUnless($result,
-                "Error: Tests Table Creation Failed");
+            $result = $database->tableExists("tests", "tests");
+
+            $test->failUnless($result,
+                    "Error: Tests Table Creation Failed");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
     }
 
@@ -150,11 +198,20 @@
         $test = new UnitCheckTest("TEST - Sessions Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createSessionsTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "sessions");
+            $result = $database->createSessionsTable();
+
+            $result = $database->tableExists("tests", "sessions");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: Sessions Table Creation Failed");
@@ -170,11 +227,21 @@
         $test = new UnitCheckTest("TEST - TestData Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createTestDataTable();
+        if ($result) {
 
-        $result = $database->tableExists("tests", "testdata");
+            @mysql_select_db('tests', $database->getConnection());
+
+            $result = $database->createTestDataTable();
+
+            $result = $database->tableExists("tests", "testdata");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: TestData Table Creation Failed");
@@ -190,11 +257,21 @@
         $test = new UnitCheckTest("TEST - Admin Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createAdminTable();
+        if ($result) {
 
-        $result = $database->tableExists("tests", "admin");
+            @mysql_select_db('tests', $database->getConnection());
+
+            $result = $database->createAdminTable();
+
+            $result = $database->tableExists("tests", "admin");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: Admin Table Creation Failed");
@@ -210,11 +287,20 @@
         $test = new UnitCheckTest("TEST - Test Dependencies Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createTestDependenciesTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "testdependencies");
+            $result = $database->createTestDependenciesTable();
+
+            $result = $database->tableExists("tests", "testdependencies");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
         $test->failUnless($result,
                 "Error: Test Dependencies Table Creation Failed");
@@ -230,14 +316,23 @@
         $test = new UnitCheckTest("TEST - Test Results Table Created");
         $unitCheck->addTest($test);
 
-        @mysql_select_db('tests', $database->getConnection());
+        $result = $database->createDatabase('tests');
 
-        $result = $database->createTestResultsTable();
+        if ($result) {
+            @mysql_select_db('tests', $database->getConnection());
 
-        $result = $database->tableExists("tests", "testresults");
+            $result = $database->createTestResultsTable();
 
-        $test->failUnless($result,
-                "Error: Test Results Table Creation Failed");
+            $result = $database->tableExists("tests", "testresults");
+
+            $test->failUnless($result,
+                    "Error: Test Results Table Creation Failed");
+
+            $database->dropDatabase('tests');
+        }
+        else {
+            $result = 0;
+        }
 
     }
 
@@ -247,98 +342,28 @@
         global $database;
         global $unitCheck;
 
+        $numTables = 10;
+        $result = 0;
         $dbResults = array();
 
         $test = new UnitCheckTest("TEST - Full Database Created");
         $unitCheck->addTest($test);
 
-        //@mysql_select_db('tests', $database->getConnection());
+        $result = $database->createFullDatabase('tests');
 
+        if ($result) {
 
-        if ($res == TRUE) { // database exists -> create all the tables
-            @mysql_select_db('tests', $database->getConnection());
-
-
-            $result = $database->tableExists("tests", "settings");
-            if ($result == TRUE) {
-                $dbResults[] = 1;
-            }
-            else {
-                $dbResults[] = 0;
-            }
-            $result = $database->tableExists("tests", "users");
-            if ($result == TRUE) {
-                $dbResults[] = 1;
-            }
-            else {
-                $dbResults[] = 0;
-            }
-            $result = $database->tableExists("tests", "projects");
-            if ($result == TRUE) {
-                $dbResults[] = 1;
-            }
-            else {
-                $dbResults[] = 0;
-            }
-            $result = $database->tableExists("tests", "sessions");
-            if ($result == TRUE) {
-                $dbResults[] = 1;
-            }
-            else {
-                $dbResults[] = 0;
-            }
-            $result = $database->tableExists("tests", "tests");
-            if ($result == TRUE) {
-                $dbResults[] = 1;
-            }
-            else {
-                $dbResults[] = 0;
-            }
-            $result = $database->tableExists("tests", "testdata");
-            if ($result == TRUE) {
-                $dbResults[] = 1;
-            }
-            else {
-                $dbResults[] = 0;
-            }
-            $result = $database->tableExists("tests", "admin");
-            if ($result == TRUE) {
-                $dbResults[] = 1;
-            }
-            else {
-                $dbResults[] = 0;
-            }
+            
+        }
+        else {
+            $result = 0;
         }
 
-        $result = 0;
-
-        foreach ($dbResults as $t) {
-            if ($t == 0) {
-                $result++;
-            }
-        }
-
-        $test->failUnless($result == 0,
+        $test->failUnless($result == $numTables,
                 "Error: Full Database Creation Failed");
 
-    }
+        $database->dropDatabase('tests');
 
-//    // test for successful creation of
-//    // database users
-//    function databaseUsersCreatedTest() {
-//
-//    }
-//
-//    // test that the correct priviledges
-//    // were gives to admin
-//    function databaseAdminPriviledgesTest() {
-//
-//    }
-//
-//    // test that the correct priviledges
-//    // were gives to user
-//    function databaseUserPriviledgesTest() {
-//
-//    }
+    }
 
 ?>

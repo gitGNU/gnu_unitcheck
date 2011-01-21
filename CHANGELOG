@@ -1,7 +1,7 @@
 /**
  * This is CHANGELOG file
  *
- * Copyright 	(c) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
+ * Copyright 	(C) 2010, 2011 Tom Kaczocha <freedomdeveloper@yahoo.com>
  *
  * This file is part of UnitCheck.
  *
@@ -23,8 +23,33 @@
                                CHANGELOG
 ================================================================================
 
+2011-01-21 Tom Kaczocha <freedomdeveloper@yahoo.com>
+    * Updated UnitCheck API documentation
+    * Edited UnitCheckDatabase class openConnection() method
+    * Edited 'tests' table creation query
+    * Added new removeAllSpaces() function to UnitCheckHelper class
+    * Added updateProjectNameByID() method to UnitCheckProject class
+    * Edited addNewTest() method in UnitCheckTest class
+    * Added new validateTestBody() method in UnitCheckTest class
+    * Added new extractFunctionName() method in UnitCheckTest class
+    * Added new removeProjectDirectory() function to
+      includes/resources/testCleanup.php
+    * Added new public/addnewsuite.php file
+    * Edited addnewtest.php file
+    * Edited runTests.php file
+    * Edited UnitCheckTests/databaseTests.php file
+    * Renamed /UnitCheckTests/newProjectTests.php to /projectTests.php
+    * Renamed /UnitCheckTests/newUserAccountTests.php to /userAccountTests.php
+    * Edited /UnitCheckTests/sessionTests.php file
+    * Renamed /UnitCheckTests/testsTests.php to /testTests.php
+    * Removed /UnitCheckTests/userLoginTests.php
+
 2011-01-19 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Updated comments in all UnitCheck classes
+    * Added 'comments' field to UnitCheckTest class
+    * Edited tests database table
+    * Added new public/addnewsuite.php - form for adding
+      new test suites
 
 2011-01-18 Tom Kaczocha <freedomdeveloper@yahoo.com>
     * Added docs/API/ directory

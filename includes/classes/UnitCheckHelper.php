@@ -79,6 +79,14 @@
 
         }
 
+        public function removeAllSpaces($string) {
+            $pattern = "/\s*/m";
+            $replace = "";
+
+            $newString = preg_replace($pattern, $replace, $string);
+
+            return $newString;
+        }
     }
 
     $helper = new UnitCheckHelper();

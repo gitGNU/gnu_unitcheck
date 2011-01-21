@@ -85,7 +85,7 @@
          */
         private $_userIsLoggedIn;
 
-         /**
+        /**
          * UnitCheck User Object Constructor
          *
          * @param String User ID
@@ -95,6 +95,10 @@
         public function __construct($id = 0) {
             global $session;
 
+            if (isset($id)) {
+                $this->_userID = $id;
+            }
+
             $this->checkUserLogin();
             $this->initUser($this->_userID);
 //            echo "<br />USER ID: " . $this->_userID;
@@ -102,8 +106,8 @@
 //            echo "<br />LAST NAME: " . $this->_user_last_name;
 //            echo "<br />EMAIL: " . $this->_email;
 //            echo "<br />PASSWORD: " . $this->_password;
-//            echo "<br />MAIN PROJECT: " . $this->_mainProjectIDIDIDID;
-//            echo "<br />IS LOGGED IN: " . $this->_userIsLoggedIn;
+//            echo "<br />MAIN PROJECT: " . $this->_mainProjectID;
+//            echo "<br />IS LOGGED IN: " . $this->_userIsLoggedIn."<br />";
             // check for matching session in database
             $session_status = $session->checkForSession();
 
@@ -139,13 +143,14 @@
 
             $data = $this->getUserDataSetByID($uID);
 
-            if ($data != FALSE) {
+            if ($data != 0) {
+                $this->_mainProjectID = $data['mainproject_id'];
                 $this->_user_first_name = $data['user_first_name'];
                 $this->_user_last_name = $data['user_last_name'];
                 $this->_email = $data['email'];
                 $this->_password = $data['password'];
-                $this->_mainProjectID = $data['mainproject_id'];
-                echo "Init User Main Project ID: " . $this->_mainProjectID . "<br />";
+
+                //echo "Init User Main Project ID: " . $this->_mainProjectID . "<br />";
                 $_SESSION['email'] = $this->_email;
                 //echo "<br />NOT FALSE<br />";
             }
@@ -670,7 +675,7 @@
          */
         public function addUserToProject($pID) {
             global $database;
-            global $user;
+            global $user;            
 
             $status = 0;
 
@@ -800,7 +805,7 @@
          * 
          */
         public function getUserProjectID() {
-            echo "<br />USER Project ID = " . $this->_mainProjectID . "<br />";
+            //echo "<br />Get USER Project ID = " . $this->_mainProjectID . "<br />";
             return $this->_mainProjectID;
 
         }

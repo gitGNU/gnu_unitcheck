@@ -111,7 +111,7 @@
                 return $dir_array;
             }
             else { // array empty
-                return FALSE;
+                return 0;
             }
 
         }
@@ -147,7 +147,7 @@
                 return $file_array;
             }
             else { // array empty
-                return FALSE;
+                return 0;
             }
 
         }
@@ -227,7 +227,7 @@
                 return TRUE;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }
@@ -245,7 +245,7 @@
                 return $this->_client_directory;
             }
             else {
-                return FALSE;
+                return 0;
             }
 
         }

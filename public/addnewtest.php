@@ -39,41 +39,56 @@
 
             $testName .= $database->escapeValue($_POST['testname']);
             $errorMessage .= $database->escapeValue($_POST['errormessage']);
-            $active = $database->escapeValue($_POST['active']);
+            $active = $database->escapeValue($_POST['status']);
             $dependencies = $database->escapeValue($_POST['dependencies']);
             $testBody = $database->escapeValue($_POST['testbody']);
+            $comments = $database->escapeValue($_POST['comments']);
+
+            $testSuite = "default";
 
             // get author name
             foreach ($_POST['authorname'] as $value) {
-                $authorName = $value;
+                $testAuthor = $value;
             }
 
             if ($active != "") {
-                $testActive = 1;
+                $status = 1;
             }
             else {
-                $testActive = 0;
+                $status = 0;
             }
 
-            // get function name
-            //$fName = $test->getFunctionName();
+            // validate function body
+            $result = $test->validateTestBody($testBody);
 
+            if ($result) {
+                // extract function name
+                $functionName = $test->extractFunctionName($testBody);
 
-            $test = new UnitCheckTest($testName);
-            $unitCheck->addTest($test); // this may not be required at this point
+                $test = new UnitCheckTest($testName);
+                $unitCheck->addTest($test); // this may not be required at this point
 
-//            $result = $test->addNewTest($testName, $testBody, $errorMessage, $authorName, $projectID, $testActive);
-//
-//            if ($result > 0) {
-//                // add dependencies for test ID
-//                // $dependencies
-//
-//            }
-//            else {
-//                $_SESSION['message'] = "System error - unable to add test.";
-//                header("Location: index.php");
-//                exit();
-//            }
+                $result = $test->addNewTest(
+                                $testName,
+                                $testBody,
+                                $functionName,
+                                $errorMessage,
+                                $testAuthor,
+                                $projectID,
+                                $status,
+                                $comments,
+                                $testSuite);
+
+                if ($result > 0) {
+                    // add dependencies for test ID
+                    // $dependencies
+                }
+                else {
+                    $_SESSION['message'] = "System error - unable to add test.";
+                    header("Location: index.php");
+                    exit();
+                }
+            }
         }
 
 
@@ -121,6 +136,21 @@
                         <p>
                             This form requires strict adherence to PHP syntax.
                         </p>
+                        <h4>Test Writing Suggestions</h4>
+                        <p>
+                            Following is a list of useful rules to follow in
+                            unit test writing:
+                        </p>
+                        <ul>
+                            <li>
+                                <b>Simple</b> - Write your tests to be as simple as possible.
+                            </li>
+                            <li>
+                                <b>Independent</b> - Make sure that no test is
+                                dependent on any other test.
+                            </li>
+                        </ul>
+
                     </td>
                 </tr>
                 <tr>
@@ -129,112 +159,153 @@
                     </th>
                     <td>
                         <select name="projectname[]">
-<?php
+                    <?php
 
-    $projectName = $user->getUserProjectName();
-    $data = $project->getProjectDataSetByName($projectName);
+                        $projectName = $user->getUserProjectName();
+                        $data = $project->getProjectDataSetByName($projectName);
 
-        echo '<option selected="selected" value="' . $data['project_id'] . '">' . $projectName . '</option>';
-        while ($data = $database->fetchArray($projResult)) {
-            if ($data['project_name'] != $user->getUserProjectName()) {
-                echo '<option value="' . $data['project_id'] . '">' . $data['project_name'] . '</option>';
-            }
-        }
-
-?>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <th align="right">
-                <label for="testname">Test Name:</label>
-            </th>
-            <td><i>&ensp;Test - </i>
-                <input class="required" id="testname" type="text" value="<?php echo $_POST['testname']; ?>" name="testname" size="40" />
-                <label for="active">Active:</label>
-                <input id="active" type="checkbox" name="active" checked="checked" value="Active" />
-            </td>
-        </tr>
-        <tr>
-            <th align="right">
-                <label for="errormessage">Error Message:</label>
-            </th>
-            <td><i>Error - </i>
-                <input class="required" id="errormessage" type="text" value="<?php echo $_POST['errormessage']; ?>" name="errormessage" size="40" />
-            </td>
-        </tr>
-        <tr>
-            <th align="right">
-                <label for="dependencies">Dependencies:</label>
-            </th>
-            <td>
-                <textarea class="required" name="dependencies" cols="70" rows="5"><?php echo $_POST['dependencies']; ?></textarea>
-            </td>
-            <td>
-                <b>For example:</b><br />
-                <i>
-                    require_once("../resources/functions.php");<br />
-                    include("../includes/mail.php");
-                    <i/>
-
-            </td>
-        </tr>
-        <tr>
-            <th align="right">
-                <label for="testbody">Test Body:</label>
-            </th>
-            <td>
-                <textarea class="required" name="testbody" cols="70" rows="20"><?php echo $_POST['testbody']; ?></textarea>
-            </td>
-            <td>
-                <b>For example:</b><br />
-                <i>
-                    function databaseCreatedTest() {<br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;global $database;<br /><br />
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;$database->createDatabase('tests');<br /><br />
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;$result = $database->databaseExists("tests");<br /><br />
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;$test->failUnless($result,<br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;"Error: Database Creation Failed");<br /><br />
-
-                    }
-                    <i/>
-
-            </td>
-        </tr>
-        <tr>
-            <th align="right">
-                <label for="author">Author:</label>
-            </th>
-            <td>
-                <select name="authorname[]">
-<?php
-
-                    echo '<option selected="selected" value="' . $user->getUserFullName() . '">' . $user->getUserFullName() . '</option>';
-                    while ($data = $database->fetchArray($userResult)) {
-                        if (($data['user_first_name'] . ' ' . $data['user_last_name']) != $user->getUserFullName()) {
-                            echo '<option value="' . $data['user_first_name'] . ' ' . $data['user_last_name'] . '">' . $data['user_first_name'] . ' ' . $data['user_last_name'] . '</option>';
+                        echo '<option selected="selected" value="' . $data['project_id'] . '">' . $projectName . '</option>';
+                        while ($data = $database->fetchArray($projResult)) {
+                            if ($data['project_name'] != $user->getUserProjectName()) {
+                                echo '<option value="' . $data['project_id'] . '">' . $data['project_name'] . '</option>';
+                            }
                         }
-                    }
 
-?>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <th align="right">&nbsp;</th>
-            <td>
-                <a href="index.php"<input id="preview" type="button" value="Preview" /></a>&nbsp;&nbsp;&nbsp;
-                <input id="confirm" type="submit" value="Add Test" />&nbsp;&nbsp;&nbsp;
-                <input id="reset" type="reset" value="Reset" />
-            </td>
-            <td>
+                    ?>
+                    </select>
+                </td>
+                <td>
+                    <a href="addnewproject.php"><input id="newproject" type="button" value="Add New Project" /></a>
+                </td>
+            </tr>
+            <tr>
+                <th align="right">
+                    <label for="suitename">Suite:</label>
+                </th>
+                <td>
+                    <select name="suitename[]">
+                    <?php
 
-            </td>
-        </tr>
-    </table>
+                        echo '<option selected="selected" value="default">default</option>';
+                        while ($data = $database->fetchArray($projResult)) {
+                            if ($data['project_name'] != $user->getUserProjectName()) {
+                                echo '<option value="' . $data['project_id'] . '">' . $data['project_name'] . '</option>';
+                            }
+                        }
+
+                    ?>
+                    </select>
+                </td>
+                <td>
+                    <a href="addnewsuite.php"><input id="newsuite" type="button" value="Add New Suite" /></a>
+                </td>
+            </tr>
+            <tr>
+                <th align="right">
+                    <label for="testname">Test Name:</label>
+                </th>
+                <td><i>&ensp;Test - </i>
+                    <input class="required" id="testname" type="text" value="<?php echo $_POST['testname']; ?>" name="testname" size="40" />
+                    <label for="active">Active:</label>
+                    <input id="active" type="checkbox" name="status" checked="checked" value="Active" />
+                </td>
+            </tr>
+            <tr>
+                <th align="right">
+                    <label for="errormessage">Error Message:</label>
+                </th>
+                <td><i>Error - </i>
+                    <input class="required" id="errormessage" type="text" value="<?php echo $_POST['errormessage']; ?>" name="errormessage" size="40" />
+                </td>
+            </tr>
+
+            <tr>
+                <th align="right">
+                    <label for="comments">Comments:</label>
+                </th>
+                <td>
+                    <textarea class="required" name="comments" cols="70" rows="3"><?php echo $_POST['comments']; ?></textarea>
+                </td>
+                <td>
+                    <b>For example:</b><br />
+                    <i>This test verifies that emails are verified correctly.
+                        <i/>
+
+                </td>
+            </tr>
+
+            <tr>
+                <th align="right">
+                    <label for="dependencies">Dependencies:</label>
+                </th>
+                <td>
+                    <textarea class="required" name="dependencies" cols="70" rows="5"><?php echo $_POST['dependencies']; ?></textarea>
+                </td>
+                <td>
+                    <b>For example:</b><br />
+                    <i>
+                        require_once("../resources/functions.php");<br />
+                        include("../includes/mail.php");
+                        <i/>
+
+                </td>
+            </tr>
+            <tr>
+                <th align="right">
+                    <label for="testbody">Test Body:</label>
+                </th>
+                <td>
+                    <textarea class="required" name="testbody" cols="70" rows="20"><?php echo $_POST['testbody']; ?></textarea>
+                </td>
+                <td>
+                    <b>For example:</b><br />
+                    <i>
+                        function databaseCreatedTest() {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;global $database;<br /><br />
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;$database->createDatabase('tests');<br /><br />
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;$result = $database->databaseExists("tests");<br /><br />
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;$test->failUnless($result,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;"Error: Database Creation Failed");<br /><br />
+
+                        }
+                        <i/>
+
+                </td>
+            </tr>
+            <tr>
+                <th align="right">
+                    <label for="author">Author:</label>
+                </th>
+                <td>
+                    <select name="authorname[]">
+                    <?php
+
+                        echo '<option selected="selected" value="' . $user->getUserFullName() . '">' . $user->getUserFullName() . '</option>';
+                        while ($data = $database->fetchArray($userResult)) {
+                            if (($data['user_first_name'] . ' ' . $data['user_last_name']) != $user->getUserFullName()) {
+                                echo '<option value="' . $data['user_first_name'] . ' ' . $data['user_last_name'] . '">' . $data['user_first_name'] . ' ' . $data['user_last_name'] . '</option>';
+                            }
+                        }
+
+                    ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th align="right">&nbsp;</th>
+                <td>
+                    <a href="index.php"<input id="preview" type="button" value="Preview" /></a>&nbsp;&nbsp;&nbsp;
+                    <input id="confirm" type="submit" value="Add Test" />&nbsp;&nbsp;&nbsp;
+                    <input id="reset" type="reset" value="Reset" />
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
 </form>
 
 
@@ -243,13 +314,13 @@
 
 <?php
 
-                    // print footer
-                    UnitCheckFooter::printFooter();
-                }
-                else {
-                    $_SESSION['message'] = "You must be logged in to create a new project.";
-                    header("Location: index.php");
-                    exit();
-                }
+                        // print footer
+                        UnitCheckFooter::printFooter();
+                    }
+                    else {
+                        $_SESSION['message'] = "You must be logged in to create a new project.";
+                        header("Location: index.php");
+                        exit();
+                    }
 
 ?>

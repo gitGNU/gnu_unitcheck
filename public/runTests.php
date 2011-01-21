@@ -25,11 +25,10 @@
     require_once('../includes/initialise.php');
 
     require_once("../tests/UnitCheckTests/databaseTests.php");
-    require_once("../tests/UnitCheckTests/newProjectTests.php");
-    require_once("../tests/UnitCheckTests/newUserAccountTests.php");
+    require_once("../tests/UnitCheckTests/projectTests.php");
+    require_once("../tests/UnitCheckTests/userAccountTests.php");
     require_once("../tests/UnitCheckTests/sessionTests.php");
-    require_once("../tests/UnitCheckTests/userLoginTests.php");
-    require_once("../tests/UnitCheckTests/testsTests.php");
+    require_once("../tests/UnitCheckTests/testTests.php");
     require_once("../includes/resources/testCleanup.php");
 
 
@@ -49,7 +48,7 @@
         $helper->printMessage();
 
         // run PRE-cleanup
-        runCleanup();
+        //runCleanup();
 
         databaseCreatedTest();
         testDataTableCreatedTest();
@@ -63,7 +62,7 @@
         testDependenciesTableCreatedTest();
         testResultsTableCreatedTest();
 
-        isSessionCreatedTest();
+        sessionCreatedTest();
         createNewUserAccountTest();
         validateEmailTest();
         validatePasswordTest();
@@ -73,47 +72,50 @@
         userLastNameUpdatedTest();
         userEmailUpdatedTest();
         userPasswordUpdatedTest();
-        
-
         userSuccessfullyLoggedInTest();
-        
+
 
         newProjectTest();
         projectIDSetAsMainProject4UserTest();
         duplicateProjectTest();
-        addNewTestDirectoryTest();
         addUserToProjectTest();
         updateAsMainProjectTest();
         projectDataRetrievedTest();
         updateProjectNameTest();
+        
+        //addNewProjectDirectoryTest();
 
+        //newTestNameAddedTest();
 
-        getFunctionNameTest();
         addNewTestTest();
-        testDataSetRetrievedTest();
-        testResultSetRetrievedTest();
-        lastTestDateRetrievedTest();
-        addedTestNameTest();
-        addedTestErrorMessageTest();
-        addedTestBodyTest();
-        addedTestDependenciesTest();
-        addedTestProjectIDTest();
-        addedTestAuthorTest();
-        updatedTestNameTest();
-        updatedTestDependenciesTest();
-        updatedTestErrorMessageTest();
-        updatedTestBodyTest();
-        updatedTestAuthorTest();
-        updatedTestProjectIDTest();
+        validateTestBody();
+        extractFunctionNameTest();
+
+//        testDataSetRetrievedTest();
+//        testResultSetRetrievedTest();
+//        lastTestDateRetrievedTest();
+//        addedTestNameTest();
+//        addedTestErrorMessageTest();
+//        addedTestBodyTest();
+//        addedTestDependenciesTest();
+//        addedTestProjectIDTest();
+//        addedTestAuthorTest();
+
+//        updatedTestNameTest();
+//        updatedTestDependenciesTest();
+//        updatedTestErrorMessageTest();
+//        updatedTestBodyTest();
+//        updatedTestAuthorTest();
+//        updatedTestProjectIDTest();
 
         
 
         // run POST-cleanup
-        runCleanup();
+        //runCleanup();
 
         fullDatabaseCreatedTest();
 
-        runCleanup();
+        //runCleanup();
 
 
         // PRINT TEST RESULTS
